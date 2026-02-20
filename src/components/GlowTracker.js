@@ -16,7 +16,7 @@ export default function GlowTracker({ children, className = '', style = {}, colo
 
   const gradientColor2 = color === 'green'
     ? 'rgba(74, 222, 128, 0.15)'
-    : 'rgba(245, 158, 11, 0.15)';
+    : 'rgba(245, 224, 75, 0.15)';
 
   const handleMouseMove = useCallback((e) => {
     if (!containerRef.current || !glowRef.current) return;

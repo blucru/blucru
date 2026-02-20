@@ -41,8 +41,8 @@ const teamMembers = [
   { name: 'Kathy Z', role: 'Manufacturing', image:'kathyz.png'},
   { name: 'John H', role: 'Manufacturing', image:'johnh.png'},
   { name: 'Michael D', role: 'Autonomous', image:'michaeld.png'},
-  { name: 'Deven B', role: 'Tele-Op', comingSoon: true },
-  { name: 'Chase L', role: 'Software', comingSoon: true },
+  { name: 'Deven B', role: 'Tele-Op' },
+  { name: 'Chase L', role: 'Software' },
   { name: 'Thomas Y', role: 'Electrical',image:'thomasy.png'},
   { name: 'Annika B', role: 'Portfolio + Judging',image:'annikab.png'},
 ];

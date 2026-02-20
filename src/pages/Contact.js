@@ -61,7 +61,7 @@ export default function Contact() {
             width: 50,
             height: 50,
             borderRadius: 14,
-            background: 'rgba(245, 158, 11, 0.1)',
+            background: 'rgba(245, 224, 75, 0.1)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',

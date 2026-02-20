@@ -20,7 +20,7 @@ function getTimeLeft() {
 // ── Constellation canvas ──────────────────────────────────────────────────────
 const NODE_COUNT = 70;
 const CONNECTION_DIST = 160;
-const COLORS = ['#3b82f6', '#60a5fa', '#f59e0b', '#fbbf24', '#93c5fd'];
+const COLORS = ['#3b82f6', '#60a5fa', '#f5e04b', '#fbbf24', '#93c5fd'];
 
 function ConstellationCanvas() {
   const canvasRef = useRef(null);

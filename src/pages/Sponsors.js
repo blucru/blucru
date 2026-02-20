@@ -68,9 +68,11 @@ export default function Sponsors() {
             Interested in supporting our team? Your sponsorship helps us purchase parts,
             register for competitions, and expand our outreach programs.
           </p>
-          <Link to="/contact" className="btn btn-primary">
-            Contact Us
-          </Link>
+          <div className="hero-btn-group" style={{ display: 'inline-flex' }}>
+            <Link to="/contact" className="btn hero-btn-gradient">
+              Contact Us
+            </Link>
+          </div>
         </div>
       </section>
     </div>

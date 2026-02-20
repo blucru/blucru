@@ -4,8 +4,8 @@ import { useLocation } from 'react-router-dom';
 const TRAIL_LENGTH = 18;
 
 const COLORS_DEFAULT = [
-  '#f59e0b', '#fbbf24', '#3b82f6', '#60a5fa', '#93c5fd',
-  '#f59e0b', '#fbbf24', '#3b82f6', '#60a5fa', '#fde68a',
+  '#f5e04b', '#fbbf24', '#3b82f6', '#60a5fa', '#93c5fd',
+  '#f5e04b', '#fbbf24', '#3b82f6', '#60a5fa', '#fde68a',
 ];
 
 const COLORS_GREEN = [
