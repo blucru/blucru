@@ -64,9 +64,12 @@ export default function Sponsors() {
           <h3 style={{ fontFamily: "'Orbitron', sans-serif", fontSize: '1.3rem', marginBottom: '1rem' }}>
             Become a Sponsor
           </h3>
-          <p style={{ color: 'var(--gray-400)', lineHeight: 1.7, marginBottom: '1.5rem' }}>
+          <p style={{ color: 'var(--gray-400)', lineHeight: 1.7, marginBottom: '1rem' }}>
             Interested in supporting our team? Your sponsorship helps us purchase parts,
             register for competitions, and expand our outreach programs.
+          </p>
+          <p style={{ color: 'var(--gray-500)', lineHeight: 1.6, fontSize: '0.95rem', marginBottom: '1.5rem' }}>
+            All donations are tax-deductible. We operate as a 501(c)(3) organization through the Rockville Science Center.
           </p>
           <div className="hero-btn-group" style={{ display: 'inline-flex' }}>
             <Link to="/contact" className="btn hero-btn-gradient">

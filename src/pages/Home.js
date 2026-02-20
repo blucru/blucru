@@ -90,6 +90,35 @@ export default function Home() {
       {/* Worlds Countdown */}
       <WorldsCountdown />
 
+      {/* About Us Section */}
+      <section className="about-section section-dark">
+        <div className="section-header">
+          <span className="section-label">WHO WE ARE</span>
+          <h2 className="section-title">About Blu Cru</h2>
+        </div>
+        <div style={{ maxWidth: 900, margin: '0 auto' }}>
+          <div style={{
+            background: 'linear-gradient(135deg, var(--blue-medium), rgba(30, 58, 95, 0.3))',
+            border: '1px solid rgba(59, 130, 246, 0.15)',
+            borderRadius: 20,
+            padding: '3rem',
+            lineHeight: 1.8,
+            fontSize: '1.05rem',
+            color: 'var(--gray-300)',
+          }}>
+            <p style={{ marginBottom: '1.5rem' }}>
+              Blu Cru is a community-based FIRST Tech Challenge robotics team dedicated to building innovative, creative designs and impacting underserved communities both locally in Maryland and across the globe in places like Uganda.
+            </p>
+            <p style={{ marginBottom: '1.5rem' }}>
+              This DECODE season, we qualified for the FIRST World Championship by winning the Chesapeake Regional Inspire Award—placing us #1 among 250+ teams in our region. Our competitive goal is to bring home the Inspire Award at Worlds!
+            </p>
+            <p>
+              We operate under the 501(c)(3) Rockville Science Center as Explorer Post 1010, fostering hands-on STEM learning and robotics mentorship for the next generation of engineers and innovators.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Current Season Robot */}
       <section className="season-section section-dark">
         <div className="section-header">
