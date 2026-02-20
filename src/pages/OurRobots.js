@@ -69,7 +69,7 @@ export default function OurRobots() {
                   </div>
                 </div>
                 <div className="robot-image">
-                  <ScratchReveal width="100%" height="100%">
+                  <ScratchReveal width="100%" height="100%" cursor={robot.cursor}>
                     <img src={robot.image} alt={robot.name} className="robot-photo" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   </ScratchReveal>
                 </div>
@@ -77,7 +77,7 @@ export default function OurRobots() {
             ) : (
               <>
                 <div className="robot-image">
-                  <ScratchReveal width="100%" height="100%">
+                  <ScratchReveal width="100%" height="100%" cursor={robot.cursor}>
                     {robot.image
                       ? <img src={robot.image} alt={robot.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                       : <div className="placeholder">Robot Photo - {robot.name}</div>
