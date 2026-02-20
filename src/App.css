@@ -669,6 +669,17 @@ main {
   }
 }
 
+/* ===================== ABOUT SECTION ===================== */
+.about-card {
+  transition: all 0.3s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(59, 130, 246, 0.4) !important;
+  box-shadow: 0 8px 30px rgba(59, 130, 246, 0.12), 0 0 20px rgba(245, 224, 75, 0.08);
+}
+
 /* ===================== ACHIEVEMENTS ===================== */
 .achievements-section {
   padding: 5rem 2rem;

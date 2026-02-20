@@ -97,9 +97,9 @@ export default function Home() {
           <h2 className="section-title">About Blu Cru</h2>
         </div>
         <div style={{ maxWidth: 900, margin: '0 auto' }}>
-          <div style={{
+          <div className="about-card" style={{
             background: 'linear-gradient(135deg, var(--blue-medium), rgba(30, 58, 95, 0.3))',
-            border: '1px solid rgba(59, 130, 246, 0.15)',
+            border: '1px solid rgba(59, 130, 246, 0.1)',
             borderRadius: 20,
             padding: '3rem',
             lineHeight: 1.8,
