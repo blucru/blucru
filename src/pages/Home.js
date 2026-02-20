@@ -97,7 +97,7 @@ export default function Home() {
           <h2 className="section-title">About Blu Cru</h2>
         </div>
         <div style={{ maxWidth: 900, margin: '0 auto' }}>
-          <div className="about-card" style={{
+          <GlowTracker className="about-card" style={{
             background: 'linear-gradient(135deg, var(--blue-medium), rgba(30, 58, 95, 0.3))',
             border: '1px solid rgba(59, 130, 246, 0.1)',
             borderRadius: 20,
@@ -115,7 +115,7 @@ export default function Home() {
             <p>
               We operate under the 501(c)(3) Rockville Science Center as Explorer Post 1010, fostering hands-on STEM learning and robotics mentorship for the next generation of engineers and innovators.
             </p>
-          </div>
+          </GlowTracker>
         </div>
       </section>
 
