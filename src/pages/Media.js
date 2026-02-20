@@ -4,9 +4,9 @@ import GlowTracker from '../components/GlowTracker';
 import useScrollAnimations from '../components/useScrollAnimations';
 
 const heroSlides = [
-  { image: 'blucru-imts.png' },
-  { image: 'chsinspire.png' },
-  { image: 'postinspire.png' },
+  { image: null },
+  { image: null },
+  { image: null },
 ];
 
 const socialLinks = [

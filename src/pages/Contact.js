@@ -160,9 +160,11 @@ export default function Contact() {
               </div>
 
               <div className="form-submit">
-                <button type="submit" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
-                  Send Message
-                </button>
+                <div className="hero-btn-group" style={{ display: 'flex', width: '100%' }}>
+                  <button type="submit" className="btn hero-btn-gradient" style={{ width: '100%', justifyContent: 'center' }}>
+                    Send Message
+                  </button>
+                </div>
               </div>
             </form>
           </>
