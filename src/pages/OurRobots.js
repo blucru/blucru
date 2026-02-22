@@ -31,7 +31,7 @@ const robots = [
   {
     season: 'CENTERSTAGE',
     name: 'MELTAN',
-    image: 'meltan.png',
+    image: 'CenterstageBluCruRobot.jpg',
     pokeImage: '/meltanpoke.png',
     description: 'Built for the CENTERSTAGE challenge, MELTAN was our first competitive robot as a team. A foundational build that helped shape our team culture and engineering process.',
     tags: ['Team Foundation', 'Learning Season', 'Chesapeake Competitor'],
