@@ -11,24 +11,6 @@ const coaches = [
     since: 2023,
     image: 'RyanMentor.jpg',
   },
-  {
-    name: 'Mentor Name',
-    role: 'Software Mentor',
-    subteam: 'Software',
-    since: 2021,
-  },
-  {
-    name: 'Mentor Name',
-    role: 'Mechanical Mentor',
-    subteam: 'Mechanical',
-    since: 2022,
-  },
-  {
-    name: 'Mentor Name',
-    role: 'Outreach Mentor',
-    subteam: 'Outreach',
-    since: 2023,
-  },
 ];
 
 const heroSlides = [{ image: undefined }];
