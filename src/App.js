@@ -10,6 +10,7 @@ import JoinBluCru from './pages/JoinBluCru';
 import Sponsors from './pages/Sponsors';
 import Media from './pages/Media';
 import Contact from './pages/Contact';
+import Coaches from './pages/Coaches';
 import ScrollToTop from './components/ScrollToTop';
 import './App.css';
 
@@ -29,6 +30,7 @@ function App() {
             <Route path="/sponsors" element={<Sponsors />} />
             <Route path="/media" element={<Media />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/coaches" element={<Coaches />} />
           </Routes>
         </main>
         <Footer />
