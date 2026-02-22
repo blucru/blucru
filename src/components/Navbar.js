@@ -4,6 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [bannerOffset, setBannerOffset] = useState(0);
   const location = useLocation();
 
   useEffect(() => {
@@ -15,6 +16,17 @@ export default function Navbar() {
   useEffect(() => {
     setMobileOpen(false);
   }, [location]);
+
+  useEffect(() => {
+    const measure = () => {
+      const banner = document.querySelector('.announcement-banner--visible');
+      setBannerOffset(banner ? banner.offsetHeight : 0);
+    };
+    measure();
+    const observer = new MutationObserver(measure);
+    observer.observe(document.body, { subtree: true, attributes: true, attributeFilter: ['class'] });
+    return () => observer.disconnect();
+  }, []);
 
   const links = [
     { to: '/', label: 'Home' },
@@ -58,7 +70,7 @@ export default function Navbar() {
           </button>
         </div>
       </nav>
-      <div className={`mobile-menu ${mobileOpen ? 'open' : ''}`}>
+      <div className={`mobile-menu ${mobileOpen ? 'open' : ''}`} style={{ top: `${70 + bannerOffset}px` }}>
         {links.map((link) => (
           <Link
             key={link.to}
