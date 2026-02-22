@@ -9,6 +9,7 @@ const coaches = [
     role: 'Lead Mentor',
     subteam: 'Judging & Strategy',
     since: 2023,
+    image: 'RyanMentor.jpg',
   },
   {
     name: 'Mentor Name',
@@ -59,9 +60,10 @@ export default function Coaches() {
           {coaches.map((coach, i) => (
             <GlowTracker key={i} className="coach-card">
               <div className="coach-photo">
-                <div className="coming-soon-avatar">
-                  <span>SOON</span>
-                </div>
+                {coach.image
+                  ? <img src={`/${coach.image}`} alt={coach.name} />
+                  : <div className="coming-soon-avatar"><span>SOON</span></div>
+                }
               </div>
               <div className="coach-name">{coach.name}</div>
               <div className="coach-role">{coach.role}</div>
