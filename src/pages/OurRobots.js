@@ -41,81 +41,81 @@ const quizQuestions = [
   {
     question: 'Which Allen key do you most resonate with?',
     options: [
-      { label: 'Dugtrio — 3.0', value: 'Dugtrio' },
-      { label: 'Wartortle — 2.5', value: 'Wartortle' },
-      { label: 'Meltan — 2.0', value: 'Meltan' },
+      { label: '3.0', value: 'Dugtrio' },
+      { label: '2.5', value: 'Wartortle' },
+      { label: '2.0', value: 'Meltan' },
     ],
   },
   {
     question: 'Which of these tools is your go-to?',
     options: [
-      { label: 'Dugtrio — Dremel', value: 'Dugtrio' },
-      { label: 'Wartortle — Soldering Iron', value: 'Wartortle' },
-      { label: 'Meltan — Swiss Army Knife', value: 'Meltan' },
+      { label: 'Dremel', value: 'Dugtrio' },
+      { label: 'Soldering Iron', value: 'Wartortle' },
+      { label: 'Swiss Army Knife', value: 'Meltan' },
     ],
   },
   {
     question: 'What is your favorite part of an FTC match?',
     options: [
-      { label: 'Dugtrio — Autonomous', value: 'Dugtrio' },
-      { label: 'Wartortle — Endgame', value: 'Wartortle' },
-      { label: 'Meltan — Teleop', value: 'Meltan' },
+      { label: 'Autonomous', value: 'Dugtrio' },
+      { label: 'Endgame', value: 'Wartortle' },
+      { label: 'Teleop', value: 'Meltan' },
     ],
   },
   {
     question: 'What is your pre-competition routine?',
     options: [
-      { label: 'Dugtrio — Got home at 3am from working on the bot. I will drink 3 Monsters tomorrow.', value: 'Dugtrio' },
-      { label: 'Wartortle — Sleep is the key to success. I sleep the entire car ride, and make sure to get hot chocolate before judging.', value: 'Wartortle' },
-      { label: 'Meltan — I have none. I rely on my lucky GoBilda socks.', value: 'Meltan' },
+      { label: 'Got home at 3am from working on the bot. I will drink 3 Monsters tomorrow.', value: 'Dugtrio' },
+      { label: 'Sleep is the key to success. I sleep the entire car ride, and make sure to get hot chocolate before judging.', value: 'Wartortle' },
+      { label: 'I have none. I rely on my lucky GoBilda socks.', value: 'Meltan' },
     ],
   },
   {
     question: 'Best competition lunch?',
     options: [
-      { label: 'Dugtrio — Chipotle', value: 'Dugtrio' },
-      { label: 'Wartortle — Pizza', value: 'Wartortle' },
-      { label: 'Meltan — Taco Bell', value: 'Meltan' },
+      { label: 'Chipotle', value: 'Dugtrio' },
+      { label: 'Pizza', value: 'Wartortle' },
+      { label: 'Taco Bell', value: 'Meltan' },
     ],
   },
   {
     question: 'Where would you rather sleep?',
     options: [
-      { label: 'Dugtrio — On a spinny chair', value: 'Dugtrio' },
-      { label: 'Wartortle — On the FTC field', value: 'Wartortle' },
-      { label: 'Meltan — At home in my bed', value: 'Meltan' },
+      { label: 'On a spinny chair', value: 'Dugtrio' },
+      { label: 'On the FTC field', value: 'Wartortle' },
+      { label: 'At home in my bed', value: 'Meltan' },
     ],
   },
   {
     question: 'What best describes you?',
     options: [
-      { label: 'Dugtrio — The life of the party. Unique with a flair. Very memorable!', value: 'Dugtrio' },
-      { label: 'Wartortle — Team parent! Strong morals, steady and consistent.', value: 'Wartortle' },
-      { label: 'Meltan — There for the snacks.', value: 'Meltan' },
+      { label: 'The life of the party. Unique with a flair. Very memorable!', value: 'Dugtrio' },
+      { label: 'Team parent! Strong morals, steady and consistent.', value: 'Wartortle' },
+      { label: 'There for the snacks.', value: 'Meltan' },
     ],
   },
   {
     question: 'Favorite robotics provider?',
     options: [
-      { label: 'Dugtrio — REV', value: 'Dugtrio' },
-      { label: 'Wartortle — AndyMark', value: 'Wartortle' },
-      { label: 'Meltan — GoBilda', value: 'Meltan' },
+      { label: 'REV', value: 'Dugtrio' },
+      { label: 'AndyMark', value: 'Wartortle' },
+      { label: 'GoBilda', value: 'Meltan' },
     ],
   },
   {
     question: 'How do you commute to your team?',
     options: [
-      { label: 'Dugtrio — Walk across 3 mountains, an active volcano, trek through grizzly bear country, the city of Baltimore, and Rockville Pike rush hour.', value: 'Dugtrio' },
-      { label: 'Wartortle — I wake up. I walk downstairs.', value: 'Wartortle' },
-      { label: 'Meltan — I drive.', value: 'Meltan' },
+      { label: 'Walk across 3 mountains, an active volcano, trek through grizzly bear country, the city of Baltimore, and Rockville Pike rush hour.', value: 'Dugtrio' },
+      { label: 'I wake up. I walk downstairs.', value: 'Wartortle' },
+      { label: 'I drive.', value: 'Meltan' },
     ],
   },
   {
     question: 'What is your favorite thing outside of robotics?',
     options: [
-      { label: 'Dugtrio — Sleep and Valorant', value: 'Dugtrio' },
-      { label: 'Wartortle — Crocheting and Dungeons & Dragons', value: 'Wartortle' },
-      { label: 'Meltan — Hypixel Skyblock while playing Geometry Dash while watching Arcane', value: 'Meltan' },
+      { label: 'Sleep and Valorant', value: 'Dugtrio' },
+      { label: 'Crocheting and Dungeons & Dragons', value: 'Wartortle' },
+      { label: 'Hypixel Skyblock while playing Geometry Dash while watching Arcane', value: 'Meltan' },
     ],
   },
 ];
@@ -382,14 +382,13 @@ export default function OurRobots() {
         </div>
         <div style={{ display: 'flex', justifyContent: 'center', gap: '3rem', flexWrap: 'wrap', marginBottom: '2.5rem' }}>
           {[
-            { name: 'DUGTRIO', img: '/dugtriopoke.png', desc: 'The life of the party' },
-            { name: 'WARTORTLE', img: '/wartortlepoke.png', desc: 'The team parent' },
-            { name: 'MELTAN', img: '/meltanpoke.png', desc: 'There for the snacks' },
+            { name: 'DUGTRIO', img: '/dugtriopoke.png' },
+            { name: 'WARTORTLE', img: '/wartortlepoke.png' },
+            { name: 'MELTAN', img: '/meltanpoke.png' },
           ].map((r) => (
             <div key={r.name} style={{ textAlign: 'center' }}>
               <img src={r.img} alt={r.name} style={{ height: 80, objectFit: 'contain', filter: 'drop-shadow(0 0 16px rgba(59,130,246,0.4))' }} />
               <div style={{ fontFamily: "'Orbitron', sans-serif", fontSize: '0.75rem', fontWeight: 700, color: 'var(--blue-accent)', letterSpacing: 2, marginTop: '0.5rem' }}>{r.name}</div>
-              <div style={{ fontSize: '0.8rem', color: 'var(--gray-400)', marginTop: '0.2rem' }}>{r.desc}</div>
             </div>
           ))}
         </div>
