@@ -5,10 +5,10 @@ import useScrollAnimations from '../components/useScrollAnimations';
 
 const coaches = [
   {
-    name: 'Coach Name',
-    role: 'Head Coach',
-    subteam: 'All Teams',
-    since: 2020,
+    name: 'Ryan',
+    role: 'Lead Mentor',
+    subteam: 'Judging & Strategy',
+    since: 2023,
   },
   {
     name: 'Mentor Name',
