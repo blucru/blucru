@@ -11,31 +11,27 @@ const heroSlides = [
 
 const mentors = [
   {
-    name: 'Ryan K',
+    name: 'Ryan',
     role: 'Mentor',
-    image: null,
-    front: 'Ryan K',
+    image: 'RyanMentor.jpg',
     desc: 'Ryan has been with Blu Cru since the beginning, helping guide the team through every season with technical expertise and unwavering dedication. A robotics veteran who keeps the team grounded and focused.',
   },
   {
     name: 'Wasabi',
     role: 'Mentor',
     image: 'wasabi.png',
-    front: 'Wasabi',
     desc: 'Wasabi brings energy and creativity to every meeting. A key part of the team\'s culture, always ready to help problem-solve and keep spirits high during the long build nights.',
   },
   {
     name: 'Thomas D',
     role: 'Mentor',
     image: 'thomasduck.png',
-    front: 'Thomas D',
     desc: 'Thomas Duck brings wisdom and calm to the chaos of build season. Known for his meticulous attention to detail, he helps the team think through complex engineering challenges from first principles.',
   },
   {
     name: 'John P',
     role: 'Mentor',
     image: 'johnpork.png',
-    front: 'John P',
     desc: 'John Pork is the team\'s go-to for all things mechanical. With years of hands-on experience, he teaches the team how to build robust, competition-ready systems that actually work when it matters most.',
   },
   {

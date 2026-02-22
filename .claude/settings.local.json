@@ -14,7 +14,8 @@
       "Bash(git pull blucru main --allow-unrelated-histories)",
       "Bash(git pull blucru main --allow-unrelated-histories --no-rebase)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(git pull:*)"
     ]
   }
 }
