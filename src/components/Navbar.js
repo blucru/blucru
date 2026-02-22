@@ -23,6 +23,7 @@ export default function Navbar() {
     { to: '/outreach', label: 'Outreach' },
     { to: '/join', label: 'Join Our Cru' },
     { to: '/sponsors', label: 'Sponsors' },
+    { to: '/mentors', label: 'Mentors' },
     { to: '/media', label: 'Media' },
     { to: '/contact', label: 'Contact Us' },
   ];

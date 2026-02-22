@@ -65,7 +65,7 @@ export default function GreenGang() {
             <span className="season-year green">2025-26 SEASON</span>
             <h3 className="season-name">Wasabi</h3>
             <p className="season-desc">
-              KISS - Keep it Simple, Stupid. Wasabi is highly effective due to its endless failsafes and thought out design. One of the most consistent robots in Chesapeake, with endless software enhancement.            </p>
+              KISS — Keep it Simple, Stupid. Wasabi is highly effective due to its endless fail-safes and well-thought-out design. One of the most consistent robots in Chesapeake, with endless software enhancements.</p>
             <div className="season-tags">
               <span className="season-tag green">Efficient Design</span>
               <span className="season-tag green">Strategic Play</span>

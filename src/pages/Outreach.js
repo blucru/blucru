@@ -31,7 +31,7 @@ const stats = [
   { number: '875+', label: 'Community Hours' },
   { number: '25+', label: 'Events Hosted' },
   { number: '2800+', label: 'People Reached' },
-  { number: '50%', label: 'Minority impact' },
+  { number: '50%', label: 'Minority Impact' },
 ];
 
 const initiatives = [

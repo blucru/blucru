@@ -130,7 +130,7 @@ export default function Home() {
             <span className="season-year">2025-26 SEASON</span>
             <h3 className="season-name">Dugtrio</h3>
             <p className="season-desc">
-              Our DECODE competition robot, Dugtrio, is the only triple-shooter turret design in the entire world. We have a dynamic 18 inch intake, three indepdently driven shooters, and a 6 wheel drivetrain.
+              Our DECODE competition robot, Dugtrio, is the only triple-shooter turret design in the entire world. We have a dynamic 18 inch intake, three independently driven shooters, and a 6 wheel drivetrain.
             </p>
             <div className="season-tags">
               <span className="season-tag">Innovative Design</span>
