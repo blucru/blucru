@@ -252,7 +252,7 @@ function RobotQuizModal({ onClose }) {
 
 export default function OurRobots() {
   useScrollAnimations();
-  const [scratchEnabled, setScratchEnabled] = useState(false);
+  const [scratchEnabled, setScratchEnabled] = useState(true);
   const [quizOpen, setQuizOpen] = useState(false);
 
   return (
