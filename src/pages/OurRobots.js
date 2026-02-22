@@ -192,7 +192,7 @@ function RobotQuizModal({ onClose }) {
         {isIntro && (
           <div className="quiz-slide quiz-intro">
             <div className="quiz-badge">PERSONALITY QUIZ</div>
-            <h2 className="quiz-title">What's Your Robot<br /><span className="quiz-highlight">Spirit Animal?</span></h2>
+            <h2 className="quiz-title">What's Your Robot<br /><span className="quiz-highlight">Spirit Pokemon?</span></h2>
             <p className="quiz-subtitle">10 questions to reveal which Blu Cru robot matches your personality.</p>
             <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', margin: '1.5rem 0' }}>
               <img src="/dugtriopoke.png" alt="Dugtrio" style={{ height: 70, objectFit: 'contain', filter: 'drop-shadow(0 0 12px rgba(59,130,246,0.5))' }} />
@@ -373,11 +373,11 @@ export default function OurRobots() {
         ))}
       </section>
 
-      {/* Robot Spirit Animal Quiz Section */}
+      {/* Robot Spirit Pokemon Quiz Section */}
       <section className="quiz-section section-dark">
         <div className="section-header">
           <span className="section-label">PERSONALITY QUIZ</span>
-          <h2 className="section-title">What's Your Robot Spirit Animal?</h2>
+          <h2 className="section-title">What's Your Robot Spirit Pokemon?</h2>
           <p className="section-subtitle">Find out which Blu Cru robot matches your personality in 10 quick questions.</p>
         </div>
         <div style={{ display: 'flex', justifyContent: 'center', gap: '3rem', flexWrap: 'wrap', marginBottom: '2.5rem' }}>
