@@ -43,6 +43,7 @@ const teamMembers = [
   { name: 'Michael D', role: 'Autonomous', image:'michaeld.png'},
   { name: 'Deven B', role: 'Tele-Op' },
   { name: 'Chase L', role: 'Software' },
+  { name: 'Alex C', role: 'Software' },
   { name: 'Thomas Y', role: 'Electrical',image:'thomasy.png'},
   { name: 'Annika B', role: 'Portfolio + Judging',image:'annikab.png'},
 ];
