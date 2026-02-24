@@ -140,7 +140,7 @@ export default function JoinBluCru() {
     <div>
       {!bannerDismissed && (
         <div className={`announcement-banner ${bannerVisible ? 'announcement-banner--visible' : ''}`}>
-          <span>📢 Blu Cru and Green Gang are now accepting applications for the 2026 - 27 season. Applications close June 20th 2027</span>
+          <span>📢 Blu Cru and Green Gang are now accepting applications for the 2026 - 27 season. Applications close May 20th</span>
           <button
             className="announcement-banner__close"
             onClick={() => setBannerDismissed(true)}
