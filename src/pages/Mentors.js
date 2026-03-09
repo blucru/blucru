@@ -43,7 +43,7 @@ const mentors = [
   {
     name: 'Kevin Dong',
     role: 'Mentor',
-    image: 'KevinDong.png',
+    image: null,
     desc: 'Coming soon!',
   },
 ];
