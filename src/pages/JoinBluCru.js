@@ -158,7 +158,7 @@ export default function JoinBluCru() {
           { text: 'JOIN OUR ', highlight: false },
           { text: 'CRU', highlight: true },
         ]}
-        subtitle="Interested in joining our team for the 2026-2027 season?<br />Fill out the application below and we'll be in touch!"
+        subtitle="Interested in joining our team for the 2026-2027 season?<br />Fill out the application below and we'll be in touch!<br />Applicants will be placed on either Blu Cru or Green Gang based on where we feel they'd be the best fit."
       />
 
       <section className="join-section" style={{ paddingTop: '3rem' }}>
@@ -315,7 +315,7 @@ export default function JoinBluCru() {
           </div>
 
           <div className="form-group">
-            <label htmlFor="ftcExperience">Do you have experience in FTC/Robotics? If so, please describe thoroughly. *</label>
+            <label htmlFor="ftcExperience">Do you have experience in FTC/Robotics? If so, please provide your team # and describe your experience thoroughly. *</label>
             <textarea
               id="ftcExperience"
               name="ftcExperience"
