@@ -97,7 +97,7 @@ export default function Home() {
               Blu Cru is a community-based FIRST Tech Challenge robotics team dedicated to building innovative, creative designs and impacting underserved communities both locally in Maryland and across the globe in places like Uganda.
             </p>
             <p style={{ marginBottom: '1.5rem' }}>
-              This DECODE season, we qualified for the FIRST World Championship by winning the Chesapeake Regional Inspire Award—placing us #1 among 250+ teams in our region. We then went on to become Goodall Inspire 1 Winners at the FIRST World Championship, the highest honor in FTC.
+              This DECODE season, we qualified for the FIRST World Championship by winning the Chesapeake Regional Inspire Award—placing us #1 among 250+ teams in our region. We then went on to become Goodall Inspire 1 Winners at the FIRST World Championship.
             </p>
             <p>
               We operate under the 501(c)(3) Rockville Science Center as Explorer Post 1010, fostering hands-on STEM learning and robotics mentorship for the next generation of engineers and innovators.
