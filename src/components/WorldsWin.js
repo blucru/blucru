@@ -133,7 +133,7 @@ export default function WorldsWin() {
           <span className="worlds-win-highlight">Goodall Inspire 1</span> Winners
         </h2>
         <p className="worlds-win-subtitle">
-          The highest honor in FTC. Houston, TX · April 29 – May 2, 2026.
+          Houston, TX · April 29 – May 2, 2026.
         </p>
         <div className="worlds-win-photo">
           <img src="/fullgroupawdphoto.jpg" alt="Blu Cru wins Goodall Inspire 1 at Worlds" />
