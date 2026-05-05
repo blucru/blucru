@@ -1,23 +1,6 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useEffect, useRef, useCallback } from 'react';
 
-// April 29, 2026, 7:00 AM local time (start of Worlds)
-const TARGET = new Date('2026-04-29T07:00:00');
-
-function pad(n) {
-  return String(n).padStart(2, '0');
-}
-
-function getTimeLeft() {
-  const diff = TARGET - Date.now();
-  if (diff <= 0) return null;
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-  return { days, hours, minutes, seconds };
-}
-
-// ── Constellation canvas ──────────────────────────────────────────────────────
+// ── Constellation canvas (carried over from the old countdown section) ────────
 const NODE_COUNT = 70;
 const CONNECTION_DIST = 160;
 const COLORS = ['#3b82f6', '#60a5fa', '#f5e04b', '#fbbf24', '#93c5fd'];
@@ -58,7 +41,6 @@ function ConstellationCanvas() {
 
       const ns = nodes.current;
 
-      // Update positions
       ns.forEach((n) => {
         n.x += n.vx;
         n.y += n.vy;
@@ -67,7 +49,6 @@ function ConstellationCanvas() {
         if (n.y < 0 || n.y > h) n.vy *= -1;
       });
 
-      // Draw connections
       for (let i = 0; i < ns.length; i++) {
         for (let j = i + 1; j < ns.length; j++) {
           const dx = ns[i].x - ns[j].x;
@@ -88,11 +69,8 @@ function ConstellationCanvas() {
         }
       }
 
-      // Draw nodes
       ns.forEach((n) => {
         const pulseR = n.r + Math.sin(n.pulse) * 0.8;
-
-        // Outer glow
         const g = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, pulseR * 5);
         g.addColorStop(0, n.color + 'aa');
         g.addColorStop(1, 'transparent');
@@ -104,7 +82,6 @@ function ConstellationCanvas() {
         ctx.fill();
         ctx.restore();
 
-        // Core dot
         ctx.save();
         ctx.globalAlpha = 0.85;
         ctx.beginPath();
@@ -143,48 +120,23 @@ function ConstellationCanvas() {
 }
 
 // ── Main component ────────────────────────────────────────────────────────────
-export default function WorldsCountdown() {
-  const [time, setTime] = useState(getTimeLeft());
-
-  useEffect(() => {
-    const id = setInterval(() => setTime(getTimeLeft()), 1000);
-    return () => clearInterval(id);
-  }, []);
-
-  if (!time) {
-    return (
-      <section className="countdown-section">
-        <ConstellationCanvas />
-        <div className="countdown-label">🌍 We're at Worlds right now!</div>
-      </section>
-    );
-  }
-
-  const units = [
-    { label: 'DAYS', value: time.days },
-    { label: 'HRS', value: pad(time.hours) },
-    { label: 'MIN', value: pad(time.minutes) },
-    { label: 'SEC', value: pad(time.seconds) },
-  ];
-
+export default function WorldsWin() {
   return (
-    <section className="countdown-section">
+    <section className="worlds-win-section">
       <ConstellationCanvas />
-      <div className="countdown-inner">
-        <div className="countdown-eyebrow">
-          <span className="section-label">WORLDS 2026</span>
+      <div className="worlds-win-inner">
+        <div className="worlds-win-eyebrow">
+          <span className="section-label">FIRST WORLD CHAMPIONSHIP · GOODALL DIVISION</span>
         </div>
-        <h2 className="countdown-title">
-          🌍 Off to <span className="countdown-highlight">Worlds</span>!
+        <div className="worlds-win-trophy">🏆</div>
+        <h2 className="worlds-win-title">
+          <span className="worlds-win-highlight">Goodall Inspire 1</span> Winners
         </h2>
-        <p className="countdown-subtitle">Houston, TX · April 29 - May 2, 2026</p>
-        <div className="countdown-grid">
-          {units.map(({ label, value }) => (
-            <div key={label} className="countdown-unit">
-              <div className="countdown-number">{value}</div>
-              <div className="countdown-unit-label">{label}</div>
-            </div>
-          ))}
+        <p className="worlds-win-subtitle">
+          The highest honor in FTC. Houston, TX · April 29 – May 2, 2026.
+        </p>
+        <div className="worlds-win-photo">
+          <img src="/fullgroupawdphoto.jpg" alt="Blu Cru wins Goodall Inspire 1 at Worlds" />
         </div>
       </div>
     </section>

@@ -182,7 +182,7 @@ main {
 }
 
 .hero-tint-blue {
-  background: rgba(30, 80, 180, 0.3);
+  background: rgba(30, 80, 180, 0.18);
 }
 
 .hero-tint-green {
@@ -1875,6 +1875,107 @@ main > div {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* ===================== WORLDS WIN BANNER ===================== */
+.worlds-win-section {
+  padding: 6rem 2rem;
+  background: linear-gradient(180deg, #080c16 0%, var(--blue-dark) 50%, #080c16 100%);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.worlds-win-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, #080c16 0%, transparent 10%, transparent 88%, #080c16 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.worlds-win-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 60% at 20% 50%, rgba(245, 224, 75, 0.08), transparent),
+    radial-gradient(ellipse 50% 50% at 80% 50%, rgba(59, 130, 246, 0.06), transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.worlds-win-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.worlds-win-eyebrow {
+  margin-bottom: 1.5rem;
+}
+
+.worlds-win-trophy {
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  line-height: 1;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 0 24px rgba(245, 224, 75, 0.45));
+  animation: worlds-win-trophy-bob 4s ease-in-out infinite;
+}
+
+@keyframes worlds-win-trophy-bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+
+.worlds-win-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-weight: 900;
+  color: var(--white);
+  margin-bottom: 0.75rem;
+  letter-spacing: 2px;
+  line-height: 1.1;
+}
+
+.worlds-win-highlight {
+  background: linear-gradient(135deg, var(--gold), var(--blue-accent), var(--blue-glow));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.worlds-win-subtitle {
+  font-size: 1.05rem;
+  color: var(--gray-400);
+  margin-bottom: 2.5rem;
+  letter-spacing: 0.5px;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.worlds-win-photo {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(245, 224, 75, 0.2);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(245, 224, 75, 0.08);
+  aspect-ratio: 3 / 2;
+}
+
+.worlds-win-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .worlds-win-section { padding: 4rem 1.25rem; }
+  .worlds-win-photo { aspect-ratio: 4 / 3; }
 }
 
 /* ===================== INSTAGRAM EMBED ===================== */

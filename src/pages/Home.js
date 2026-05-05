@@ -2,15 +2,17 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import HeroSlideshow from '../components/HeroSlideshow';
 import GlowTracker from '../components/GlowTracker';
-import WorldsCountdown from '../components/WorldsCountdown';
+import WorldsWin from '../components/WorldsWin';
 
 const heroSlides = [
   { image: "/fullgroupawdphoto.jpg" },
   { image: "/Goingtofield.jpg" },
-  { image: "/chsinspire.png" },
   { image: "/driverprep.jpg" },
-  { image: "/wowie.png" },
   { image: "/statepplgroup.jpg" },
+  { image: "/DrivingLock.jpg" },
+  { image: "/robopark.jpg" },
+  { image: "/chsinspire.png" },
+  { image: "/wowie.png" },
   { image: "/thomasduck.png" },
   { image: "/lockedtfin.png" },
   { image: "/sonnymehra.png" },
@@ -73,8 +75,7 @@ export default function Home() {
         }
       />
 
-      {/* Worlds Countdown */}
-      <WorldsCountdown />
+      <WorldsWin />
 
       {/* About Us Section */}
       <section className="about-section section-dark">
