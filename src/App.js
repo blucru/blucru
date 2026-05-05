@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import AnnouncementBanner from './components/AnnouncementBanner';
 import Home from './pages/Home';
 import GreenGang from './pages/GreenGang';
 import OurRobots from './pages/OurRobots';
@@ -20,6 +21,7 @@ function App() {
       <ScrollToTop />
       <div className="App">
         <Navbar />
+        <AnnouncementBanner />
         <main>
           <Routes>
             <Route path="/" element={<Home />} />

@@ -6,19 +6,17 @@ import Confetti from '../components/Confetti';
 // Swap these out with actual team/recruitment photos
 const heroSlides = [
   { image: "/holymoly.png" },
+  { image: "/DrivingLock.jpg" },
   { image: "postinspire.png" },
+  { image: "/robopark.jpg" },
   { image: 'hardatwork.jpg' },
+  { image: "/drive.jpg" },
+  { image: "/lockedwithcrazyalliance.jpg" },
+  { image: "/evenmorelocked.jpg" },
 ];
 
 export default function JoinBluCru() {
   useScrollAnimations();
-  const [bannerVisible, setBannerVisible] = useState(false);
-  const [bannerDismissed, setBannerDismissed] = useState(false);
-
-  React.useEffect(() => {
-    const timer = setTimeout(() => setBannerVisible(true), 1000);
-    return () => clearTimeout(timer);
-  }, []);
 
   const [formData, setFormData] = useState({
     firstName: '',
@@ -138,18 +136,6 @@ export default function JoinBluCru() {
 
   return (
     <div>
-      {!bannerDismissed && (
-        <div className={`announcement-banner ${bannerVisible ? 'announcement-banner--visible' : ''}`}>
-          <span>📢 Blu Cru and Green Gang are now accepting applications for the 2026 - 27 season. Applications close May 20th</span>
-          <button
-            className="announcement-banner__close"
-            onClick={() => setBannerDismissed(true)}
-            aria-label="Dismiss"
-          >
-            ×
-          </button>
-        </div>
-      )}
       <HeroSlideshow
         slides={heroSlides}
         compact

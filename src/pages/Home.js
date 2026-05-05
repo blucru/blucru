@@ -1,19 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import HeroSlideshow from '../components/HeroSlideshow';
 import GlowTracker from '../components/GlowTracker';
 import WorldsCountdown from '../components/WorldsCountdown';
 
 const heroSlides = [
-  {image:"/chsinspire.png"},
-  { image:"/wowie.png"},
-  { image: "/thomasduck.png"},
-  { image: "/lockedtfin.png"},
-  { image: "/sonnymehra.png"},
+  { image: "/fullgroupawdphoto.jpg" },
+  { image: "/Goingtofield.jpg" },
+  { image: "/chsinspire.png" },
+  { image: "/driverprep.jpg" },
+  { image: "/wowie.png" },
+  { image: "/statepplgroup.jpg" },
+  { image: "/thomasduck.png" },
+  { image: "/lockedtfin.png" },
+  { image: "/sonnymehra.png" },
 ];
 
 const achievements = [
   { season: 'DECODE 25-26', items: [
+    'Goodall Inspire 1 Winners',
     'Chesapeake Championship Inspire Award Winners',
     'Chesapeake Championship Red Cardinal Alliance 7 Captain',
     'Qualified for FIRST World Championship'
@@ -49,28 +54,8 @@ const teamMembers = [
 ];
 
 export default function Home() {
-  const [bannerVisible, setBannerVisible] = useState(false);
-  const [bannerDismissed, setBannerDismissed] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setBannerVisible(true), 1000);
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <div>
-      {!bannerDismissed && (
-        <div className={`announcement-banner ${bannerVisible ? 'announcement-banner--visible' : ''}`}>
-          <span>🏆 Blu Cru Wins Chesapeake Inspire! Off to Worlds!</span>
-          <button
-            className="announcement-banner__close"
-            onClick={() => setBannerDismissed(true)}
-            aria-label="Dismiss"
-          >
-            ×
-          </button>
-        </div>
-      )}
       <HeroSlideshow
         slides={heroSlides}
         badge="FTC TEAM #6417"
@@ -111,7 +96,7 @@ export default function Home() {
               Blu Cru is a community-based FIRST Tech Challenge robotics team dedicated to building innovative, creative designs and impacting underserved communities both locally in Maryland and across the globe in places like Uganda.
             </p>
             <p style={{ marginBottom: '1.5rem' }}>
-              This DECODE season, we qualified for the FIRST World Championship by winning the Chesapeake Regional Inspire Award—placing us #1 among 250+ teams in our region. Our competitive goal is to bring home the Inspire Award at Worlds!
+              This DECODE season, we qualified for the FIRST World Championship by winning the Chesapeake Regional Inspire Award—placing us #1 among 250+ teams in our region. We then went on to become Goodall Inspire 1 Winners at the FIRST World Championship, the highest honor in FTC.
             </p>
             <p>
               We operate under the 501(c)(3) Rockville Science Center as Explorer Post 1010, fostering hands-on STEM learning and robotics mentorship for the next generation of engineers and innovators.

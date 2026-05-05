@@ -1689,16 +1689,14 @@ main > div {
   font-size: 0.82rem;
   font-weight: 600;
   letter-spacing: 0.5px;
-  text-align: center;
-  padding: 0.38rem 3rem;
+  padding: 0.38rem 0;
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 0.75rem;
+  overflow: hidden;
   transform: translateY(-110%);
   opacity: 0;
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
-  white-space: nowrap;
   border-bottom: 1px solid rgba(186, 230, 253, 0.4);
 }
 
@@ -1707,16 +1705,47 @@ main > div {
   opacity: 1;
 }
 
+.announcement-banner__marquee {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+}
+
+.announcement-banner__track {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: announcement-scroll 32s linear infinite;
+  will-change: transform;
+}
+
+.announcement-banner__item {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 2.5rem;
+}
+
+.announcement-banner__item::after {
+  content: '✦';
+  margin-left: 2.5rem;
+  opacity: 0.7;
+}
+
+@keyframes announcement-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
 .announcement-banner__close {
-  position: absolute;
-  right: 1rem;
   background: none;
   border: none;
   color: rgba(255, 255, 255, 0.8);
   font-size: 1.2rem;
   cursor: pointer;
   line-height: 1;
-  padding: 0 0.25rem;
+  padding: 0 1rem;
+  flex-shrink: 0;
   transition: color 0.2s;
 }
 
@@ -1727,9 +1756,6 @@ main > div {
 @media (max-width: 600px) {
   .announcement-banner {
     font-size: 0.72rem;
-    padding: 0.38rem 2.5rem;
-    white-space: normal;
-    text-align: center;
   }
 }
 
