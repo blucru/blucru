@@ -116,6 +116,7 @@ export default function JoinBluCru() {
         <HeroSlideshow
           slides={heroSlides}
           compact
+          className="hero-tall"
           badge="GET INVOLVED"
           title={[
             { text: 'JOIN ', highlight: false },
@@ -139,6 +140,7 @@ export default function JoinBluCru() {
       <HeroSlideshow
         slides={heroSlides}
         compact
+        className="hero-tall"
         badge="GET INVOLVED"
         title={[
           { text: 'JOIN OUR ', highlight: false },

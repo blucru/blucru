@@ -207,6 +207,17 @@ main {
   min-height: 380px;
 }
 
+/* Taller hero variant — used on Join Our Cru */
+.hero.hero-tall {
+  height: 75vh;
+  min-height: 560px;
+}
+
+.hero.hero-compact.hero-tall {
+  height: 75vh;
+  min-height: 560px;
+}
+
 .hero.hero-compact .hero-title {
   font-size: clamp(1.8rem, 4vw, 3.5rem);
 }

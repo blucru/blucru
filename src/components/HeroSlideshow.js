@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import ParticleField from './ParticleField';
 
-export default function HeroSlideshow({ slides, variant = 'blue', badge, title, subtitle, buttons, compact = false }) {
+export default function HeroSlideshow({ slides, variant = 'blue', badge, title, subtitle, buttons, compact = false, className = '' }) {
   const [current, setCurrent] = useState(0);
 
   const next = useCallback(() => {
@@ -16,7 +16,7 @@ export default function HeroSlideshow({ slides, variant = 'blue', badge, title, 
   const isGreen = variant === 'green';
 
   return (
-    <section className={`hero ${compact ? 'hero-compact' : ''}`}>
+    <section className={`hero ${compact ? 'hero-compact' : ''} ${className}`.trim()}>
       {slides.map((slide, index) => (
         <div
           key={index}
