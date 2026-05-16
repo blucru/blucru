@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import HeroSlideshow from '../components/HeroSlideshow';
 import GlowTracker from '../components/GlowTracker';
-import WorldsWin from '../components/WorldsWin';
 
 const heroSlides = [
   { image: "/fullgroupawdphoto.jpg" },
@@ -74,8 +73,6 @@ export default function Home() {
           </div>
         }
       />
-
-      <WorldsWin />
 
       {/* About Us Section */}
       <section className="about-section section-dark">

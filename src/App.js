@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import AnnouncementBanner from './components/AnnouncementBanner';
 import Home from './pages/Home';
 import GreenGang from './pages/GreenGang';
 import OurRobots from './pages/OurRobots';
@@ -11,7 +10,6 @@ import JoinBluCru from './pages/JoinBluCru';
 import Sponsors from './pages/Sponsors';
 import Media from './pages/Media';
 import Contact from './pages/Contact';
-import Mentors from './pages/Mentors';
 import ScrollToTop from './components/ScrollToTop';
 import './App.css';
 
@@ -21,7 +19,6 @@ function App() {
       <ScrollToTop />
       <div className="App">
         <Navbar />
-        <AnnouncementBanner />
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -32,7 +29,6 @@ function App() {
             <Route path="/sponsors" element={<Sponsors />} />
             <Route path="/media" element={<Media />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/mentors" element={<Mentors />} />
           </Routes>
         </main>
         <Footer />
