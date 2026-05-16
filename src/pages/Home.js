@@ -39,19 +39,14 @@ const achievements = [
 ];
 
 const teamMembers = [
-  { name: 'Ethan Z', role: 'Systems', image: 'ethanz.png' },
-  { name: 'Cooper L', role: 'Systems', image:'cooperl.png'},
-  { name: 'Sonny M', role: 'Systems',image:'sonnym.png'},
   { name: 'Amber W', role: 'CAD', image:'amberw.png' },
   { name: 'Michael J', role: 'CAD', image:'michaelj.png'},
   { name: 'Kathy Z', role: 'Manufacturing', image:'kathyz.png'},
-  { name: 'John H', role: 'Manufacturing', image:'johnh.png'},
   { name: 'Michael D', role: 'Autonomous', image:'michaeld.png'},
-  { name: 'Deven B', role: 'Tele-Op' },
+  { name: 'Deven B', role: 'Tele-Op', image: 'devenb.png' },
   { name: 'Chase L', role: 'Software' },
   { name: 'Alex C', role: 'Software' },
   { name: 'Thomas Y', role: 'Electrical',image:'thomasy.png'},
-  { name: 'Annika B', role: 'Portfolio + Judging',image:'annikab.png'},
 ];
 
 export default function Home() {
