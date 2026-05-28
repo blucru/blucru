@@ -50,10 +50,10 @@ const teamMembers = [
 ];
 
 const alumniMembers = [
-  { name: 'Annika B', role: 'Portfolio + Judging', image:'annikab.png' },
-  { name: 'Cooper L', role: 'Systems', image:'cooperl.png' },
-  { name: 'John H', role: 'Manufacturing', image:'johnh.png' },
-  { name: 'Ethan Z', role: 'Systems', image: 'ethanz.png' },
+  { name: 'Annika B', role: 'Portfolio + Judging', image:'annikab.png', college: 'Carnegie Mellon University' },
+  { name: 'Cooper L', role: 'Systems', image:'cooperl.png', college: 'Stanford University' },
+  { name: 'John H', role: 'Manufacturing', image:'johnh.png', college: 'UC Berkeley' },
+  { name: 'Ethan Z', role: 'Systems', image: 'ethanz.png', college: 'University of Pennsylvania' },
 ];
 
 export default function Home() {
@@ -201,8 +201,8 @@ export default function Home() {
       {/* Alumni */}
       <section className="alumni-section section-dark">
         <div className="section-header">
-          <span className="section-label">ALUMNI</span>
-          <h2 className="section-title">Alumni Members</h2>
+          <span className="section-label">PAST THE FLOCK</span>
+          <h2 className="section-title">Alumni</h2>
         </div>
         <div style={{ paddingBottom: '2rem' }}>
           <h3 style={{
@@ -218,8 +218,8 @@ export default function Home() {
           }}>Class of 2026</h3>
           <div className="team-grid">
             {alumniMembers.map((member, i) => (
-              <div key={i} className="team-member">
-                <div className="team-member-photo">
+              <div key={i} className="team-member" style={{ textAlign: 'center' }}>
+                <div className="team-member-photo" style={{ margin: '0 auto 1rem' }}>
                   {member.comingSoon ? (
                     <div className="placeholder-avatar coming-soon-avatar">
                       <span>Coming Soon!</span>
@@ -238,6 +238,9 @@ export default function Home() {
                 </div>
                 <div className="team-member-name">{member.name}</div>
                 <div className="team-member-role">{member.role}</div>
+                <div style={{ fontSize: '0.9rem', color: 'var(--gray-400)', marginTop: '0.5rem' }}>
+                  {member.college}
+                </div>
               </div>
             ))}
           </div>
