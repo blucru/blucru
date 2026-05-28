@@ -50,6 +50,19 @@ const socialLinks = [
 
 const newsArticles = [
   {
+    title: 'DECODE FIRST Championship Recognition',
+    description: 'FIRST recognizes Blu Cru as one of the successful DECODE championship teams.',
+    image: null,
+    url: 'https://community.firstinspires.org/congratulations-to-our-decode-first-championship-teams',
+  },
+  {
+    title: 'Blu Cru Highlight Reel',
+    description: 'Check out our latest highlight reel and moments from the season!',
+    image: null,
+    url: 'https://www.youtube.com/shorts/-XPVexb6CLk',
+    isVideo: true,
+  },
+  {
     title: 'Rockville Science Center New Location',
     description: 'The Banner covers the Rockville Science Center\'s move to a new location — home base for Explorer Post 1010 and Blu Cru Robotics.',
     image: 'rsc.png',
