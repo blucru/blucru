@@ -49,6 +49,13 @@ const teamMembers = [
   { name: 'Thomas Y', role: 'Electrical',image:'thomasy.png'},
 ];
 
+const alumniMembers = [
+  { name: 'Annika B', role: 'Portfolio + Judging', image:'annikab.png' },
+  { name: 'Cooper L', role: 'Systems', image:'cooperl.png' },
+  { name: 'John H', role: 'Manufacturing', image:'johnh.png' },
+  { name: 'Ethan Z', role: 'Systems', image: 'ethanz.png' },
+];
+
 export default function Home() {
   return (
     <div>
@@ -188,6 +195,52 @@ export default function Home() {
               <div className="team-member-role">{member.role}</div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* Alumni */}
+      <section className="alumni-section section-dark">
+        <div className="section-header">
+          <span className="section-label">ALUMNI</span>
+          <h2 className="section-title">Alumni Members</h2>
+        </div>
+        <div style={{ paddingBottom: '2rem' }}>
+          <h3 style={{
+            fontFamily: "'Orbitron', sans-serif",
+            fontSize: '1rem',
+            fontWeight: 700,
+            color: 'var(--blue-accent)',
+            letterSpacing: '2px',
+            textTransform: 'uppercase',
+            marginBottom: '2rem',
+            paddingLeft: '0.5rem',
+            textAlign: 'center'
+          }}>Class of 2026</h3>
+          <div className="team-grid">
+            {alumniMembers.map((member, i) => (
+              <div key={i} className="team-member">
+                <div className="team-member-photo">
+                  {member.comingSoon ? (
+                    <div className="placeholder-avatar coming-soon-avatar">
+                      <span>Coming Soon!</span>
+                    </div>
+                  ) : member.image ? (
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }}
+                    />
+                  ) : (
+                    <div className="placeholder-avatar">
+                      {member.name.charAt(0)}
+                    </div>
+                  )}
+                </div>
+                <div className="team-member-name">{member.name}</div>
+                <div className="team-member-role">{member.role}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
