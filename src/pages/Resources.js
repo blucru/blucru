@@ -27,7 +27,7 @@ const resourcesData = {
         description: 'Review our award-winning portfolio that led to our Goodall Inspire Award.',
         icon: '📋',
         links: [
-          { label: 'View DECODE Portfolio (PDF)', url: '/DECODE_Portfolio.pdf' }
+          { label: 'View DECODE Portfolio (PDF)', url: 'https://drive.google.com/file/d/18aUvFSsZpxOcQPPABLQv0E8hnOZliFLA/view' }
         ]
       }
     ]
