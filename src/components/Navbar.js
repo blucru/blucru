@@ -36,6 +36,7 @@ export default function Navbar() {
     { to: '/join', label: 'Join Our Cru' },
     { to: '/sponsors', label: 'Sponsors' },
     { to: '/media', label: 'Media' },
+    { to: '/resources', label: 'Resources' },
     { to: '/contact', label: 'Contact Us' },
   ];
 

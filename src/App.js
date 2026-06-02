@@ -9,6 +9,7 @@ import Outreach from './pages/Outreach';
 import JoinBluCru from './pages/JoinBluCru';
 import Sponsors from './pages/Sponsors';
 import Media from './pages/Media';
+import Resources from './pages/Resources';
 import Contact from './pages/Contact';
 import ScrollToTop from './components/ScrollToTop';
 import './App.css';
@@ -28,6 +29,7 @@ function App() {
             <Route path="/join" element={<JoinBluCru />} />
             <Route path="/sponsors" element={<Sponsors />} />
             <Route path="/media" element={<Media />} />
+            <Route path="/resources" element={<Resources />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
