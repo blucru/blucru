@@ -19,7 +19,7 @@ const resourcesData = {
         description: 'View the CAD models and design files for our championship-winning Dugtrio robot.',
         icon: '📐',
         links: [
-          // Add CAD links here
+          { label: 'View Dugtrio CAD on OnShape', url: 'https://cad.onshape.com/documents/1cf2882d6cfccc771986090c/w/8fe42fcaeea70f5eb38f5ab8/e/c92871d549064e32c8f23842' }
         ]
       },
       {
@@ -27,7 +27,7 @@ const resourcesData = {
         description: 'Review our award-winning portfolio that led to our Goodall Inspire Award.',
         icon: '📋',
         links: [
-          // Add portfolio links here
+          { label: 'View DECODE Portfolio (PDF)', url: '/DECODE_Portfolio.pdf' }
         ]
       }
     ]
