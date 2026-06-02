@@ -99,9 +99,9 @@ export default function Media() {
   }, []);
 
   const instagramPosts = [
+    'https://www.instagram.com/p/DX-pBzxjQ1Y/',
+    'https://www.instagram.com/p/DX5HrzhgdMU/',
     'https://www.instagram.com/p/DUjddx8lTIo/',
-    'https://www.instagram.com/p/DI-WprPMBDk/',
-    'https://www.instagram.com/p/DIU1gUVOivS/',
   ];
 
   return (
