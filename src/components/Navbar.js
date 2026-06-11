@@ -30,6 +30,7 @@ export default function Navbar() {
 
   const links = [
     { to: '/', label: 'Home' },
+    { to: '/usa', label: '🇺🇸 Team USA' },
     { to: '/green-gang', label: 'Green Gang' },
     { to: '/our-robots', label: 'Our Robots' },
     { to: '/outreach', label: 'Outreach' },
