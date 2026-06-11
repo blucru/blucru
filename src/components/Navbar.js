@@ -38,6 +38,7 @@ export default function Navbar() {
     { to: '/media', label: 'Media' },
     { to: '/resources', label: 'Resources' },
     { to: '/contact', label: 'Contact Us' },
+    { to: '/usa', label: '🇺🇸 Team USA' },
   ];
 
   return (

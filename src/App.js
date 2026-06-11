@@ -11,6 +11,7 @@ import Sponsors from './pages/Sponsors';
 import Media from './pages/Media';
 import Resources from './pages/Resources';
 import Contact from './pages/Contact';
+import TeamUSA from './pages/TeamUSA';
 import ScrollToTop from './components/ScrollToTop';
 import './App.css';
 
@@ -31,6 +32,7 @@ function App() {
             <Route path="/media" element={<Media />} />
             <Route path="/resources" element={<Resources />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/usa" element={<TeamUSA />} />
           </Routes>
         </main>
         <Footer />
