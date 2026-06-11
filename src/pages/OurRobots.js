@@ -397,7 +397,7 @@ export default function OurRobots() {
             className="btn btn-primary"
             style={{
               background: 'linear-gradient(135deg, var(--gold), var(--blue-accent))',
-              color: '#0a0e1a',
+              color: '#070d2a',
               fontSize: '1rem',
               padding: '0.85rem 2.5rem',
               fontWeight: 700,

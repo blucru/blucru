@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
-const COLORS = ['#f5e04b', '#3b82f6', '#60a5fa', '#fbbf24', '#93c5fd', '#fde68a', '#ffffff'];
+const COLORS = ['#f5c200', '#1a6be8', '#4a90f0', '#fbbf24', '#93c5fd', '#fde68a', '#ffffff'];
 
 function randomBetween(a, b) {
   return a + Math.random() * (b - a);

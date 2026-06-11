@@ -2,7 +2,7 @@ import React, { useRef, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
-function GlowParticles({ count = 300, color = '#3b82f6' }) {
+function GlowParticles({ count = 300, color = '#1a6be8' }) {
   const ref = useRef();
 
   const { positions, sizes, opacities } = useMemo(() => {

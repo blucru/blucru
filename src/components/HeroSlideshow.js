@@ -21,14 +21,14 @@ export default function HeroSlideshow({ slides, variant = 'blue', badge, title, 
         <div
           key={index}
           className={`hero-slide ${index === current ? 'active' : ''}`}
-          style={{ backgroundImage: slide.image ? `url(${slide.image})` : undefined, backgroundColor: slide.image ? undefined : (isGreen ? '#0a1a0e' : '#0a0e1a') }}
+          style={{ backgroundImage: slide.image ? `url(${slide.image})` : undefined, backgroundColor: slide.image ? undefined : (isGreen ? '#0a1a0e' : '#070d2a') }}
         >
           {/* Light blue/green tint overlay */}
           <div className={`hero-tint ${isGreen ? 'hero-tint-green' : 'hero-tint-blue'}`}></div>
           <div className="hero-overlay"></div>
         </div>
       ))}
-      <ParticleField color={isGreen ? '#22c55e' : '#3b82f6'} />
+      <ParticleField color={isGreen ? '#22c55e' : '#1a6be8'} />
       <div className="hero-content">
         <span className={`hero-badge ${isGreen ? 'green' : ''}`}>{badge}</span>
         <h1 className="hero-title">

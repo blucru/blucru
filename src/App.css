@@ -417,7 +417,7 @@ main {
 
 .btn-primary {
   background: var(--gold);
-  color: #0a0e1a;
+  color: #070d2a;
   box-shadow: 0 4px 15px rgba(245, 224, 75, 0.25);
 }
 
@@ -466,7 +466,7 @@ main {
 /* Green Gang page — override divider to green/yellow gradient */
 .green-gang-page .section-dark::before,
 .green-gang-page .achievements-section::before {
-  background: linear-gradient(90deg, transparent, #86efac, #22c55e, #f5e04b, #22c55e, #86efac, transparent);
+  background: linear-gradient(90deg, transparent, #86efac, #22c55e, #f5c200, #22c55e, #86efac, transparent);
   background-size: 200% 100%;
 }
 
@@ -477,7 +477,7 @@ main {
 
 /* Green-yellow section title underline on Green Gang page only */
 .green-gang-page .section-header .section-title::after {
-  background: linear-gradient(90deg, #86efac, #22c55e, #f5e04b);
+  background: linear-gradient(90deg, #86efac, #22c55e, #f5c200);
 }
 
 /* ===================== SECTIONS ===================== */
@@ -2236,7 +2236,7 @@ main > div {
 
 .quiz-btn-primary {
   background: linear-gradient(135deg, var(--gold), var(--blue-accent));
-  color: #0a0e1a;
+  color: #070d2a;
   border: none;
   border-radius: 50px;
   padding: 0.7rem 2rem;

@@ -53,8 +53,8 @@ function CoreSphere() {
       <mesh ref={ref}>
         <icosahedronGeometry args={[1.2, 1]} />
         <MeshDistortMaterial
-          color="#3b82f6"
-          emissive="#1e3a5f"
+          color="#1a6be8"
+          emissive="#0d3070"
           emissiveIntensity={0.5}
           metalness={0.9}
           roughness={0.1}
@@ -104,7 +104,7 @@ function ParticleRing() {
       <bufferGeometry>
         <bufferAttribute attach="attributes-position" count={count} array={positions} itemSize={3} />
       </bufferGeometry>
-      <pointsMaterial size={0.03} color="#60a5fa" transparent opacity={0.8} sizeAttenuation />
+      <pointsMaterial size={0.03} color="#4a90f0" transparent opacity={0.8} sizeAttenuation />
     </points>
   );
 }
@@ -150,12 +150,12 @@ export default function RobotScene({ style, className }) {
       <Canvas camera={{ position: [0, 0, 5], fov: 50 }} dpr={[1, 1.5]}>
         <ambientLight intensity={0.3} />
         <directionalLight position={[5, 5, 5]} intensity={1} color="#ffffff" />
-        <pointLight position={[-3, 2, 4]} intensity={0.8} color="#3b82f6" />
+        <pointLight position={[-3, 2, 4]} intensity={0.8} color="#1a6be8" />
         <pointLight position={[3, -2, 2]} intensity={0.5} color="#f59e0b" />
         <CoreSphere />
-        <GearMesh position={[-2.5, 1.2, -1]} scale={0.5} speed={0.008} color="#3b82f6" />
+        <GearMesh position={[-2.5, 1.2, -1]} scale={0.5} speed={0.008} color="#1a6be8" />
         <GearMesh position={[2.8, -1, -1.5]} scale={0.4} speed={-0.01} color="#f59e0b" />
-        <GearMesh position={[-1.8, -1.5, -0.5]} scale={0.3} speed={0.012} color="#60a5fa" />
+        <GearMesh position={[-1.8, -1.5, -0.5]} scale={0.3} speed={0.012} color="#4a90f0" />
         <ParticleRing />
         <FloatingBolts />
       </Canvas>
