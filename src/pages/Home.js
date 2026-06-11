@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import HeroSlideshow from '../components/HeroSlideshow';
 import GlowTracker from '../components/GlowTracker';
@@ -56,8 +56,24 @@ const alumniMembers = [
 ];
 
 export default function Home() {
+  const [bannerOpen, setBannerOpen] = useState(true);
+
   return (
     <div>
+      <div className={`announcement-banner ${bannerOpen ? 'announcement-banner--visible' : ''}`}
+        style={{ background: 'linear-gradient(90deg, #c0003c, #ff6b9d, #c0003c)' }}>
+        <div className="announcement-banner__marquee">
+          <div className="announcement-banner__track">
+            {[...Array(6)].map((_, i) => (
+              <span key={i} className="announcement-banner__item">
+                🇺🇸 Blu Cru is Honored to Be FGC Team USA! &nbsp;🌸&nbsp; See you in Seoul, South Korea — October 2026!
+              </span>
+            ))}
+          </div>
+        </div>
+        <button className="announcement-banner__close" onClick={() => setBannerOpen(false)} aria-label="Close banner">×</button>
+      </div>
+
       <HeroSlideshow
         slides={heroSlides}
         badge="FTC TEAM #6417"
