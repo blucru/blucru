@@ -58,8 +58,8 @@ const HERO_SLIDES = [
 ];
 
 /* shared font styles */
-const SERIF = "'Shippori Mincho', 'Cormorant Garamond', Georgia, serif";
-const SANS  = "'Cormorant Garamond', Georgia, serif";
+const SERIF = "'Raleway', 'Nunito', sans-serif";
+const SANS  = "'Nunito', 'Raleway', sans-serif";
 
 function getTimeLeft() {
   const diff = TARGET - Date.now();
@@ -131,8 +131,7 @@ function HeroPink() {
         <div style={{ display: 'inline-block', background: 'rgba(255,255,255,0.25)', backdropFilter: 'blur(12px)', border: '1.5px solid rgba(255,255,255,0.5)', borderRadius: 40, padding: '0.5rem 1.6rem', fontFamily: SERIF, fontSize: '1rem', letterSpacing: '2px', color: '#fff', marginBottom: '1.5rem', fontWeight: 700 }}>
           🌸 FIRST GLOBAL CHALLENGE 2026 🌸
         </div>
-        <div style={{ fontSize: '4rem', marginBottom: '0.25rem', lineHeight: 1 }}>🇺🇸</div>
-        <h1 style={{ fontFamily: SERIF, fontSize: 'clamp(3.5rem, 10vw, 8rem)', fontWeight: 800, lineHeight: 1.05, marginBottom: '1rem', textShadow: '0 4px 24px rgba(180,0,60,0.4)', color: '#fff', letterSpacing: '0.02em' }}>
+        <h1 style={{ fontFamily: SERIF, fontSize: 'clamp(3.5rem, 10vw, 8rem)', fontWeight: 900, lineHeight: 1.05, marginBottom: '1rem', textShadow: '0 4px 24px rgba(180,0,60,0.4)', color: '#fff', letterSpacing: '0.02em' }}>
           Team USA
         </h1>
         <p style={{ fontFamily: SANS, fontSize: 'clamp(1.1rem, 2.2vw, 1.4rem)', color: 'rgba(255,255,255,0.93)', maxWidth: 620, lineHeight: 1.7, fontWeight: 500, textShadow: '0 2px 8px rgba(0,0,0,0.3)', marginBottom: '1.25rem', fontStyle: 'italic' }}>
@@ -246,11 +245,26 @@ function FlagCursor() {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const move = (e) => { el.style.left=`${e.clientX+14}px`; el.style.top=`${e.clientY+14}px`; };
+    const move = (e) => { el.style.left=`${e.clientX}px`; el.style.top=`${e.clientY}px`; };
     window.addEventListener('mousemove', move);
     return () => window.removeEventListener('mousemove', move);
   }, []);
-  return <div ref={ref} style={{ position:'fixed', fontSize:'1.2rem', pointerEvents:'none', zIndex:10000, userSelect:'none', lineHeight:1 }}>🇺🇸</div>;
+  return (
+    <div ref={ref} style={{ position:'fixed', pointerEvents:'none', zIndex:10000, userSelect:'none', transform:'translate(4px, 4px)' }}>
+      {/* gradient pink glow ring */}
+      <div style={{
+        position:'absolute',
+        width:48, height:48,
+        borderRadius:'50%',
+        background:'radial-gradient(circle, rgba(255,105,180,0.55) 0%, rgba(255,20,120,0.25) 50%, transparent 75%)',
+        transform:'translate(-50%,-50%)',
+        top:'50%', left:'50%',
+        animation:'cursorPulse 1.8s ease-in-out infinite',
+      }}/>
+      <style>{`@keyframes cursorPulse{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:0.8}50%{transform:translate(-50%,-50%) scale(1.35);opacity:0.5}}`}</style>
+      <span style={{ fontSize:'2rem', lineHeight:1, display:'block', filter:'drop-shadow(0 0 6px rgba(255,80,160,0.7))' }}>🇺🇸</span>
+    </div>
+  );
 }
 
 /* ─── Member Card ─── */
