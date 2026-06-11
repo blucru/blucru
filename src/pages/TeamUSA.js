@@ -154,29 +154,169 @@ function HeroPink() {
   );
 }
 
-/* ─── Cherry Blossom Branch ─── */
-function BlossomBranch({ flip = false, style = {} }) {
+/* ─── Watercolor Cherry Blossom System ─── */
+
+/* Single elegant blossom with layered petals + stamens */
+function Blossom({ cx, cy, r, rot = 0, c1 = '#F9A8C9', c2 = '#F06090', bud = false }) {
+  if (bud) {
+    return (
+      <g transform={`translate(${cx},${cy}) rotate(${rot})`}>
+        <ellipse cx={0} cy={0} rx={r*0.35} ry={r*0.7} fill={c1} opacity="0.9"/>
+        <ellipse cx={0} cy={r*0.1} rx={r*0.22} ry={r*0.5} fill={c2} opacity="0.6"/>
+        <line x1={0} y1={r*0.7} x2={0} y2={r*1.5} stroke="#4A2010" strokeWidth="1.5" opacity="0.7"/>
+      </g>
+    );
+  }
   return (
-    <svg viewBox="0 0 320 480" xmlns="http://www.w3.org/2000/svg"
-      style={{ position: 'absolute', width: 260, opacity: 0.92, pointerEvents: 'none', transform: flip ? 'scaleX(-1)' : 'none', ...style }}>
-      <path d="M30 480 Q80 360 120 280 Q150 220 180 160 Q200 110 210 60" stroke="#8B4A6B" strokeWidth="7" fill="none" strokeLinecap="round"/>
-      <path d="M90 370 Q130 330 160 290 Q185 260 200 230" stroke="#8B4A6B" strokeWidth="4.5" fill="none" strokeLinecap="round"/>
-      <path d="M140 290 Q170 250 190 200" stroke="#8B4A6B" strokeWidth="3.5" fill="none" strokeLinecap="round"/>
-      <path d="M165 230 Q195 210 220 180" stroke="#9B5A7B" strokeWidth="2.5" fill="none" strokeLinecap="round"/>
-      <path d="M185 165 Q205 145 230 120 Q250 100 260 70" stroke="#9B5A7B" strokeWidth="2.5" fill="none" strokeLinecap="round"/>
-      {[[200,230,18],[190,200,16],[165,248,15],[215,180,20],[260,70,22],[240,120,17],[220,155,15],[155,292,14],[205,100,18],[195,65,16],[170,170,13],[145,220,16],[100,330,14],[130,300,12],[175,135,14],[230,90,13]].map(([cx,cy,r],idx) => (
-        <g key={idx}>
-          {[0,72,144,216,288].map((angle) => {
-            const rad = (angle * Math.PI) / 180;
-            const px = cx + r * 0.85 * Math.cos(rad);
-            const py = cy + r * 0.85 * Math.sin(rad);
-            return <ellipse key={angle} cx={px} cy={py} rx={r*0.65} ry={r*0.42} transform={`rotate(${angle},${px},${py})`} fill={idx%3===0?'#FFB7D5':idx%3===1?'#FF8CB4':'#FFC8DC'} opacity="0.95"/>;
-          })}
-          <circle cx={cx} cy={cy} r={r*0.28} fill="#FFE566" opacity="0.9"/>
-        </g>
-      ))}
+    <g transform={`translate(${cx},${cy}) rotate(${rot})`}>
+      {/* outer petals - light pink */}
+      {[0,72,144,216,288].map((a) => {
+        const rad = a*Math.PI/180;
+        const px = r*0.72*Math.cos(rad), py = r*0.72*Math.sin(rad);
+        return <ellipse key={a} cx={px} cy={py} rx={r*0.62} ry={r*0.38} transform={`rotate(${a},${px},${py})`} fill={c1} opacity="0.88"/>;
+      })}
+      {/* inner petal overlay - deeper pink for depth */}
+      {[0,72,144,216,288].map((a) => {
+        const rad = a*Math.PI/180;
+        const px = r*0.32*Math.cos(rad), py = r*0.32*Math.sin(rad);
+        return <ellipse key={a} cx={px} cy={py} rx={r*0.3} ry={r*0.19} transform={`rotate(${a},${px},${py})`} fill={c2} opacity="0.5"/>;
+      })}
+      {/* stamens */}
+      {[0,40,80,120,160,200,240,280,320].map((a) => {
+        const rad = a*Math.PI/180;
+        return <line key={a} x1={0} y1={0} x2={r*0.42*Math.cos(rad)} y2={r*0.42*Math.sin(rad)} stroke="#C0406A" strokeWidth="0.8" opacity="0.55"/>;
+      })}
+      {/* stamen tips */}
+      {[0,40,80,120,160,200,240,280,320].map((a) => {
+        const rad = a*Math.PI/180;
+        return <circle key={a} cx={r*0.42*Math.cos(rad)} cy={r*0.42*Math.sin(rad)} r={1.2} fill="#E8A020" opacity="0.8"/>;
+      })}
+      {/* center */}
+      <circle cx={0} cy={0} r={r*0.2} fill="#FFE066" opacity="0.95"/>
+    </g>
+  );
+}
+
+/* Multi-layer branch stroke for painted/watercolor look */
+function BranchPath({ d, w = 14 }) {
+  return (
+    <>
+      <path d={d} stroke="#2A0E04" strokeWidth={w} fill="none" strokeLinecap="round" strokeLinejoin="round" opacity="0.92"/>
+      <path d={d} stroke="#4A2010" strokeWidth={w*0.55} fill="none" strokeLinecap="round" strokeLinejoin="round" opacity="0.35"/>
+      <path d={d} stroke="#7A3820" strokeWidth={w*0.18} fill="none" strokeLinecap="round" strokeLinejoin="round" opacity="0.2"/>
+    </>
+  );
+}
+
+/* Variant A — large sweeping branch, bottom-left origin going up-right */
+function BranchA({ flip = false, style = {} }) {
+  return (
+    <svg viewBox="0 0 520 620" xmlns="http://www.w3.org/2000/svg"
+      style={{ position:'absolute', width:380, pointerEvents:'none', transform: flip ? 'scaleX(-1)' : 'none', ...style }}>
+      <BranchPath d="M10 610 C50 540 100 470 155 390 C200 320 240 270 280 210 C310 162 325 118 330 60" w={22}/>
+      <BranchPath d="M155 390 C185 355 225 318 265 280 C295 252 320 230 345 200" w={13}/>
+      <BranchPath d="M215 318 C240 290 268 258 290 225 C308 200 318 178 322 150" w={9}/>
+      <BranchPath d="M265 280 C295 258 330 232 360 200 C385 175 400 148 408 115" w={7}/>
+      <BranchPath d="M100 470 C125 445 155 415 180 382" w={10}/>
+      <BranchPath d="M322 150 C340 130 365 108 390 82 C408 62 418 42 422 18" w={5.5}/>
+
+      {/* Blossoms along sub-branches */}
+      <Blossom cx={345} cy={200} r={18} rot={15} c1="#FFBBD4" c2="#E8608A"/>
+      <Blossom cx={360} cy={200} r={15} rot={-20} c1="#FFA8C8" c2="#E05080"/>
+      <Blossom cx={330} cy={185} r={14} rot={40} c1="#FFCCE0" c2="#E870A0"/>
+      <Blossom cx={408} cy={115} r={19} rot={-10} c1="#FFB0CC" c2="#E06090"/>
+      <Blossom cx={422} cy={90}  r={16} rot={25} c1="#FFC8DC" c2="#E878A8"/>
+      <Blossom cx={395} cy={105} r={14} rot={-35} c1="#FFAAC6" c2="#D85888"/>
+      <Blossom cx={390} cy={82}  r={13} rot={50} c1="#FFBBD4" c2="#E06898"/>
+      <Blossom cx={422} cy={18}  r={17} rot={5}  c1="#FFB4CC" c2="#E06090"/>
+      <Blossom cx={330} cy={60}  r={20} rot={-15} c1="#FFCCE0" c2="#E870A0"/>
+      <Blossom cx={315} cy={48}  r={15} rot={30} c1="#FFB8D0" c2="#E05888"/>
+      <Blossom cx={345} cy={42}  r={13} rot={-40} c1="#FFCCD8" c2="#DC6898"/>
+      <Blossom cx={322} cy={150} r={16} rot={20} c1="#FFB0CC" c2="#E06090"/>
+      <Blossom cx={308} cy={162} r={14} rot={-25} c1="#FFBBD4" c2="#E87090"/>
+      <Blossom cx={290} cy={225} r={17} rot={10} c1="#FFC0D4" c2="#E06898"/>
+      <Blossom cx={275} cy={238} r={14} rot={-30} c1="#FFAAC2" c2="#D85880"/>
+      <Blossom cx={180} cy={382} r={16} rot={18} c1="#FFB8D0" c2="#E06090"/>
+      <Blossom cx={168} cy={370} r={13} rot={-22} c1="#FFCCD8" c2="#E870A0"/>
+      <Blossom cx={185} cy={395} r={12} rot={45} c1="#FFB0CC" c2="#DC6090"/>
+
+      {/* Buds */}
+      <Blossom cx={375} cy={192} r={10} rot={-60} c1="#FFB8D0" c2="#D85880" bud/>
+      <Blossom cx={412} cy={128} r={9}  rot={30}  c1="#FFCCE0" c2="#E06898" bud/>
+      <Blossom cx={336} cy={55}  r={9}  rot={-45} c1="#FFB0CC" c2="#DC6090" bud/>
+      <Blossom cx={302} cy={172} r={8}  rot={20}  c1="#FFBBD4" c2="#E06898" bud/>
     </svg>
   );
+}
+
+/* Variant B — wide horizontal branch spreading across */
+function BranchB({ flip = false, style = {} }) {
+  return (
+    <svg viewBox="0 0 600 340" xmlns="http://www.w3.org/2000/svg"
+      style={{ position:'absolute', width:440, pointerEvents:'none', transform: flip ? 'scaleX(-1)' : 'none', ...style }}>
+      <BranchPath d="M10 180 C80 165 160 148 250 138 C330 128 410 118 500 108 C540 102 570 96 595 88" w={18}/>
+      <BranchPath d="M250 138 C258 110 268 82 272 48 C275 22 274 8 272 0" w={11}/>
+      <BranchPath d="M370 122 C375 95 382 68 388 40 C393 18 396 6 396 0" w={9}/>
+      <BranchPath d="M120 155 C125 128 130 100 132 70 C134 48 133 30 130 12" w={8}/>
+      <BranchPath d="M480 110 C488 88 496 62 500 36 C503 16 503 5 500 0" w={7}/>
+      <BranchPath d="M595 88 C592 62 586 38 578 14" w={6}/>
+
+      <Blossom cx={272} cy={0}   r={18} rot={10}  c1="#FFBBD4" c2="#E06090"/>
+      <Blossom cx={258} cy={8}   r={15} rot={-25} c1="#FFCCE0" c2="#E870A0"/>
+      <Blossom cx={285} cy={5}   r={13} rot={35}  c1="#FFB0CC" c2="#DC6090"/>
+      <Blossom cx={396} cy={0}   r={17} rot={-12} c1="#FFB8D0" c2="#E06898"/>
+      <Blossom cx={382} cy={8}   r={14} rot={28}  c1="#FFCCD8" c2="#E878A8"/>
+      <Blossom cx={408} cy={5}   r={13} rot={-38} c1="#FFA8C2" c2="#D85880"/>
+      <Blossom cx={130} cy={12}  r={16} rot={8}   c1="#FFBBD4" c2="#E06090"/>
+      <Blossom cx={118} cy={20}  r={13} rot={-30} c1="#FFCCE0" c2="#E870A0"/>
+      <Blossom cx={142} cy={15}  r={12} rot={45}  c1="#FFB0CC" c2="#DC6090"/>
+      <Blossom cx={500} cy={0}   r={16} rot={-5}  c1="#FFB8D0" c2="#E06898"/>
+      <Blossom cx={488} cy={10}  r={13} rot={32}  c1="#FFCCD8" c2="#E878A8"/>
+      <Blossom cx={578} cy={14}  r={15} rot={-18} c1="#FFA8C2" c2="#D85880"/>
+      <Blossom cx={566} cy={22}  r={12} rot={40}  c1="#FFBBD4" c2="#E06898"/>
+
+      <Blossom cx={268} cy={22}  r={9} rot={-50} c1="#FFB8D0" c2="#D85880" bud/>
+      <Blossom cx={392} cy={18}  r={8} rot={25}  c1="#FFCCE0" c2="#E06898" bud/>
+      <Blossom cx={126} cy={32}  r={8} rot={-40} c1="#FFB0CC" c2="#DC6090" bud/>
+      <Blossom cx={496} cy={18}  r={7} rot={15}  c1="#FFBBD4" c2="#E06898" bud/>
+    </svg>
+  );
+}
+
+/* Variant C — compact corner cluster */
+function BranchC({ flip = false, style = {} }) {
+  return (
+    <svg viewBox="0 0 320 380" xmlns="http://www.w3.org/2000/svg"
+      style={{ position:'absolute', width:260, pointerEvents:'none', transform: flip ? 'scaleX(-1)' : 'none', ...style }}>
+      <BranchPath d="M20 370 C55 310 95 255 135 195 C165 148 185 112 195 68 C200 42 200 18 198 0" w={18}/>
+      <BranchPath d="M135 195 C162 175 192 152 218 125 C238 105 252 84 258 58" w={11}/>
+      <BranchPath d="M95 255 C118 235 144 210 165 182" w={8}/>
+      <BranchPath d="M258 58 C268 40 278 22 282 4" w={6}/>
+
+      <Blossom cx={198} cy={0}   r={20} rot={8}   c1="#FFBBD4" c2="#E06090"/>
+      <Blossom cx={182} cy={8}   r={16} rot={-28} c1="#FFCCE0" c2="#E870A0"/>
+      <Blossom cx={212} cy={6}   r={14} rot={40}  c1="#FFB0CC" c2="#DC6090"/>
+      <Blossom cx={195} cy={20}  r={13} rot={-45} c1="#FFBBD4" c2="#E06898"/>
+      <Blossom cx={258} cy={58}  r={18} rot={-12} c1="#FFB8D0" c2="#E06898"/>
+      <Blossom cx={245} cy={66}  r={15} rot={25}  c1="#FFCCD8" c2="#E878A8"/>
+      <Blossom cx={272} cy={52}  r={13} rot={-35} c1="#FFA8C2" c2="#D85880"/>
+      <Blossom cx={282} cy={4}   r={16} rot={15}  c1="#FFBBD4" c2="#E06090"/>
+      <Blossom cx={270} cy={12}  r={13} rot={-30} c1="#FFCCE0" c2="#E870A0"/>
+      <Blossom cx={165} cy={182} r={15} rot={20}  c1="#FFB0CC" c2="#DC6090"/>
+      <Blossom cx={152} cy={192} r={12} rot={-25} c1="#FFBBD4" c2="#E06898"/>
+      <Blossom cx={175} cy={175} r={11} rot={42}  c1="#FFB8D0" c2="#E06898"/>
+
+      <Blossom cx={205} cy={14}  r={9} rot={-55} c1="#FFB8D0" c2="#D85880" bud/>
+      <Blossom cx={264} cy={72}  r={8} rot={30}  c1="#FFCCE0" c2="#E06898" bud/>
+      <Blossom cx={278} cy={22}  r={8} rot={-40} c1="#FFB0CC" c2="#DC6090" bud/>
+    </svg>
+  );
+}
+
+function BlossomBranch({ flip = false, style = {}, variant = 'a' }) {
+  if (variant === 'b') return <BranchB flip={flip} style={style}/>;
+  if (variant === 'c') return <BranchC flip={flip} style={style}/>;
+  return <BranchA flip={flip} style={style}/>;
 }
 
 /* ─── Falling Petals ─── */
@@ -334,14 +474,17 @@ export default function TeamUSA() {
       {/* HERO */}
       <div style={{ position:'relative', zIndex:1 }}><HeroPink /></div>
 
-      {/* branch pair */}
-      <div style={{ position:'relative' }}>
-        <BlossomBranch style={{ top:0, left:-30, zIndex:2 }}/>
-        <BlossomBranch flip style={{ top:0, right:-30, zIndex:2 }}/>
+      {/* Large branches flanking the top of page content */}
+      <div style={{ position:'relative', height:0, overflow:'visible' }}>
+        <BlossomBranch style={{ top:-60, left:-20, zIndex:2, opacity:0.95 }}/>
+        <BlossomBranch flip style={{ top:-60, right:-20, zIndex:2, opacity:0.95 }}/>
       </div>
 
       {/* COUNTDOWN */}
-      <section style={{ ...sec, padding:'6rem 2rem 5rem', textAlign:'center', background:'linear-gradient(180deg,#ffe0ee,#fff0f7)' }}>
+      <section style={{ ...sec, padding:'6rem 2rem 5rem', textAlign:'center', background:'linear-gradient(180deg,#ffe0ee,#fff0f7)', overflow:'visible' }}>
+        {/* horizontal branch sweeping across top of section */}
+        <BlossomBranch variant="b" style={{ top:-30, left:'50%', transform:'translateX(-55%)', zIndex:2, opacity:0.85 }}/>
+        <BlossomBranch variant="b" flip style={{ top:-30, right:'-10%', zIndex:2, opacity:0.75 }}/>
         <span style={label}>Competition Begins</span>
         <h2 style={{ ...h2, marginBottom:'0.4rem' }}>October 7, 2026</h2>
         <p style={{ fontFamily:SERIF, color:'#c0406a', marginBottom:'2.5rem', fontWeight:600, fontSize:'1.15rem', fontStyle:'italic' }}>Incheon, South Korea 🇰🇷</p>
@@ -349,14 +492,16 @@ export default function TeamUSA() {
       </section>
 
       {/* ABOUT FGC */}
-      <section style={{ ...sec, padding:'5rem 2rem', background:'linear-gradient(180deg,#fff0f7,#ffe8f2)' }}>
+      <section style={{ ...sec, padding:'5rem 2rem', background:'linear-gradient(180deg,#fff0f7,#ffe8f2)', overflow:'visible' }}>
+        {/* Corner branches */}
+        <BlossomBranch variant="c" style={{ top:-40, left:-20, zIndex:2, opacity:0.9 }}/>
+        <BlossomBranch variant="c" flip style={{ top:-40, right:-20, zIndex:2, opacity:0.9 }}/>
         <div style={{ maxWidth:1100, margin:'0 auto' }}>
           <div style={{ textAlign:'center', marginBottom:'3rem' }}>
             <span style={label}>The Competition</span>
             <h2 style={h2}>About FIRST GLOBAL</h2>
           </div>
-          <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(280px, 1fr))', gap:'1.5rem', position:'relative' }}>
-            <div style={{ position:'absolute', right:-60, top:-40, zIndex:0 }}><BlossomBranch style={{ width:180, opacity:0.5 }}/></div>
+          <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(280px, 1fr))', gap:'1.5rem', position:'relative', zIndex:1 }}>
             {[
               { icon:'🌍', title:'A Global Robotics Olympiad', body:"FIRST GLOBAL is an international robotics challenge where student teams from 190+ nations come together to take on one of humanity's biggest engineering problems. It's basically the Olympics of robotics, and teams from every corner of the world show up." },
               { icon:'🇰🇷', title:'South Korea, Fall 2026', body:"The 2026 FIRST GLOBAL Challenge is happening in Incheon, South Korea this fall. It's a massive gathering where teams from all over the world come together to compete, collaborate, and make some unforgettable memories along the way." },
@@ -373,9 +518,11 @@ export default function TeamUSA() {
       </section>
 
       {/* TEAM MEMBERS */}
-      <section style={{ ...sec, padding:'5rem 2rem', background:'linear-gradient(180deg,#ffe8f2,#ffd6e8)' }}>
-        <div style={{ position:'absolute', left:-40, top:40 }}><BlossomBranch style={{ width:200, opacity:0.55 }}/></div>
-        <div style={{ maxWidth:1200, margin:'0 auto', position:'relative' }}>
+      <section style={{ ...sec, padding:'5rem 2rem', background:'linear-gradient(180deg,#ffe8f2,#ffd6e8)', overflow:'visible' }}>
+        {/* Large branch on left side going deep into section */}
+        <BlossomBranch style={{ top:-80, left:-30, zIndex:2, opacity:0.92, width:400 }}/>
+        <BlossomBranch flip style={{ bottom:-60, right:-30, zIndex:2, opacity:0.85, width:340 }}/>
+        <div style={{ maxWidth:1200, margin:'0 auto', position:'relative', zIndex:1 }}>
           <div style={{ textAlign:'center', marginBottom:'3rem' }}>
             <span style={label}>The Roster</span>
             <h2 style={h2}>Team USA Members</h2>
@@ -387,9 +534,10 @@ export default function TeamUSA() {
       </section>
 
       {/* MENTORS */}
-      <section style={{ ...sec, padding:'5rem 2rem', background:'linear-gradient(180deg,#ffd6e8,#ffcce0)' }}>
-        <div style={{ position:'absolute', right:-40, top:40 }}><BlossomBranch flip style={{ width:200, opacity:0.5 }}/></div>
-        <div style={{ maxWidth:1100, margin:'0 auto', position:'relative' }}>
+      <section style={{ ...sec, padding:'5rem 2rem', background:'linear-gradient(180deg,#ffd6e8,#ffcce0)', overflow:'visible' }}>
+        <BlossomBranch variant="b" style={{ top:-25, left:'-5%', zIndex:2, opacity:0.8 }}/>
+        <BlossomBranch variant="c" flip style={{ top:-30, right:-20, zIndex:2, opacity:0.88 }}/>
+        <div style={{ maxWidth:1100, margin:'0 auto', position:'relative', zIndex:1 }}>
           <div style={{ textAlign:'center', marginBottom:'3rem' }}>
             <span style={label}>Our Guides</span>
             <h2 style={h2}>Mentors</h2>
@@ -401,8 +549,10 @@ export default function TeamUSA() {
       </section>
 
       {/* TEAM BIO */}
-      <section style={{ ...sec, padding:'5rem 2rem', background:'linear-gradient(180deg,#ffcce0,#ffbcd6)' }}>
-        <div style={{ maxWidth:860, margin:'0 auto', textAlign:'center', position:'relative' }}>
+      <section style={{ ...sec, padding:'5rem 2rem', background:'linear-gradient(180deg,#ffcce0,#ffbcd6)', overflow:'visible' }}>
+        <BlossomBranch style={{ top:-60, left:-20, zIndex:2, opacity:0.9, width:360 }}/>
+        <BlossomBranch flip style={{ top:-60, right:-20, zIndex:2, opacity:0.9, width:360 }}/>
+        <div style={{ maxWidth:860, margin:'0 auto', textAlign:'center', position:'relative', zIndex:1 }}>
           <span style={label}>Our Story</span>
           <h2 style={{ ...h2, marginBottom:'2rem' }}>Blu Cru Goes Global 🌏</h2>
           <GlowTracker style={{ background:'linear-gradient(160deg, rgba(255,255,255,0.8), rgba(255,200,225,0.6))', border:'2px solid rgba(220,80,130,0.3)', borderRadius:26, padding:'2.5rem', textAlign:'left', lineHeight:1.9, fontSize:'1.08rem', color:'#5a1530', boxShadow:'0 16px 48px rgba(220,50,100,0.15)', position:'relative', zIndex:1, fontFamily:SANS, fontStyle:'italic' }}>
