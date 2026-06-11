@@ -135,10 +135,10 @@ function HeroPink() {
           Team USA
         </h1>
         <p style={{ fontFamily: SANS, fontSize: 'clamp(1.1rem, 2.2vw, 1.4rem)', color: 'rgba(255,255,255,0.93)', maxWidth: 620, lineHeight: 1.7, fontWeight: 500, textShadow: '0 2px 8px rgba(0,0,0,0.3)', marginBottom: '1.25rem', fontStyle: 'italic' }}>
-          Representing 5,000+ USA teams at the FIRST Global Challenge — Seoul, South Korea, October 2026.
+          Representing 5,000+ USA teams at the FIRST Global Challenge in Incheon, South Korea this October 2026.
         </p>
         <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-          {['🌸 DC Region', '🤖 FTC #6417', '🇰🇷 Seoul 2026', '🏆 Goodall Inspire 1'].map((t) => (
+          {['🌸 DC Region', '🤖 FTC #6417', '🇰🇷 Incheon 2026', '🏆 Goodall Inspire 1'].map((t) => (
             <span key={t} style={{ fontFamily: SERIF, background: 'rgba(255,255,255,0.22)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255,255,255,0.4)', borderRadius: 20, padding: '0.4rem 1rem', fontSize: '0.95rem', color: '#fff', fontWeight: 600 }}>{t}</span>
           ))}
         </div>
@@ -344,7 +344,7 @@ export default function TeamUSA() {
       <section style={{ ...sec, padding:'6rem 2rem 5rem', textAlign:'center', background:'linear-gradient(180deg,#ffe0ee,#fff0f7)' }}>
         <span style={label}>Competition Begins</span>
         <h2 style={{ ...h2, marginBottom:'0.4rem' }}>October 7, 2026</h2>
-        <p style={{ fontFamily:SERIF, color:'#c0406a', marginBottom:'2.5rem', fontWeight:600, fontSize:'1.15rem', fontStyle:'italic' }}>Seoul, South Korea 🇰🇷</p>
+        <p style={{ fontFamily:SERIF, color:'#c0406a', marginBottom:'2.5rem', fontWeight:600, fontSize:'1.15rem', fontStyle:'italic' }}>Incheon, South Korea 🇰🇷</p>
         <Countdown />
       </section>
 
@@ -358,9 +358,9 @@ export default function TeamUSA() {
           <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(280px, 1fr))', gap:'1.5rem', position:'relative' }}>
             <div style={{ position:'absolute', right:-60, top:-40, zIndex:0 }}><BlossomBranch style={{ width:180, opacity:0.5 }}/></div>
             {[
-              { icon:'🌍', title:'A Global Robotics Olympiad', body:"FIRST GLOBAL is an annual international challenge where student teams from 190+ nations compete together to solve one of humanity's greatest engineering challenges. It's the Olympics of robotics, uniting the next generation of innovators from every corner of the globe." },
-              { icon:'🇰🇷', title:'South Korea — Fall 2026', body:'The 2026 FIRST GLOBAL Challenge takes place in Seoul, South Korea — a global hub of technology, innovation, and culture. Teams will collaborate, compete, and build friendships that span continents.' },
-              { icon:'🌸', title:'Representing 5,000+ USA Teams', body:'Selected to represent the United States from among 5,000+ American FIRST teams, Blu Cru carries the cherry blossom spirit of Washington DC to Seoul. We bring our passion for creative robotics and community impact to the world stage.' },
+              { icon:'🌍', title:'A Global Robotics Olympiad', body:"FIRST GLOBAL is an international robotics challenge where student teams from 190+ nations come together to take on one of humanity's biggest engineering problems. It's basically the Olympics of robotics, and teams from every corner of the world show up." },
+              { icon:'🇰🇷', title:'South Korea, Fall 2026', body:"The 2026 FIRST GLOBAL Challenge is happening in Incheon, South Korea this fall. It's a massive gathering where teams from all over the world come together to compete, collaborate, and make some unforgettable memories along the way." },
+              { icon:'🌸', title:'Representing 5,000+ USA Teams', body:"We were selected to represent the United States from among 5,000+ American FIRST teams, and we're bringing the cherry blossom spirit of the DC region all the way to Incheon. Our passion for creative robotics and community impact is going global." },
             ].map(({ icon, title, body }) => (
               <GlowTracker key={title} style={{ background:'linear-gradient(160deg, rgba(255,255,255,0.85), rgba(255,200,225,0.6))', border:'1.5px solid rgba(220,80,130,0.28)', borderRadius:22, padding:'2rem', boxShadow:'0 8px 32px rgba(220,50,100,0.1)', position:'relative', zIndex:1 }}>
                 <div style={{ fontSize:'2.2rem', marginBottom:'0.9rem' }}>{icon}</div>
@@ -407,16 +407,16 @@ export default function TeamUSA() {
           <h2 style={{ ...h2, marginBottom:'2rem' }}>Blu Cru Goes Global 🌏</h2>
           <GlowTracker style={{ background:'linear-gradient(160deg, rgba(255,255,255,0.8), rgba(255,200,225,0.6))', border:'2px solid rgba(220,80,130,0.3)', borderRadius:26, padding:'2.5rem', textAlign:'left', lineHeight:1.9, fontSize:'1.08rem', color:'#5a1530', boxShadow:'0 16px 48px rgba(220,50,100,0.15)', position:'relative', zIndex:1, fontFamily:SANS, fontStyle:'italic' }}>
             <p style={{ marginBottom:'1.25rem' }}>
-              Blu Cru is a community-based FIRST Tech Challenge robotics team based at Explorer Post 1010 at the Rockville Science Center in Maryland. We've spent years competing, innovating, and reaching into underserved communities — and now we're taking that mission global.
+              Blu Cru is a community-based FIRST Tech Challenge team operating out of Explorer Post 1010 at the Rockville Science Center in Maryland. We've spent years competing, building robots, and doing outreach in underserved communities. Now we're taking it to the world stage.
             </p>
             <p style={{ marginBottom:'1.25rem' }}>
-              This season, we became Goodall Inspire 1 Winners at the FIRST World Championship — representing 5,000+ American FIRST teams as we head to Seoul. That recognition is one we don't take lightly. It's a call to show up with everything we have.
+              This past season we won the Goodall Inspire Award at the FIRST World Championship, which put us among the very top teams globally. That's what got us here, representing 5,000+ American FIRST teams at FGC. We don't take that lightly at all.
             </p>
             <p style={{ marginBottom:'1.25rem' }}>
-              The cherry blossoms of Washington DC are famous around the world — and so is the spirit of the people who live beneath them. We're bringing that same energy, creativity, and heart to South Korea this fall.
+              The DC cherry blossoms are kind of our thing. We're a Maryland team through and through, and we're bringing that energy, that creativity, and that heart with us to Incheon this fall.
             </p>
             <p style={{ fontWeight:700, fontStyle:'normal', color:'#8B003C', fontFamily:SERIF }}>
-              We are so excited to connect with teams from across the globe, share our story, and learn from the brilliant minds of 190+ nations. See you in Seoul. 🇺🇸🌸🇰🇷
+              We genuinely cannot wait to connect with teams from all over the globe, trade stories, and see what everyone has been building. See you in Incheon! 🇺🇸🌸🇰🇷
             </p>
           </GlowTracker>
         </div>
@@ -430,7 +430,7 @@ export default function TeamUSA() {
             Connect with Blu Cru at FGC!
           </h2>
           <p style={{ fontFamily:SANS, color:'rgba(255,255,255,0.9)', fontSize:'1.15rem', lineHeight:1.75, marginBottom:'2rem', fontStyle:'italic' }}>
-            Are you a FIRST GLOBAL team heading to Seoul? We'd love to meet you, exchange pins, and collaborate before and during the challenge. Reach out — we can't wait to connect with teams from around the world!
+            Are you a FIRST GLOBAL team heading to Incheon? We would love to meet you, exchange pins, and connect before and during the challenge. Send us an email and let's make it happen!
           </p>
           <a href="mailto:blucru6417@gmail.com" style={{
             display:'inline-block',
