@@ -132,7 +132,7 @@ function HeroPink() {
           🌸 FIRST GLOBAL CHALLENGE 2026 🌸
         </div>
         <h1 style={{ fontFamily: SERIF, fontSize: 'clamp(3.5rem, 10vw, 8rem)', fontWeight: 900, lineHeight: 1.05, marginBottom: '1rem', textShadow: '0 4px 24px rgba(180,0,60,0.4)', color: '#fff', letterSpacing: '0.02em' }}>
-          Team USA
+          Team United States of America
         </h1>
         <p style={{ fontFamily: SANS, fontSize: 'clamp(1.1rem, 2.2vw, 1.4rem)', color: 'rgba(255,255,255,0.93)', maxWidth: 620, lineHeight: 1.7, fontWeight: 500, textShadow: '0 2px 8px rgba(0,0,0,0.3)', marginBottom: '1.25rem', fontStyle: 'italic' }}>
           Representing 5,000+ USA teams at the FIRST Global Challenge in Incheon, South Korea this October 2026.
