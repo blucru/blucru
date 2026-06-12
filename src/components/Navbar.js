@@ -43,18 +43,19 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+      <nav className={`navbar ${scrolled ? 'scrolled' : ''}`} style={location.pathname === '/usa' ? { background: 'linear-gradient(90deg, #ffe0ee 0%, #fff0f7 100%)', borderBottom: '2px solid rgba(220,80,130,0.3)' } : {}}>
         <div className="navbar-container">
           <Link to="/" className="navbar-logo" style={location.pathname === '/usa' ? { background: 'linear-gradient(135deg, #c0003c, #8B4513)', backgroundClip: 'text', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', color: '#c0003c' } : {}}>
             <img src="/duckylogo.png" alt="Blu Cru Logo" />
             <span style={location.pathname === '/usa' ? { background: 'linear-gradient(135deg, #c0003c, #8B4513)', backgroundClip: 'text', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' } : {}}>BLU CRU</span>
           </Link>
-          <div className="nav-links">
+          <div className="nav-links" style={location.pathname === '/usa' ? { color: '#8B003C' } : {}}>
             {links.map((link) => (
               <Link
                 key={link.to}
                 to={link.to}
                 className={`nav-link ${location.pathname === link.to ? 'active' : ''}`}
+                style={location.pathname === '/usa' ? { color: '#8B003C' } : {}}
               >
                 {link.label}
               </Link>
