@@ -367,7 +367,7 @@ function TimerConstellations() {
     const ctx = canvas.getContext('2d');
     const resize = () => { canvas.width = window.innerWidth; canvas.height = 300; };
     resize();
-    const nodes = Array.from({ length: 32 }, () => ({ x: Math.random()*window.innerWidth, y: Math.random()*300, r: 7+Math.random()*5, vx: (Math.random()-0.5)*0.08, vy: (Math.random()-0.5)*0.08, pulse: Math.random()*Math.PI*2 }));
+    const nodes = Array.from({ length: 32 }, () => ({ x: Math.random()*window.innerWidth, y: Math.random()*300, r: 7+Math.random()*5, vx: (Math.random()-0.5)*0.35, vy: (Math.random()-0.5)*0.35, pulse: Math.random()*Math.PI*2 }));
     let raf;
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -380,7 +380,7 @@ function TimerConstellations() {
       });
       for(let i=0;i<nodes.length;i++) for(let j=i+1;j<nodes.length;j++){
         const dx=nodes[i].x-nodes[j].x, dy=nodes[i].y-nodes[j].y, dist=Math.sqrt(dx*dx+dy*dy);
-        if(dist<150){ctx.beginPath();ctx.moveTo(nodes[i].x,nodes[i].y);ctx.lineTo(nodes[j].x,nodes[j].y);ctx.strokeStyle=`rgba(60,30,10,${0.55*(1-dist/150)})`;ctx.lineWidth=2.5;ctx.stroke();}
+        if(dist<85){ctx.beginPath();ctx.moveTo(nodes[i].x,nodes[i].y);ctx.lineTo(nodes[j].x,nodes[j].y);ctx.strokeStyle=`rgba(60,30,10,${0.55*(1-dist/85)})`;ctx.lineWidth=2.5;ctx.stroke();}
       }
       raf = requestAnimationFrame(draw);
     };
