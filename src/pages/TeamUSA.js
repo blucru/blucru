@@ -7,7 +7,7 @@ const TARGET = new Date('2026-10-07T00:00:00');
 const TEAM_MEMBERS = [
   { name: 'Deven B',   role: 'Tele-Op',       image: '/devenb.png'   },
   { name: 'Kathy Z',   role: 'Manufacturing', image: '/kathyz.png'   },
-  { name: 'Amber W',   role: 'CAD',           image: '/amberw.png'   },
+  { name: 'Amber W',   role: 'CAD',           images: ['/amber1.jpg','/amber2.jpg','/amber3.jpg','/amber4.jpg'] },
   { name: 'Michael D', role: 'Autonomous',    image: '/michaeld.png' },
   { name: 'Michael J', role: 'CAD',           image: '/michaelj.png' },
   { name: 'Thomas Y',  role: 'Electrical',    image: '/thomasy.png'  },
@@ -315,11 +315,14 @@ function MemberCard({ member }) {
         <div style={{ fontFamily: SERIF, fontSize:'0.82rem', letterSpacing:'1.5px', color:'#c0406a', textTransform:'uppercase', fontWeight:600 }}>{member.role}</div>
       </div>
       <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'0.6rem' }}>
-        {[0,1,2,3].map((i) => (
-          <div key={i} style={{ aspectRatio:'1', borderRadius:12, overflow:'hidden', border:'1.5px solid rgba(220,80,130,0.25)', background:'rgba(255,180,210,0.18)', display:'flex', alignItems:'center', justifyContent:'center' }}>
-            {i===0&&member.image ? <img src={member.image} alt={member.name} style={{ width:'100%', height:'100%', objectFit:'cover' }}/> : <span style={{ fontSize:'1.4rem', opacity:0.35 }}>🌸</span>}
-          </div>
-        ))}
+        {[0,1,2,3].map((i) => {
+          const src = member.images ? member.images[i] : (i === 0 ? member.image : null);
+          return (
+            <div key={i} style={{ aspectRatio:'1', borderRadius:12, overflow:'hidden', border:'1.5px solid rgba(220,80,130,0.25)', background:'rgba(255,180,210,0.18)', display:'flex', alignItems:'center', justifyContent:'center' }}>
+              {src ? <img src={src} alt={member.name} style={{ width:'100%', height:'100%', objectFit:'cover', objectPosition:'center top' }}/> : <span style={{ fontSize:'1.4rem', opacity:0.35 }}>🌸</span>}
+            </div>
+          );
+        })}
       </div>
       <div style={{ background:'rgba(255,180,210,0.15)', borderRadius:10, padding:'0.9rem', border:'1px dashed rgba(220,80,130,0.22)' }}>
         {[1,2,3,4].map((n) => (
