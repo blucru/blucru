@@ -8,7 +8,7 @@ const TEAM_MEMBERS = [
   { name: 'Deven B',   role: 'Tele-Op',       image: '/devenb.png'   },
   { name: 'Kathy Z',   role: 'Manufacturing', image: '/kathyz.png'   },
   { name: 'Amber W',   role: 'CAD',           images: ['/amber1.jpg','/amber2.jpg','/amber3.jpg','/amber4.jpg'] },
-  { name: 'Michael D', role: 'Autonomous',    image: '/michaeld.png' },
+  { name: 'Michael D', role: 'Autonomous',    images: ['/michael1.jpg','/michael2.jpg','/michael3.jpg','/michael4.png'] },
   { name: 'Michael J', role: 'CAD',           image: '/michaelj.png' },
   { name: 'Thomas Y',  role: 'Electrical',    image: '/thomasy.png'  },
 ];
