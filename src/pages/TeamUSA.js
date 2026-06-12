@@ -104,6 +104,50 @@ function Countdown() {
   );
 }
 
+/* ─── Decorative Header Flowers ─── */
+function HeaderFlowers() {
+  return (
+    <svg style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 1 }} xmlns="http://www.w3.org/2000/svg">
+      {/* Top left cluster */}
+      <g transform="translate(60, 80)">
+        <circle cx="0" cy="0" r="28" fill="#FFB8D4" opacity="0.7"/>
+        {[0,72,144,216,288].map((a,i) => {
+          const rad = a * Math.PI / 180, x = 22 * Math.cos(rad), y = 22 * Math.sin(rad);
+          return <ellipse key={i} cx={x} cy={y} rx="14" ry="18" fill="#FFB8D4" stroke="#F07098" strokeWidth="0.5" opacity="0.85" transform={`rotate(${a})`} />;
+        })}
+        <circle cx="0" cy="0" r="8" fill="#FFE0A0" opacity="0.9"/>
+      </g>
+      {/* Top right cluster */}
+      <g transform="translate(calc(100% - 60), 100)">
+        <circle cx="0" cy="0" r="24" fill="#FFB8D4" opacity="0.65"/>
+        {[0,72,144,216,288].map((a,i) => {
+          const rad = a * Math.PI / 180, x = 18 * Math.cos(rad), y = 18 * Math.sin(rad);
+          return <ellipse key={i} cx={x} cy={y} rx="12" ry="15" fill="#FFB8D4" stroke="#F07098" strokeWidth="0.4" opacity="0.8" transform={`rotate(${a})`} />;
+        })}
+        <circle cx="0" cy="0" r="6" fill="#FFE0A0" opacity="0.9"/>
+      </g>
+      {/* Bottom left corner */}
+      <g transform="translate(80, calc(100% - 60))">
+        <circle cx="0" cy="0" r="22" fill="#FFB8D4" opacity="0.6"/>
+        {[0,72,144,216,288].map((a,i) => {
+          const rad = a * Math.PI / 180, x = 17 * Math.cos(rad), y = 17 * Math.sin(rad);
+          return <ellipse key={i} cx={x} cy={y} rx="11" ry="14" fill="#FFB8D4" stroke="#F07098" strokeWidth="0.4" opacity="0.75" transform={`rotate(${a})`} />;
+        })}
+        <circle cx="0" cy="0" r="5.5" fill="#FFE0A0" opacity="0.85"/>
+      </g>
+      {/* Bottom right corner */}
+      <g transform="translate(calc(100% - 70), calc(100% - 50))">
+        <circle cx="0" cy="0" r="26" fill="#FFB8D4" opacity="0.68"/>
+        {[0,72,144,216,288].map((a,i) => {
+          const rad = a * Math.PI / 180, x = 20 * Math.cos(rad), y = 20 * Math.sin(rad);
+          return <ellipse key={i} cx={x} cy={y} rx="13" ry="17" fill="#FFB8D4" stroke="#F07098" strokeWidth="0.45" opacity="0.82" transform={`rotate(${a})`} />;
+        })}
+        <circle cx="0" cy="0" r="7" fill="#FFE0A0" opacity="0.9"/>
+      </g>
+    </svg>
+  );
+}
+
 /* ─── Hero ─── */
 function HeroPink() {
   const [current, setCurrent] = useState(0);
@@ -124,8 +168,9 @@ function HeroPink() {
           transition: 'opacity 1.2s ease',
         }} />
       ))}
-      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(160deg, rgba(255,100,150,0.55) 0%, rgba(255,20,80,0.3) 40%, rgba(180,0,60,0.45) 100%)' }} />
-      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 40%, rgba(255,220,235,0.15) 80%, #fff0f5 100%)' }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(160deg, rgba(255,100,150,0.65) 0%, rgba(255,20,100,0.42) 40%, rgba(200,20,80,0.52) 100%)' }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 35%, rgba(255,180,210,0.2) 75%, #fff0f5 100%)' }} />
+      <HeaderFlowers />
 
       <div style={{ position: 'relative', zIndex: 2, height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '6rem 2rem 4rem' }}>
         <div style={{ display: 'inline-block', background: 'rgba(255,255,255,0.25)', backdropFilter: 'blur(12px)', border: '1.5px solid rgba(255,255,255,0.5)', borderRadius: 40, padding: '0.5rem 1.6rem', fontFamily: SERIF, fontSize: '1rem', letterSpacing: '2px', color: '#fff', marginBottom: '1.5rem', fontWeight: 700 }}>
