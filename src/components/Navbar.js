@@ -45,9 +45,9 @@ export default function Navbar() {
     <>
       <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
         <div className="navbar-container">
-          <Link to="/" className="navbar-logo">
+          <Link to="/" className="navbar-logo" style={location.pathname === '/usa' ? { background: 'linear-gradient(135deg, #c0003c, #8B4513)', backgroundClip: 'text', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', color: '#c0003c' } : {}}>
             <img src="/duckylogo.png" alt="Blu Cru Logo" />
-            BLU CRU
+            <span style={location.pathname === '/usa' ? { background: 'linear-gradient(135deg, #c0003c, #8B4513)', backgroundClip: 'text', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' } : {}}>BLU CRU</span>
           </Link>
           <div className="nav-links">
             {links.map((link) => (

@@ -367,7 +367,7 @@ function TimerConstellations() {
     const ctx = canvas.getContext('2d');
     const resize = () => { canvas.width = window.innerWidth; canvas.height = 300; };
     resize();
-    const nodes = Array.from({ length: 24 }, () => ({ x: Math.random()*window.innerWidth, y: Math.random()*300, r: 6+Math.random()*4, vx: (Math.random()-0.5)*0.12, vy: (Math.random()-0.5)*0.12, pulse: Math.random()*Math.PI*2 }));
+    const nodes = Array.from({ length: 12 }, () => ({ x: Math.random()*window.innerWidth, y: Math.random()*300, r: 6+Math.random()*4, vx: (Math.random()-0.5)*0.08, vy: (Math.random()-0.5)*0.08, pulse: Math.random()*Math.PI*2 }));
     let raf;
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);

@@ -19,11 +19,11 @@ const heroSlides = [
 
 const achievements = [
   { season: 'DECODE 25-26', items: [
+    { text: 'Team USA - Selected to represent the USA at the FIRST GLOBAL Challenge', link: '/usa', isTeamUSA: true },
     'Goodall Inspire 1 Winners',
     'Chesapeake Championship Inspire Award Winners',
     'Chesapeake Championship Red Cardinal Alliance 7 Captain',
-    'Qualified for FIRST World Championship',
-    { text: 'Team USA - Selected to represent the USA at the FIRST GLOBAL Challenge', link: '/usa', isTeamUSA: true }
+    'Qualified for FIRST World Championship'
   ]},
   { season: 'INTO THE DEEP 24-25', items: [
     'Worlds Divisional Innovate #3',
