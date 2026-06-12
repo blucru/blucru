@@ -292,7 +292,6 @@ function FallingPetals() {
 
 /* ─── Falling Sparkles ─── */
 function SparklesFalling() {
-  const ref = useRef(null);
   useEffect(() => {
     const sparkles = [];
     const addSparkle = () => {
