@@ -245,6 +245,42 @@ function FallingPetals() {
   );
 }
 
+/* ─── Falling Sparkles ─── */
+function SparklesFalling() {
+  const ref = useRef(null);
+  useEffect(() => {
+    const sparkles = [];
+    const addSparkle = () => {
+      const el = document.createElement('div');
+      el.style.cssText = `position:fixed;left:${Math.random()*100}%;top:-20px;width:8px;height:8px;background:radial-gradient(circle, #FFD700, #FFA500);borderRadius:50%;pointerEvents:none;zIndex:1000;boxShadow:0 0 8px rgba(255,215,0,0.8);`;
+      document.body.appendChild(el);
+      const duration = 4000 + Math.random() * 2000;
+      const startTime = Date.now();
+      const xStart = Math.random() * window.innerWidth;
+      const animate = () => {
+        const now = Date.now();
+        const progress = (now - startTime) / duration;
+        if (progress > 1) {
+          el.remove();
+          sparkles.splice(sparkles.indexOf(animate), 1);
+          return;
+        }
+        const y = progress * window.innerHeight;
+        const x = xStart + Math.sin(progress * Math.PI * 3) * 40;
+        const opacity = progress < 0.1 ? progress * 10 : progress > 0.9 ? (1 - progress) * 10 : 1;
+        el.style.transform = `translate(${x}px, ${y}px)`;
+        el.style.opacity = opacity;
+        requestAnimationFrame(animate);
+      };
+      sparkles.push(animate);
+      animate();
+    };
+    const interval = setInterval(addSparkle, 300);
+    return () => clearInterval(interval);
+  }, []);
+  return null;
+}
+
 /* ─── Constellations ─── */
 function Constellations() {
   const canvasRef = useRef(null);
@@ -276,6 +312,38 @@ function Constellations() {
     return () => { cancelAnimationFrame(raf); window.removeEventListener('resize', resize); };
   }, []);
   return <canvas ref={canvasRef} style={{ position:'fixed', inset:0, pointerEvents:'none', zIndex:0, opacity:0.7 }} />;
+}
+
+/* ─── Timer Constellation Background ─── */
+function TimerConstellations() {
+  const canvasRef = useRef(null);
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const resize = () => { canvas.width = window.innerWidth; canvas.height = 300; };
+    resize();
+    const nodes = Array.from({ length: 24 }, () => ({ x: Math.random()*window.innerWidth, y: Math.random()*300, r: 6+Math.random()*4, vx: (Math.random()-0.5)*0.12, vy: (Math.random()-0.5)*0.12, pulse: Math.random()*Math.PI*2 }));
+    let raf;
+    const draw = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      nodes.forEach((n) => {
+        n.x+=n.vx; n.y+=n.vy; n.pulse+=0.018;
+        if(n.x<0)n.x=canvas.width; if(n.x>canvas.width)n.x=0;
+        if(n.y<0)n.y=300; if(n.y>300)n.y=0;
+        ctx.beginPath(); ctx.arc(n.x,n.y,n.r,0,Math.PI*2);
+        ctx.fillStyle=`rgba(255,20,147,${0.7+0.3*Math.sin(n.pulse)})`; ctx.fill();
+      });
+      for(let i=0;i<nodes.length;i++) for(let j=i+1;j<nodes.length;j++){
+        const dx=nodes[i].x-nodes[j].x, dy=nodes[i].y-nodes[j].y, dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<150){ctx.beginPath();ctx.moveTo(nodes[i].x,nodes[i].y);ctx.lineTo(nodes[j].x,nodes[j].y);ctx.strokeStyle=`rgba(139,69,19,${0.35*(1-dist/150)})`;ctx.lineWidth=1.5;ctx.stroke();}
+      }
+      raf = requestAnimationFrame(draw);
+    };
+    draw();
+    return () => cancelAnimationFrame(raf);
+  }, []);
+  return <canvas ref={canvasRef} style={{ position:'absolute', inset:0, pointerEvents:'none', zIndex:0 }} />;
 }
 
 /* ─── Flag Cursor ─── */
@@ -370,6 +438,7 @@ export default function TeamUSA() {
   return (
     <div style={{ background:'#fff0f5', minHeight:'100vh', color:'#3a001a' }}>
       <FallingPetals />
+      <SparklesFalling />
       <FlagCursor />
       <Constellations />
       <BackgroundFlowers />
@@ -378,11 +447,16 @@ export default function TeamUSA() {
       <div style={{ position:'relative', zIndex:1 }}><HeroPink /></div>
 
       {/* COUNTDOWN */}
-      <section style={{ ...sec, padding:'6rem 2rem 5rem', textAlign:'center', background:'linear-gradient(180deg,#ffe0ee,#fff0f7)' }}>
-        <span style={label}>Competition Begins</span>
-        <h2 style={{ ...h2, marginBottom:'0.4rem' }}>October 7, 2026</h2>
-        <p style={{ fontFamily:SERIF, color:'#c0406a', marginBottom:'2.5rem', fontWeight:600, fontSize:'1.15rem', fontStyle:'italic' }}>Incheon, South Korea 🇰🇷</p>
-        <Countdown />
+      <section style={{ ...sec, padding:'6rem 2rem 5rem', textAlign:'center', background:'linear-gradient(180deg,#ffe0ee,#fff0f7)', position:'relative', overflow:'hidden' }}>
+        <div style={{ position:'absolute', inset:0, zIndex:0 }}>
+          <TimerConstellations />
+        </div>
+        <div style={{ position:'relative', zIndex:1 }}>
+          <span style={label}>Competition Begins</span>
+          <h2 style={{ ...h2, marginBottom:'0.4rem' }}>October 7, 2026</h2>
+          <p style={{ fontFamily:SERIF, color:'#c0406a', marginBottom:'2.5rem', fontWeight:600, fontSize:'1.15rem', fontStyle:'italic' }}>Incheon, South Korea 🇰🇷</p>
+          <Countdown />
+        </div>
       </section>
 
       {/* ABOUT FGC */}
