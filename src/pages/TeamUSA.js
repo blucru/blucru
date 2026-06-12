@@ -156,159 +156,142 @@ function HeroPink() {
 
 /* ─── Watercolor Cherry Blossom System ─── */
 
-/* Single elegant blossom with layered petals + stamens */
-function Blossom({ cx, cy, r, rot = 0, c1 = '#F9A8C9', c2 = '#F06090', bud = false }) {
-  if (bud) {
-    return (
-      <g transform={`translate(${cx},${cy}) rotate(${rot})`}>
-        <ellipse cx={0} cy={0} rx={r*0.35} ry={r*0.7} fill={c1} opacity="0.9"/>
-        <ellipse cx={0} cy={r*0.1} rx={r*0.22} ry={r*0.5} fill={c2} opacity="0.6"/>
-        <line x1={0} y1={r*0.7} x2={0} y2={r*1.5} stroke="#4A2010" strokeWidth="1.5" opacity="0.7"/>
-      </g>
-    );
-  }
+/* Single 5-petal cherry blossom — petals drawn as bezier teardrops */
+function CherryPetals({ cx, cy, r = 14, rot = 0, opacity = 1 }) {
+  const tip = -r;
+  const wc  = r * 0.52;
+  const p   = `M 0 0 C ${-wc} ${r * -0.12} ${-wc} ${tip * 0.88} 0 ${tip} C ${wc} ${tip * 0.88} ${wc} ${r * -0.12} 0 0`;
   return (
-    <g transform={`translate(${cx},${cy}) rotate(${rot})`}>
-      {/* outer petals - light pink */}
-      {[0,72,144,216,288].map((a) => {
-        const rad = a*Math.PI/180;
-        const px = r*0.72*Math.cos(rad), py = r*0.72*Math.sin(rad);
-        return <ellipse key={a} cx={px} cy={py} rx={r*0.62} ry={r*0.38} transform={`rotate(${a},${px},${py})`} fill={c1} opacity="0.88"/>;
+    <g transform={`translate(${cx},${cy})`} opacity={opacity}>
+      {[0,72,144,216,288].map(a => (
+        <path key={a} d={p} transform={`rotate(${a + rot})`}
+          fill="#FFB8D4" stroke="#F07098" strokeWidth="0.4" opacity="0.88"/>
+      ))}
+      {[0,72,144,216,288].map(a => (
+        <g key={a} transform={`rotate(${a + rot})`}>
+          <ellipse cx={0} cy={tip * 0.48} rx={r * 0.18} ry={r * 0.24} fill="#DC6090" opacity="0.3"/>
+        </g>
+      ))}
+      {[18,90,162,234,306].map(a => {
+        const rad = (a + rot) * Math.PI / 180;
+        const ex = r * 0.42 * Math.sin(rad), ey = -r * 0.42 * Math.cos(rad);
+        return (
+          <g key={a}>
+            <line x1={0} y1={0} x2={ex} y2={ey} stroke="#C45070" strokeWidth="0.7" opacity="0.5"/>
+            <circle cx={ex} cy={ey} r="1.1" fill="#EEC030" opacity="0.92"/>
+          </g>
+        );
       })}
-      {/* inner petal overlay - deeper pink for depth */}
-      {[0,72,144,216,288].map((a) => {
-        const rad = a*Math.PI/180;
-        const px = r*0.32*Math.cos(rad), py = r*0.32*Math.sin(rad);
-        return <ellipse key={a} cx={px} cy={py} rx={r*0.3} ry={r*0.19} transform={`rotate(${a},${px},${py})`} fill={c2} opacity="0.5"/>;
-      })}
-      {/* stamens */}
-      {[0,40,80,120,160,200,240,280,320].map((a) => {
-        const rad = a*Math.PI/180;
-        return <line key={a} x1={0} y1={0} x2={r*0.42*Math.cos(rad)} y2={r*0.42*Math.sin(rad)} stroke="#C0406A" strokeWidth="0.8" opacity="0.55"/>;
-      })}
-      {/* stamen tips */}
-      {[0,40,80,120,160,200,240,280,320].map((a) => {
-        const rad = a*Math.PI/180;
-        return <circle key={a} cx={r*0.42*Math.cos(rad)} cy={r*0.42*Math.sin(rad)} r={1.2} fill="#E8A020" opacity="0.8"/>;
-      })}
-      {/* center */}
-      <circle cx={0} cy={0} r={r*0.2} fill="#FFE066" opacity="0.95"/>
+      <circle r={r * 0.21} fill="#FFE0A0" opacity="0.9"/>
     </g>
   );
 }
 
-/* Multi-layer branch stroke for painted/watercolor look */
-function BranchPath({ d, w = 14 }) {
+/* Small elongated bud with stem */
+function CherryBud({ cx, cy, size = 8, angle = 0 }) {
+  return (
+    <g transform={`translate(${cx},${cy}) rotate(${angle})`}>
+      <line x1={0} y1={size * 0.2} x2={0} y2={size * 1.2} stroke="#6B3A1F" strokeWidth="1.2" opacity="0.7"/>
+      <ellipse cx={0} cy={-size * 0.38} rx={size * 0.32} ry={size * 0.58} fill="#FFB8D4" opacity="0.9"/>
+      <ellipse cx={0} cy={-size * 0.28} rx={size * 0.2} ry={size * 0.38} fill="#E06090" opacity="0.48"/>
+    </g>
+  );
+}
+
+/* Multi-layer warm-brown branch stroke for painted look */
+function Branch({ d, w = 12 }) {
   return (
     <>
-      <path d={d} stroke="#2A0E04" strokeWidth={w} fill="none" strokeLinecap="round" strokeLinejoin="round" opacity="0.92"/>
-      <path d={d} stroke="#4A2010" strokeWidth={w*0.55} fill="none" strokeLinecap="round" strokeLinejoin="round" opacity="0.35"/>
-      <path d={d} stroke="#7A3820" strokeWidth={w*0.18} fill="none" strokeLinecap="round" strokeLinejoin="round" opacity="0.2"/>
+      <path d={d} stroke="#5C2E0A" strokeWidth={w}        fill="none" strokeLinecap="round" strokeLinejoin="round" opacity="0.78"/>
+      <path d={d} stroke="#8B5230" strokeWidth={w * 0.58} fill="none" strokeLinecap="round" strokeLinejoin="round" opacity="0.5"/>
+      <path d={d} stroke="#C49060" strokeWidth={w * 0.22} fill="none" strokeLinecap="round" strokeLinejoin="round" opacity="0.22"/>
     </>
   );
 }
 
-/* Variant A — large sweeping branch, bottom-left origin going up-right */
+/* Variant A — horizontal sweep entering from left, sub-branches rising */
 function BranchA({ flip = false, style = {} }) {
   return (
-    <svg viewBox="0 0 520 620" xmlns="http://www.w3.org/2000/svg"
-      style={{ position:'absolute', width:380, pointerEvents:'none', transform: flip ? 'scaleX(-1)' : 'none', ...style }}>
-      <BranchPath d="M10 610 C50 540 100 470 155 390 C200 320 240 270 280 210 C310 162 325 118 330 60" w={22}/>
-      <BranchPath d="M155 390 C185 355 225 318 265 280 C295 252 320 230 345 200" w={13}/>
-      <BranchPath d="M215 318 C240 290 268 258 290 225 C308 200 318 178 322 150" w={9}/>
-      <BranchPath d="M265 280 C295 258 330 232 360 200 C385 175 400 148 408 115" w={7}/>
-      <BranchPath d="M100 470 C125 445 155 415 180 382" w={10}/>
-      <BranchPath d="M322 150 C340 130 365 108 390 82 C408 62 418 42 422 18" w={5.5}/>
+    <svg viewBox="0 0 500 300" xmlns="http://www.w3.org/2000/svg"
+      style={{ position:'absolute', width:420, pointerEvents:'none', transform: flip ? 'scaleX(-1)' : 'none', ...style }}>
+      <Branch d="M 0 200 C 80 193 175 182 270 170 C 355 159 435 146 500 132" w={22}/>
+      <Branch d="M 200 178 C 210 152 222 122 228 88 C 233 62 234 38 232 8" w={12}/>
+      <Branch d="M 370 155 C 378 128 388 98 394 68 C 398 46 399 26 396 8" w={9}/>
+      <Branch d="M 228 88 C 248 74 270 58 290 38" w={5}/>
 
-      {/* Blossoms along sub-branches */}
-      <Blossom cx={345} cy={200} r={18} rot={15} c1="#FFBBD4" c2="#E8608A"/>
-      <Blossom cx={360} cy={200} r={15} rot={-20} c1="#FFA8C8" c2="#E05080"/>
-      <Blossom cx={330} cy={185} r={14} rot={40} c1="#FFCCE0" c2="#E870A0"/>
-      <Blossom cx={408} cy={115} r={19} rot={-10} c1="#FFB0CC" c2="#E06090"/>
-      <Blossom cx={422} cy={90}  r={16} rot={25} c1="#FFC8DC" c2="#E878A8"/>
-      <Blossom cx={395} cy={105} r={14} rot={-35} c1="#FFAAC6" c2="#D85888"/>
-      <Blossom cx={390} cy={82}  r={13} rot={50} c1="#FFBBD4" c2="#E06898"/>
-      <Blossom cx={422} cy={18}  r={17} rot={5}  c1="#FFB4CC" c2="#E06090"/>
-      <Blossom cx={330} cy={60}  r={20} rot={-15} c1="#FFCCE0" c2="#E870A0"/>
-      <Blossom cx={315} cy={48}  r={15} rot={30} c1="#FFB8D0" c2="#E05888"/>
-      <Blossom cx={345} cy={42}  r={13} rot={-40} c1="#FFCCD8" c2="#DC6898"/>
-      <Blossom cx={322} cy={150} r={16} rot={20} c1="#FFB0CC" c2="#E06090"/>
-      <Blossom cx={308} cy={162} r={14} rot={-25} c1="#FFBBD4" c2="#E87090"/>
-      <Blossom cx={290} cy={225} r={17} rot={10} c1="#FFC0D4" c2="#E06898"/>
-      <Blossom cx={275} cy={238} r={14} rot={-30} c1="#FFAAC2" c2="#D85880"/>
-      <Blossom cx={180} cy={382} r={16} rot={18} c1="#FFB8D0" c2="#E06090"/>
-      <Blossom cx={168} cy={370} r={13} rot={-22} c1="#FFCCD8" c2="#E870A0"/>
-      <Blossom cx={185} cy={395} r={12} rot={45} c1="#FFB0CC" c2="#DC6090"/>
+      <CherryPetals cx={232} cy={8}  r={17} rot={12}/>
+      <CherryPetals cx={216} cy={14} r={14} rot={-28} opacity={0.9}/>
+      <CherryPetals cx={246} cy={5}  r={13} rot={38}  opacity={0.85}/>
+      <CherryBud    cx={238} cy={22} size={9}  angle={-18}/>
+      <CherryBud    cx={222} cy={26} size={8}  angle={32}/>
 
-      {/* Buds */}
-      <Blossom cx={375} cy={192} r={10} rot={-60} c1="#FFB8D0" c2="#D85880" bud/>
-      <Blossom cx={412} cy={128} r={9}  rot={30}  c1="#FFCCE0" c2="#E06898" bud/>
-      <Blossom cx={336} cy={55}  r={9}  rot={-45} c1="#FFB0CC" c2="#DC6090" bud/>
-      <Blossom cx={302} cy={172} r={8}  rot={20}  c1="#FFBBD4" c2="#E06898" bud/>
+      <CherryPetals cx={396} cy={8}  r={16} rot={-10}/>
+      <CherryPetals cx={382} cy={14} r={13} rot={26}  opacity={0.9}/>
+      <CherryBud    cx={404} cy={20} size={8}  angle={-30}/>
+
+      <CherryPetals cx={290} cy={38} r={15} rot={18}  opacity={0.88}/>
+      <CherryPetals cx={276} cy={44} r={12} rot={-22} opacity={0.8}/>
+      <CherryBud    cx={296} cy={30} size={7}  angle={25}/>
+
+      <CherryPetals cx={500} cy={132} r={13} rot={6}  opacity={0.72}/>
+      <CherryBud    cx={485} cy={138} size={7}  angle={-15}/>
     </svg>
   );
 }
 
-/* Variant B — wide horizontal branch spreading across */
+/* Variant B — wide horizontal, for spanning across section tops */
 function BranchB({ flip = false, style = {} }) {
   return (
-    <svg viewBox="0 0 600 340" xmlns="http://www.w3.org/2000/svg"
-      style={{ position:'absolute', width:440, pointerEvents:'none', transform: flip ? 'scaleX(-1)' : 'none', ...style }}>
-      <BranchPath d="M10 180 C80 165 160 148 250 138 C330 128 410 118 500 108 C540 102 570 96 595 88" w={18}/>
-      <BranchPath d="M250 138 C258 110 268 82 272 48 C275 22 274 8 272 0" w={11}/>
-      <BranchPath d="M370 122 C375 95 382 68 388 40 C393 18 396 6 396 0" w={9}/>
-      <BranchPath d="M120 155 C125 128 130 100 132 70 C134 48 133 30 130 12" w={8}/>
-      <BranchPath d="M480 110 C488 88 496 62 500 36 C503 16 503 5 500 0" w={7}/>
-      <BranchPath d="M595 88 C592 62 586 38 578 14" w={6}/>
+    <svg viewBox="0 0 580 220" xmlns="http://www.w3.org/2000/svg"
+      style={{ position:'absolute', width:460, pointerEvents:'none', transform: flip ? 'scaleX(-1)' : 'none', ...style }}>
+      <Branch d="M 0 140 C 100 132 220 122 340 112 C 440 103 520 95 580 88" w={18}/>
+      <Branch d="M 160 128 C 168 106 178 80 182 54 C 185 34 185 16 183 0" w={10}/>
+      <Branch d="M 320 114 C 328 90 338 64 344 38 C 348 18 348 4 346 0" w={8}/>
+      <Branch d="M 480 97 C 486 76 493 52 497 28" w={6}/>
+      <Branch d="M 183 54 C 200 40 220 24 238 8" w={4}/>
 
-      <Blossom cx={272} cy={0}   r={18} rot={10}  c1="#FFBBD4" c2="#E06090"/>
-      <Blossom cx={258} cy={8}   r={15} rot={-25} c1="#FFCCE0" c2="#E870A0"/>
-      <Blossom cx={285} cy={5}   r={13} rot={35}  c1="#FFB0CC" c2="#DC6090"/>
-      <Blossom cx={396} cy={0}   r={17} rot={-12} c1="#FFB8D0" c2="#E06898"/>
-      <Blossom cx={382} cy={8}   r={14} rot={28}  c1="#FFCCD8" c2="#E878A8"/>
-      <Blossom cx={408} cy={5}   r={13} rot={-38} c1="#FFA8C2" c2="#D85880"/>
-      <Blossom cx={130} cy={12}  r={16} rot={8}   c1="#FFBBD4" c2="#E06090"/>
-      <Blossom cx={118} cy={20}  r={13} rot={-30} c1="#FFCCE0" c2="#E870A0"/>
-      <Blossom cx={142} cy={15}  r={12} rot={45}  c1="#FFB0CC" c2="#DC6090"/>
-      <Blossom cx={500} cy={0}   r={16} rot={-5}  c1="#FFB8D0" c2="#E06898"/>
-      <Blossom cx={488} cy={10}  r={13} rot={32}  c1="#FFCCD8" c2="#E878A8"/>
-      <Blossom cx={578} cy={14}  r={15} rot={-18} c1="#FFA8C2" c2="#D85880"/>
-      <Blossom cx={566} cy={22}  r={12} rot={40}  c1="#FFBBD4" c2="#E06898"/>
+      <CherryPetals cx={183} cy={0}  r={16} rot={8}/>
+      <CherryPetals cx={170} cy={6}  r={13} rot={-24} opacity={0.88}/>
+      <CherryPetals cx={196} cy={4}  r={12} rot={36}  opacity={0.82}/>
+      <CherryBud    cx={176} cy={18} size={8} angle={-22}/>
 
-      <Blossom cx={268} cy={22}  r={9} rot={-50} c1="#FFB8D0" c2="#D85880" bud/>
-      <Blossom cx={392} cy={18}  r={8} rot={25}  c1="#FFCCE0" c2="#E06898" bud/>
-      <Blossom cx={126} cy={32}  r={8} rot={-40} c1="#FFB0CC" c2="#DC6090" bud/>
-      <Blossom cx={496} cy={18}  r={7} rot={15}  c1="#FFBBD4" c2="#E06898" bud/>
+      <CherryPetals cx={346} cy={0}  r={15} rot={-14}/>
+      <CherryPetals cx={333} cy={6}  r={13} rot={28}  opacity={0.9}/>
+      <CherryBud    cx={354} cy={12} size={8} angle={-32}/>
+      <CherryBud    cx={338} cy={18} size={7} angle={20}/>
+
+      <CherryPetals cx={238} cy={8}  r={14} rot={22}  opacity={0.85}/>
+      <CherryPetals cx={225} cy={14} r={11} rot={-18} opacity={0.78}/>
+
+      <CherryPetals cx={497} cy={28} r={14} rot={10}  opacity={0.8}/>
+      <CherryBud    cx={504} cy={20} size={7} angle={-28}/>
     </svg>
   );
 }
 
-/* Variant C — compact corner cluster */
+/* Variant C — compact diagonal cluster for corners */
 function BranchC({ flip = false, style = {} }) {
   return (
-    <svg viewBox="0 0 320 380" xmlns="http://www.w3.org/2000/svg"
+    <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg"
       style={{ position:'absolute', width:260, pointerEvents:'none', transform: flip ? 'scaleX(-1)' : 'none', ...style }}>
-      <BranchPath d="M20 370 C55 310 95 255 135 195 C165 148 185 112 195 68 C200 42 200 18 198 0" w={18}/>
-      <BranchPath d="M135 195 C162 175 192 152 218 125 C238 105 252 84 258 58" w={11}/>
-      <BranchPath d="M95 255 C118 235 144 210 165 182" w={8}/>
-      <BranchPath d="M258 58 C268 40 278 22 282 4" w={6}/>
+      <Branch d="M 0 290 C 40 250 85 210 128 168 C 162 135 188 108 205 72 C 215 48 218 26 215 4" w={18}/>
+      <Branch d="M 128 168 C 155 150 185 130 210 106 C 228 88 240 70 245 48" w={10}/>
+      <Branch d="M 205 72 C 222 56 240 38 254 18" w={6}/>
+      <Branch d="M 245 48 C 258 34 268 20 272 4" w={5}/>
 
-      <Blossom cx={198} cy={0}   r={20} rot={8}   c1="#FFBBD4" c2="#E06090"/>
-      <Blossom cx={182} cy={8}   r={16} rot={-28} c1="#FFCCE0" c2="#E870A0"/>
-      <Blossom cx={212} cy={6}   r={14} rot={40}  c1="#FFB0CC" c2="#DC6090"/>
-      <Blossom cx={195} cy={20}  r={13} rot={-45} c1="#FFBBD4" c2="#E06898"/>
-      <Blossom cx={258} cy={58}  r={18} rot={-12} c1="#FFB8D0" c2="#E06898"/>
-      <Blossom cx={245} cy={66}  r={15} rot={25}  c1="#FFCCD8" c2="#E878A8"/>
-      <Blossom cx={272} cy={52}  r={13} rot={-35} c1="#FFA8C2" c2="#D85880"/>
-      <Blossom cx={282} cy={4}   r={16} rot={15}  c1="#FFBBD4" c2="#E06090"/>
-      <Blossom cx={270} cy={12}  r={13} rot={-30} c1="#FFCCE0" c2="#E870A0"/>
-      <Blossom cx={165} cy={182} r={15} rot={20}  c1="#FFB0CC" c2="#DC6090"/>
-      <Blossom cx={152} cy={192} r={12} rot={-25} c1="#FFBBD4" c2="#E06898"/>
-      <Blossom cx={175} cy={175} r={11} rot={42}  c1="#FFB8D0" c2="#E06898"/>
+      <CherryPetals cx={215} cy={4}  r={18} rot={5}/>
+      <CherryPetals cx={200} cy={10} r={15} rot={-30} opacity={0.88}/>
+      <CherryPetals cx={228} cy={8}  r={14} rot={40}  opacity={0.82}/>
+      <CherryBud    cx={210} cy={22} size={10} angle={-15}/>
+      <CherryBud    cx={224} cy={20} size={9}  angle={28}/>
 
-      <Blossom cx={205} cy={14}  r={9} rot={-55} c1="#FFB8D0" c2="#D85880" bud/>
-      <Blossom cx={264} cy={72}  r={8} rot={30}  c1="#FFCCE0" c2="#E06898" bud/>
-      <Blossom cx={278} cy={22}  r={8} rot={-40} c1="#FFB0CC" c2="#DC6090" bud/>
+      <CherryPetals cx={245} cy={48} r={16} rot={-12}/>
+      <CherryPetals cx={232} cy={54} r={13} rot={25}  opacity={0.88}/>
+      <CherryBud    cx={252} cy={40} size={8}  angle={-28}/>
+
+      <CherryPetals cx={254} cy={18} r={14} rot={18}  opacity={0.85}/>
+      <CherryPetals cx={268} cy={4}  r={13} rot={-20} opacity={0.8}/>
+      <CherryBud    cx={260} cy={26} size={7}  angle={22}/>
     </svg>
   );
 }

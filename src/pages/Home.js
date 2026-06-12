@@ -66,7 +66,7 @@ export default function Home() {
           <div className="announcement-banner__track">
             {[...Array(6)].map((_, i) => (
               <span key={i} className="announcement-banner__item">
-                🇺🇸 Blu Cru is Honored to Be FGC Team USA! &nbsp;🌸&nbsp; See you in Seoul, South Korea — October 2026!
+                🇺🇸 Blu Cru is Honored to Be FGC Team USA! &nbsp;🌸&nbsp; See you in Incheon, South Korea — October 2026!
               </span>
             ))}
           </div>
