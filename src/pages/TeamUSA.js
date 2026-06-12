@@ -5,7 +5,7 @@ import useScrollAnimations from '../components/useScrollAnimations';
 const TARGET = new Date('2026-10-07T00:00:00');
 
 const TEAM_MEMBERS = [
-  { name: 'Deven B',   role: 'Tele-Op',       image: '/devenb.png'   },
+  { name: 'Deven B',   role: 'Tele-Op',       images: ['/deven1.jpg','/deven2.png','/deven3.jpg.webp','/deven4.png'] },
   { name: 'Kathy Z',   role: 'Manufacturing', image: '/kathyz.png'   },
   { name: 'Amber W',   role: 'CAD',           images: ['/amber1.jpg','/amber2.jpg','/amber3.jpg','/amber4.jpg'] },
   { name: 'Michael D', role: 'Autonomous',    images: ['/michael1.jpg','/michael2.jpg','/michael3.jpg','/michael4.png'] },
