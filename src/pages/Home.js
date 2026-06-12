@@ -170,8 +170,8 @@ export default function Home() {
                 const isTeamUSA = typeof item === 'object' && item.isTeamUSA;
                 const itemText = typeof item === 'string' ? item : item.text;
                 const itemLink = typeof item === 'object' ? item.link : null;
-                const content = (
-                  <GlowTracker key={i} className="achievement-card" style={isTeamUSA ? { background: 'linear-gradient(160deg, rgba(255,184,210,0.8), rgba(255,150,190,0.6))', border: '2px solid rgba(220,80,130,0.4)' } : {}}>
+                const card = (
+                  <GlowTracker className="achievement-card" style={isTeamUSA ? { background: 'linear-gradient(160deg, rgba(255,184,210,0.8), rgba(255,150,190,0.6))', border: '2px solid rgba(220,80,130,0.4)' } : {}}>
                     <div className="achievement-icon">{isTeamUSA ? '🌸' : '🏆'}</div>
                     <div className="achievement-content">
                       <h4 style={isTeamUSA ? { color: '#c0003c' } : {}}>{group.season}</h4>
@@ -179,7 +179,7 @@ export default function Home() {
                     </div>
                   </GlowTracker>
                 );
-                return itemLink ? <Link key={i} to={itemLink} style={{ textDecoration: 'none' }}>{content}</Link> : content;
+                return itemLink ? <Link key={i} to={itemLink} style={{ textDecoration: 'none' }}>{card}</Link> : <div key={i}>{card}</div>;
               })}
             </div>
           </div>
