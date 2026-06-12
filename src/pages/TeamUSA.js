@@ -131,7 +131,7 @@ function HeroPink() {
         <div style={{ display: 'inline-block', background: 'rgba(255,255,255,0.25)', backdropFilter: 'blur(12px)', border: '1.5px solid rgba(255,255,255,0.5)', borderRadius: 40, padding: '0.5rem 1.6rem', fontFamily: SERIF, fontSize: '1rem', letterSpacing: '2px', color: '#fff', marginBottom: '1.5rem', fontWeight: 700 }}>
           🌸 FIRST GLOBAL CHALLENGE 2026 🌸
         </div>
-        <h1 style={{ fontFamily: SERIF, fontSize: 'clamp(3.5rem, 10vw, 8rem)', fontWeight: 900, lineHeight: 1.05, marginBottom: '1rem', textShadow: '0 4px 24px rgba(180,0,60,0.4)', color: '#fff', letterSpacing: '0.02em' }}>
+        <h1 style={{ fontFamily: SERIF, fontSize: 'clamp(1.8rem, 5vw, 4rem)', fontWeight: 900, lineHeight: 1.1, marginBottom: '1rem', textShadow: '0 4px 24px rgba(180,0,60,0.4)', color: '#fff', letterSpacing: '0.02em', whiteSpace: 'nowrap' }}>
           Team United States of America
         </h1>
         <p style={{ fontFamily: SANS, fontSize: 'clamp(1.1rem, 2.2vw, 1.4rem)', color: 'rgba(255,255,255,0.93)', maxWidth: 620, lineHeight: 1.7, fontWeight: 500, textShadow: '0 2px 8px rgba(0,0,0,0.3)', marginBottom: '1.25rem', fontStyle: 'italic' }}>
@@ -191,7 +191,7 @@ const BG_FLOWERS = [
 
 function BackgroundFlowers() {
   return (
-    <div style={{ position:'fixed', inset:0, pointerEvents:'none', zIndex:0, overflow:'hidden' }}>
+    <div style={{ position:'fixed', inset:0, pointerEvents:'none', zIndex:3, overflow:'hidden' }}>
       {BG_FLOWERS.map((f, i) => {
         const tip = -f.r, wc = f.r * 0.52;
         const p = `M 0 0 C ${-wc} ${f.r * -0.12} ${-wc} ${tip * 0.88} 0 ${tip} C ${wc} ${tip * 0.88} ${wc} ${f.r * -0.12} 0 0`;
@@ -364,7 +364,7 @@ function MentorCard({ mentor }) {
 export default function TeamUSA() {
   useScrollAnimations();
 
-  const sec = { position:'relative', zIndex:1 };
+  const sec = { position:'relative', zIndex:4 };
   const label = { fontFamily: SERIF, fontSize:'0.85rem', letterSpacing:'3px', color:'#c0406a', textTransform:'uppercase', display:'block', marginBottom:'0.5rem', fontWeight:700 };
   const h2 = { fontFamily: SERIF, fontSize:'clamp(2rem, 4vw, 3rem)', fontWeight:800, color:'#7a002e', letterSpacing:'0.01em' };
 
