@@ -131,7 +131,7 @@ function HeroPink() {
         <div style={{ display: 'inline-block', background: 'rgba(255,255,255,0.25)', backdropFilter: 'blur(12px)', border: '1.5px solid rgba(255,255,255,0.5)', borderRadius: 40, padding: '0.5rem 1.6rem', fontFamily: SERIF, fontSize: '1rem', letterSpacing: '2px', color: '#fff', marginBottom: '1.5rem', fontWeight: 700 }}>
           🌸 FIRST GLOBAL CHALLENGE 2026 🌸
         </div>
-        <h1 style={{ fontFamily: SERIF, fontSize: 'clamp(1.8rem, 5vw, 4rem)', fontWeight: 900, lineHeight: 1.1, marginBottom: '1rem', textShadow: '0 4px 24px rgba(180,0,60,0.4)', color: '#fff', letterSpacing: '0.02em', whiteSpace: 'nowrap' }}>
+        <h1 style={{ fontFamily: SERIF, fontSize: 'clamp(2.2rem, 5.5vw, 5rem)', fontWeight: 900, lineHeight: 1.1, marginBottom: '1rem', textShadow: '0 4px 24px rgba(180,0,60,0.4)', color: '#fff', letterSpacing: '0.02em', whiteSpace: 'nowrap' }}>
           Team United States of America
         </h1>
         <p style={{ fontFamily: SANS, fontSize: 'clamp(1.1rem, 2.2vw, 1.4rem)', color: 'rgba(255,255,255,0.93)', maxWidth: 620, lineHeight: 1.7, fontWeight: 500, textShadow: '0 2px 8px rgba(0,0,0,0.3)', marginBottom: '1.25rem', fontStyle: 'italic' }}>
@@ -157,41 +157,37 @@ function HeroPink() {
 /* ─── Background Flower Scatter ─── */
 
 const BG_FLOWERS = [
-  { x:3,  y:4,  r:22, rot:20,  op:0.5  },
-  { x:90, y:3,  r:26, rot:-15, op:0.55 },
-  { x:7,  y:18, r:16, rot:45,  op:0.4  },
-  { x:94, y:20, r:18, rot:-30, op:0.42 },
-  { x:2,  y:38, r:20, rot:10,  op:0.48 },
-  { x:96, y:40, r:16, rot:60,  op:0.4  },
-  { x:5,  y:58, r:18, rot:-20, op:0.45 },
-  { x:93, y:60, r:22, rot:35,  op:0.48 },
-  { x:3,  y:76, r:16, rot:50,  op:0.42 },
-  { x:91, y:78, r:20, rot:-40, op:0.45 },
-  { x:6,  y:92, r:24, rot:25,  op:0.5  },
-  { x:89, y:90, r:18, rot:-55, op:0.45 },
-  { x:22, y:8,  r:13, rot:55,  op:0.35 },
-  { x:76, y:6,  r:15, rot:-40, op:0.38 },
-  { x:38, y:2,  r:12, rot:30,  op:0.32 },
-  { x:60, y:1,  r:14, rot:-50, op:0.35 },
-  { x:18, y:50, r:11, rot:70,  op:0.3  },
-  { x:82, y:48, r:13, rot:-25, op:0.32 },
-  { x:45, y:12, r:16, rot:15,  op:0.38 },
-  { x:28, y:72, r:12, rot:-60, op:0.33 },
-  { x:70, y:70, r:14, rot:40,  op:0.36 },
-  { x:50, y:85, r:15, rot:-15, op:0.4  },
-  { x:55, y:55, r:11, rot:80,  op:0.28 },
-  { x:32, y:30, r:10, rot:-70, op:0.28 },
-  { x:68, y:28, r:12, rot:65,  op:0.3  },
-  { x:14, y:84, r:14, rot:-35, op:0.38 },
-  { x:85, y:85, r:12, rot:20,  op:0.35 },
-  { x:42, y:45, r:10, rot:-45, op:0.25 },
-  { x:75, y:92, r:16, rot:30,  op:0.4  },
-  { x:25, y:95, r:13, rot:-20, op:0.38 },
+  /* left margin */
+  { x:-1, y:5,   r:28, rot:20,  op:0.7 },
+  { x:3,  y:15,  r:20, rot:55,  op:0.6 },
+  { x:-2, y:27,  r:24, rot:-30, op:0.65},
+  { x:4,  y:38,  r:18, rot:40,  op:0.6 },
+  { x:-1, y:50,  r:26, rot:10,  op:0.65},
+  { x:5,  y:62,  r:20, rot:-50, op:0.6 },
+  { x:-2, y:74,  r:24, rot:30,  op:0.65},
+  { x:3,  y:85,  r:18, rot:-20, op:0.6 },
+  { x:-1, y:95,  r:22, rot:60,  op:0.65},
+  { x:7,  y:43,  r:16, rot:-70, op:0.5 },
+  { x:6,  y:8,   r:15, rot:45,  op:0.5 },
+  { x:8,  y:70,  r:14, rot:25,  op:0.5 },
+  /* right margin */
+  { x:94, y:5,   r:28, rot:-20, op:0.7 },
+  { x:90, y:15,  r:20, rot:-55, op:0.6 },
+  { x:95, y:27,  r:24, rot:30,  op:0.65},
+  { x:89, y:38,  r:18, rot:-40, op:0.6 },
+  { x:94, y:50,  r:26, rot:-10, op:0.65},
+  { x:88, y:62,  r:20, rot:50,  op:0.6 },
+  { x:95, y:74,  r:24, rot:-30, op:0.65},
+  { x:90, y:85,  r:18, rot:20,  op:0.6 },
+  { x:94, y:95,  r:22, rot:-60, op:0.65},
+  { x:86, y:43,  r:16, rot:70,  op:0.5 },
+  { x:87, y:8,   r:15, rot:-45, op:0.5 },
+  { x:85, y:70,  r:14, rot:-25, op:0.5 },
 ];
 
 function BackgroundFlowers() {
   return (
-    <div style={{ position:'fixed', inset:0, pointerEvents:'none', zIndex:3, overflow:'hidden' }}>
+    <div style={{ position:'fixed', inset:0, pointerEvents:'none', zIndex:9999, overflow:'hidden' }}>
       {BG_FLOWERS.map((f, i) => {
         const tip = -f.r, wc = f.r * 0.52;
         const p = `M 0 0 C ${-wc} ${f.r * -0.12} ${-wc} ${tip * 0.88} 0 ${tip} C ${wc} ${tip * 0.88} ${wc} ${f.r * -0.12} 0 0`;
