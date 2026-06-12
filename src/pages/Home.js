@@ -22,7 +22,8 @@ const achievements = [
     'Goodall Inspire 1 Winners',
     'Chesapeake Championship Inspire Award Winners',
     'Chesapeake Championship Red Cardinal Alliance 7 Captain',
-    'Qualified for FIRST World Championship'
+    'Qualified for FIRST World Championship',
+    { text: 'Team USA - Selected to represent the USA at the FIRST GLOBAL Challenge', link: '/usa', isTeamUSA: true }
   ]},
   { season: 'INTO THE DEEP 24-25', items: [
     'Worlds Divisional Innovate #3',
@@ -165,15 +166,21 @@ export default function Home() {
               paddingLeft: '0.5rem'
             }}>{group.season}</h3>
             <div className="achievements-grid" style={{ marginBottom: 0 }}>
-              {group.items.map((item, i) => (
-                <GlowTracker key={i} className="achievement-card">
-                  <div className="achievement-icon">🏆</div>
-                  <div className="achievement-content">
-                    <h4>{group.season}</h4>
-                    <p>{item}</p>
-                  </div>
-                </GlowTracker>
-              ))}
+              {group.items.map((item, i) => {
+                const isTeamUSA = typeof item === 'object' && item.isTeamUSA;
+                const itemText = typeof item === 'string' ? item : item.text;
+                const itemLink = typeof item === 'object' ? item.link : null;
+                const content = (
+                  <GlowTracker key={i} className="achievement-card" style={isTeamUSA ? { background: 'linear-gradient(160deg, rgba(255,184,210,0.8), rgba(255,150,190,0.6))', border: '2px solid rgba(220,80,130,0.4)' } : {}}>
+                    <div className="achievement-icon">{isTeamUSA ? '🌸' : '🏆'}</div>
+                    <div className="achievement-content">
+                      <h4 style={isTeamUSA ? { color: '#c0003c' } : {}}>{group.season}</h4>
+                      <p style={isTeamUSA ? { color: '#8B003C', fontWeight: 600 } : {}}>{itemText}</p>
+                    </div>
+                  </GlowTracker>
+                );
+                return itemLink ? <Link key={i} to={itemLink} style={{ textDecoration: 'none' }}>{content}</Link> : content;
+              })}
             </div>
           </div>
         ))}
