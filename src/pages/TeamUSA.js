@@ -154,152 +154,72 @@ function HeroPink() {
   );
 }
 
-/* ─── Watercolor Cherry Blossom System ─── */
+/* ─── Background Flower Scatter ─── */
 
-/* Single 5-petal cherry blossom — petals drawn as bezier teardrops */
-function CherryPetals({ cx, cy, r = 14, rot = 0, opacity = 1 }) {
-  const tip = -r;
-  const wc  = r * 0.52;
-  const p   = `M 0 0 C ${-wc} ${r * -0.12} ${-wc} ${tip * 0.88} 0 ${tip} C ${wc} ${tip * 0.88} ${wc} ${r * -0.12} 0 0`;
+const BG_FLOWERS = [
+  { x:3,  y:4,  r:22, rot:20,  op:0.5  },
+  { x:90, y:3,  r:26, rot:-15, op:0.55 },
+  { x:7,  y:18, r:16, rot:45,  op:0.4  },
+  { x:94, y:20, r:18, rot:-30, op:0.42 },
+  { x:2,  y:38, r:20, rot:10,  op:0.48 },
+  { x:96, y:40, r:16, rot:60,  op:0.4  },
+  { x:5,  y:58, r:18, rot:-20, op:0.45 },
+  { x:93, y:60, r:22, rot:35,  op:0.48 },
+  { x:3,  y:76, r:16, rot:50,  op:0.42 },
+  { x:91, y:78, r:20, rot:-40, op:0.45 },
+  { x:6,  y:92, r:24, rot:25,  op:0.5  },
+  { x:89, y:90, r:18, rot:-55, op:0.45 },
+  { x:22, y:8,  r:13, rot:55,  op:0.35 },
+  { x:76, y:6,  r:15, rot:-40, op:0.38 },
+  { x:38, y:2,  r:12, rot:30,  op:0.32 },
+  { x:60, y:1,  r:14, rot:-50, op:0.35 },
+  { x:18, y:50, r:11, rot:70,  op:0.3  },
+  { x:82, y:48, r:13, rot:-25, op:0.32 },
+  { x:45, y:12, r:16, rot:15,  op:0.38 },
+  { x:28, y:72, r:12, rot:-60, op:0.33 },
+  { x:70, y:70, r:14, rot:40,  op:0.36 },
+  { x:50, y:85, r:15, rot:-15, op:0.4  },
+  { x:55, y:55, r:11, rot:80,  op:0.28 },
+  { x:32, y:30, r:10, rot:-70, op:0.28 },
+  { x:68, y:28, r:12, rot:65,  op:0.3  },
+  { x:14, y:84, r:14, rot:-35, op:0.38 },
+  { x:85, y:85, r:12, rot:20,  op:0.35 },
+  { x:42, y:45, r:10, rot:-45, op:0.25 },
+  { x:75, y:92, r:16, rot:30,  op:0.4  },
+  { x:25, y:95, r:13, rot:-20, op:0.38 },
+];
+
+function BackgroundFlowers() {
   return (
-    <g transform={`translate(${cx},${cy})`} opacity={opacity}>
-      {[0,72,144,216,288].map(a => (
-        <path key={a} d={p} transform={`rotate(${a + rot})`}
-          fill="#FFB8D4" stroke="#F07098" strokeWidth="0.4" opacity="0.88"/>
-      ))}
-      {[0,72,144,216,288].map(a => (
-        <g key={a} transform={`rotate(${a + rot})`}>
-          <ellipse cx={0} cy={tip * 0.48} rx={r * 0.18} ry={r * 0.24} fill="#DC6090" opacity="0.3"/>
-        </g>
-      ))}
-      {[18,90,162,234,306].map(a => {
-        const rad = (a + rot) * Math.PI / 180;
-        const ex = r * 0.42 * Math.sin(rad), ey = -r * 0.42 * Math.cos(rad);
+    <div style={{ position:'fixed', inset:0, pointerEvents:'none', zIndex:0, overflow:'hidden' }}>
+      {BG_FLOWERS.map((f, i) => {
+        const tip = -f.r, wc = f.r * 0.52;
+        const p = `M 0 0 C ${-wc} ${f.r * -0.12} ${-wc} ${tip * 0.88} 0 ${tip} C ${wc} ${tip * 0.88} ${wc} ${f.r * -0.12} 0 0`;
+        const cx = f.r * 1.6, cy = f.r * 1.6;
         return (
-          <g key={a}>
-            <line x1={0} y1={0} x2={ex} y2={ey} stroke="#C45070" strokeWidth="0.7" opacity="0.5"/>
-            <circle cx={ex} cy={ey} r="1.1" fill="#EEC030" opacity="0.92"/>
-          </g>
+          <div key={i} style={{ position:'absolute', left:`${f.x}%`, top:`${f.y}%`, opacity:f.op }}>
+            <svg width={f.r * 3.2} height={f.r * 3.2} viewBox={`0 0 ${f.r * 3.2} ${f.r * 3.2}`} xmlns="http://www.w3.org/2000/svg">
+              <g transform={`translate(${cx},${cy})`}>
+                {[0,72,144,216,288].map(a => (
+                  <path key={a} d={p} transform={`rotate(${a + f.rot})`} fill="#FFB8D4" stroke="#F07098" strokeWidth="0.5" opacity="0.88"/>
+                ))}
+                {[18,90,162,234,306].map(a => {
+                  const rad = (a + f.rot) * Math.PI / 180;
+                  return (
+                    <g key={a}>
+                      <line x1={0} y1={0} x2={f.r*0.42*Math.sin(rad)} y2={-f.r*0.42*Math.cos(rad)} stroke="#C45070" strokeWidth="0.7" opacity="0.5"/>
+                      <circle cx={f.r*0.44*Math.sin(rad)} cy={-f.r*0.44*Math.cos(rad)} r="1.2" fill="#EEC030" opacity="0.9"/>
+                    </g>
+                  );
+                })}
+                <circle r={f.r * 0.21} fill="#FFE0A0" opacity="0.9"/>
+              </g>
+            </svg>
+          </div>
         );
       })}
-      <circle r={r * 0.21} fill="#FFE0A0" opacity="0.9"/>
-    </g>
+    </div>
   );
-}
-
-/* Small elongated bud with stem */
-function CherryBud({ cx, cy, size = 8, angle = 0 }) {
-  return (
-    <g transform={`translate(${cx},${cy}) rotate(${angle})`}>
-      <line x1={0} y1={size * 0.2} x2={0} y2={size * 1.2} stroke="#6B3A1F" strokeWidth="1.2" opacity="0.7"/>
-      <ellipse cx={0} cy={-size * 0.38} rx={size * 0.32} ry={size * 0.58} fill="#FFB8D4" opacity="0.9"/>
-      <ellipse cx={0} cy={-size * 0.28} rx={size * 0.2} ry={size * 0.38} fill="#E06090" opacity="0.48"/>
-    </g>
-  );
-}
-
-/* Multi-layer warm-brown branch stroke for painted look */
-function Branch({ d, w = 12 }) {
-  return (
-    <>
-      <path d={d} stroke="#5C2E0A" strokeWidth={w}        fill="none" strokeLinecap="round" strokeLinejoin="round" opacity="0.78"/>
-      <path d={d} stroke="#8B5230" strokeWidth={w * 0.58} fill="none" strokeLinecap="round" strokeLinejoin="round" opacity="0.5"/>
-      <path d={d} stroke="#C49060" strokeWidth={w * 0.22} fill="none" strokeLinecap="round" strokeLinejoin="round" opacity="0.22"/>
-    </>
-  );
-}
-
-/* Variant A — horizontal sweep entering from left, sub-branches rising */
-function BranchA({ flip = false, style = {} }) {
-  return (
-    <svg viewBox="0 0 500 300" xmlns="http://www.w3.org/2000/svg"
-      style={{ position:'absolute', width:420, pointerEvents:'none', transform: flip ? 'scaleX(-1)' : 'none', ...style }}>
-      <Branch d="M 0 200 C 80 193 175 182 270 170 C 355 159 435 146 500 132" w={22}/>
-      <Branch d="M 200 178 C 210 152 222 122 228 88 C 233 62 234 38 232 8" w={12}/>
-      <Branch d="M 370 155 C 378 128 388 98 394 68 C 398 46 399 26 396 8" w={9}/>
-      <Branch d="M 228 88 C 248 74 270 58 290 38" w={5}/>
-
-      <CherryPetals cx={232} cy={8}  r={17} rot={12}/>
-      <CherryPetals cx={216} cy={14} r={14} rot={-28} opacity={0.9}/>
-      <CherryPetals cx={246} cy={5}  r={13} rot={38}  opacity={0.85}/>
-      <CherryBud    cx={238} cy={22} size={9}  angle={-18}/>
-      <CherryBud    cx={222} cy={26} size={8}  angle={32}/>
-
-      <CherryPetals cx={396} cy={8}  r={16} rot={-10}/>
-      <CherryPetals cx={382} cy={14} r={13} rot={26}  opacity={0.9}/>
-      <CherryBud    cx={404} cy={20} size={8}  angle={-30}/>
-
-      <CherryPetals cx={290} cy={38} r={15} rot={18}  opacity={0.88}/>
-      <CherryPetals cx={276} cy={44} r={12} rot={-22} opacity={0.8}/>
-      <CherryBud    cx={296} cy={30} size={7}  angle={25}/>
-
-      <CherryPetals cx={500} cy={132} r={13} rot={6}  opacity={0.72}/>
-      <CherryBud    cx={485} cy={138} size={7}  angle={-15}/>
-    </svg>
-  );
-}
-
-/* Variant B — wide horizontal, for spanning across section tops */
-function BranchB({ flip = false, style = {} }) {
-  return (
-    <svg viewBox="0 0 580 220" xmlns="http://www.w3.org/2000/svg"
-      style={{ position:'absolute', width:460, pointerEvents:'none', transform: flip ? 'scaleX(-1)' : 'none', ...style }}>
-      <Branch d="M 0 140 C 100 132 220 122 340 112 C 440 103 520 95 580 88" w={18}/>
-      <Branch d="M 160 128 C 168 106 178 80 182 54 C 185 34 185 16 183 0" w={10}/>
-      <Branch d="M 320 114 C 328 90 338 64 344 38 C 348 18 348 4 346 0" w={8}/>
-      <Branch d="M 480 97 C 486 76 493 52 497 28" w={6}/>
-      <Branch d="M 183 54 C 200 40 220 24 238 8" w={4}/>
-
-      <CherryPetals cx={183} cy={0}  r={16} rot={8}/>
-      <CherryPetals cx={170} cy={6}  r={13} rot={-24} opacity={0.88}/>
-      <CherryPetals cx={196} cy={4}  r={12} rot={36}  opacity={0.82}/>
-      <CherryBud    cx={176} cy={18} size={8} angle={-22}/>
-
-      <CherryPetals cx={346} cy={0}  r={15} rot={-14}/>
-      <CherryPetals cx={333} cy={6}  r={13} rot={28}  opacity={0.9}/>
-      <CherryBud    cx={354} cy={12} size={8} angle={-32}/>
-      <CherryBud    cx={338} cy={18} size={7} angle={20}/>
-
-      <CherryPetals cx={238} cy={8}  r={14} rot={22}  opacity={0.85}/>
-      <CherryPetals cx={225} cy={14} r={11} rot={-18} opacity={0.78}/>
-
-      <CherryPetals cx={497} cy={28} r={14} rot={10}  opacity={0.8}/>
-      <CherryBud    cx={504} cy={20} size={7} angle={-28}/>
-    </svg>
-  );
-}
-
-/* Variant C — compact diagonal cluster for corners */
-function BranchC({ flip = false, style = {} }) {
-  return (
-    <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg"
-      style={{ position:'absolute', width:260, pointerEvents:'none', transform: flip ? 'scaleX(-1)' : 'none', ...style }}>
-      <Branch d="M 0 290 C 40 250 85 210 128 168 C 162 135 188 108 205 72 C 215 48 218 26 215 4" w={18}/>
-      <Branch d="M 128 168 C 155 150 185 130 210 106 C 228 88 240 70 245 48" w={10}/>
-      <Branch d="M 205 72 C 222 56 240 38 254 18" w={6}/>
-      <Branch d="M 245 48 C 258 34 268 20 272 4" w={5}/>
-
-      <CherryPetals cx={215} cy={4}  r={18} rot={5}/>
-      <CherryPetals cx={200} cy={10} r={15} rot={-30} opacity={0.88}/>
-      <CherryPetals cx={228} cy={8}  r={14} rot={40}  opacity={0.82}/>
-      <CherryBud    cx={210} cy={22} size={10} angle={-15}/>
-      <CherryBud    cx={224} cy={20} size={9}  angle={28}/>
-
-      <CherryPetals cx={245} cy={48} r={16} rot={-12}/>
-      <CherryPetals cx={232} cy={54} r={13} rot={25}  opacity={0.88}/>
-      <CherryBud    cx={252} cy={40} size={8}  angle={-28}/>
-
-      <CherryPetals cx={254} cy={18} r={14} rot={18}  opacity={0.85}/>
-      <CherryPetals cx={268} cy={4}  r={13} rot={-20} opacity={0.8}/>
-      <CherryBud    cx={260} cy={26} size={7}  angle={22}/>
-    </svg>
-  );
-}
-
-function BlossomBranch({ flip = false, style = {}, variant = 'a' }) {
-  if (variant === 'b') return <BranchB flip={flip} style={style}/>;
-  if (variant === 'c') return <BranchC flip={flip} style={style}/>;
-  return <BranchA flip={flip} style={style}/>;
 }
 
 /* ─── Falling Petals ─── */
@@ -453,21 +373,13 @@ export default function TeamUSA() {
       <FallingPetals />
       <FlagCursor />
       <Constellations />
+      <BackgroundFlowers />
 
       {/* HERO */}
       <div style={{ position:'relative', zIndex:1 }}><HeroPink /></div>
 
-      {/* Large branches flanking the top of page content */}
-      <div style={{ position:'relative', height:0, overflow:'visible' }}>
-        <BlossomBranch style={{ top:-60, left:-20, zIndex:2, opacity:0.95 }}/>
-        <BlossomBranch flip style={{ top:-60, right:-20, zIndex:2, opacity:0.95 }}/>
-      </div>
-
       {/* COUNTDOWN */}
-      <section style={{ ...sec, padding:'6rem 2rem 5rem', textAlign:'center', background:'linear-gradient(180deg,#ffe0ee,#fff0f7)', overflow:'visible' }}>
-        {/* horizontal branch sweeping across top of section */}
-        <BlossomBranch variant="b" style={{ top:-30, left:'50%', transform:'translateX(-55%)', zIndex:2, opacity:0.85 }}/>
-        <BlossomBranch variant="b" flip style={{ top:-30, right:'-10%', zIndex:2, opacity:0.75 }}/>
+      <section style={{ ...sec, padding:'6rem 2rem 5rem', textAlign:'center', background:'linear-gradient(180deg,#ffe0ee,#fff0f7)' }}>
         <span style={label}>Competition Begins</span>
         <h2 style={{ ...h2, marginBottom:'0.4rem' }}>October 7, 2026</h2>
         <p style={{ fontFamily:SERIF, color:'#c0406a', marginBottom:'2.5rem', fontWeight:600, fontSize:'1.15rem', fontStyle:'italic' }}>Incheon, South Korea 🇰🇷</p>
@@ -475,10 +387,7 @@ export default function TeamUSA() {
       </section>
 
       {/* ABOUT FGC */}
-      <section style={{ ...sec, padding:'5rem 2rem', background:'linear-gradient(180deg,#fff0f7,#ffe8f2)', overflow:'visible' }}>
-        {/* Corner branches */}
-        <BlossomBranch variant="c" style={{ top:-40, left:-20, zIndex:2, opacity:0.9 }}/>
-        <BlossomBranch variant="c" flip style={{ top:-40, right:-20, zIndex:2, opacity:0.9 }}/>
+      <section style={{ ...sec, padding:'5rem 2rem', background:'linear-gradient(180deg,#fff0f7,#ffe8f2)' }}>
         <div style={{ maxWidth:1100, margin:'0 auto' }}>
           <div style={{ textAlign:'center', marginBottom:'3rem' }}>
             <span style={label}>The Competition</span>
@@ -501,10 +410,7 @@ export default function TeamUSA() {
       </section>
 
       {/* TEAM MEMBERS */}
-      <section style={{ ...sec, padding:'5rem 2rem', background:'linear-gradient(180deg,#ffe8f2,#ffd6e8)', overflow:'visible' }}>
-        {/* Large branch on left side going deep into section */}
-        <BlossomBranch style={{ top:-80, left:-30, zIndex:2, opacity:0.92, width:400 }}/>
-        <BlossomBranch flip style={{ bottom:-60, right:-30, zIndex:2, opacity:0.85, width:340 }}/>
+      <section style={{ ...sec, padding:'5rem 2rem', background:'linear-gradient(180deg,#ffe8f2,#ffd6e8)' }}>
         <div style={{ maxWidth:1200, margin:'0 auto', position:'relative', zIndex:1 }}>
           <div style={{ textAlign:'center', marginBottom:'3rem' }}>
             <span style={label}>The Roster</span>
@@ -517,9 +423,7 @@ export default function TeamUSA() {
       </section>
 
       {/* MENTORS */}
-      <section style={{ ...sec, padding:'5rem 2rem', background:'linear-gradient(180deg,#ffd6e8,#ffcce0)', overflow:'visible' }}>
-        <BlossomBranch variant="b" style={{ top:-25, left:'-5%', zIndex:2, opacity:0.8 }}/>
-        <BlossomBranch variant="c" flip style={{ top:-30, right:-20, zIndex:2, opacity:0.88 }}/>
+      <section style={{ ...sec, padding:'5rem 2rem', background:'linear-gradient(180deg,#ffd6e8,#ffcce0)' }}>
         <div style={{ maxWidth:1100, margin:'0 auto', position:'relative', zIndex:1 }}>
           <div style={{ textAlign:'center', marginBottom:'3rem' }}>
             <span style={label}>Our Guides</span>
@@ -532,9 +436,7 @@ export default function TeamUSA() {
       </section>
 
       {/* TEAM BIO */}
-      <section style={{ ...sec, padding:'5rem 2rem', background:'linear-gradient(180deg,#ffcce0,#ffbcd6)', overflow:'visible' }}>
-        <BlossomBranch style={{ top:-60, left:-20, zIndex:2, opacity:0.9, width:360 }}/>
-        <BlossomBranch flip style={{ top:-60, right:-20, zIndex:2, opacity:0.9, width:360 }}/>
+      <section style={{ ...sec, padding:'5rem 2rem', background:'linear-gradient(180deg,#ffcce0,#ffbcd6)' }}>
         <div style={{ maxWidth:860, margin:'0 auto', textAlign:'center', position:'relative', zIndex:1 }}>
           <span style={label}>Our Story</span>
           <h2 style={{ ...h2, marginBottom:'2rem' }}>Blu Cru Goes Global 🌏</h2>
