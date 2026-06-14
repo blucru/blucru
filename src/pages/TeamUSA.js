@@ -544,8 +544,11 @@ export default function TeamUSA() {
       <section style={{ ...sec, padding:'5rem 2rem', background:'linear-gradient(180deg,#ffd6e8,#ffcce0)' }}>
         <div style={{ maxWidth:1100, margin:'0 auto', position:'relative', zIndex:1 }}>
           <div style={{ textAlign:'center', marginBottom:'3rem' }}>
-            <span style={label}>Our Guides</span>
-            <h2 style={h2}>Mentors</h2>
+            <span style={label}>Thank You to the Class of 2026!</span>
+            <h2 style={h2}>Alumni Mentors</h2>
+            <p style={{ fontFamily: SANS, fontSize:'1rem', color:'#8B003C', marginTop:'1rem', fontStyle:'italic', maxWidth:700, margin:'1rem auto 0' }}>
+              These amazing mentors were part of the Blu Cru team for the DECODE season and continue to guide us as we head to FIRST GLOBAL.
+            </p>
           </div>
           <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(240px, 1fr))', gap:'1.75rem' }}>
             {MENTORS.map((m) => <MentorCard key={m.name} mentor={m}/>)}
