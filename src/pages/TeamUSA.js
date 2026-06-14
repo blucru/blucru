@@ -5,11 +5,11 @@ import useScrollAnimations from '../components/useScrollAnimations';
 const TARGET = new Date('2026-10-07T00:00:00');
 
 const TEAM_MEMBERS = [
-  { name: 'Deven B',   role: 'Tele-Op',       images: ['/deven1.jpg','/deven2.png','/deven3.jpg.webp','/deven4.png'] },
+  { name: 'Deven B',   role: 'Tele-Op',       images: ['/deven1.jpg','/deven2.png','/deven3.jpg.webp','/deven4.png'], bio: "I'm Deven (nickname: Devalev), a junior in Montgomery Blair High School in Silver Spring, Maryland (just north of Washington DC). I'm looking forward to coding our FGC bot and meeting everyone in October! Outside robotics I enjoy brawl stars, playing the marimba, and watching Formula 1. Can't wait to see y'all in Korea!" },
   { name: 'Kathy Z',   role: 'Manufacturing', image: '/kathyz.png'   },
   { name: 'Amber W',   role: 'CAD',           images: ['/amber1.jpg','/amber2.jpg','/amber3.jpg','/amber4.jpg'] },
   { name: 'Michael D', role: 'Autonomous',    images: ['/michael1.jpg','/michael2.jpg','/michael3.jpg','/michael4.png'] },
-  { name: 'Michael J', role: 'CAD',           image: '/michaelj.png' },
+  { name: 'Michael J', role: 'CAD',           images: ['/mmj1.png','/mmj2.png','/mmj3.png','/mmj4.png'] },
   { name: 'Thomas Y',  role: 'Electrical',    image: '/thomasy.png'  },
 ];
 
@@ -436,10 +436,16 @@ function MemberCard({ member }) {
           );
         })}
       </div>
-      <div style={{ background:'rgba(255,180,210,0.15)', borderRadius:10, padding:'0.9rem', border:'1px dashed rgba(220,80,130,0.22)' }}>
-        {[1,2,3,4].map((n) => (
-          <div key={n} style={{ height:9, borderRadius:4, background:'rgba(200,50,100,0.13)', marginBottom:n<4?'0.55rem':0, width:n===4?'55%':'100%' }}/>
-        ))}
+      <div style={{ background:'rgba(255,180,210,0.15)', borderRadius:10, padding:'0.9rem', border:'1px dashed rgba(220,80,130,0.22)', minHeight:'80px' }}>
+        {member.bio ? (
+          <p style={{ fontFamily: SANS, fontSize:'0.95rem', color:'#6a2040', lineHeight:1.6, margin:0, fontStyle:'italic' }}>{member.bio}</p>
+        ) : (
+          <>
+            {[1,2,3,4].map((n) => (
+              <div key={n} style={{ height:9, borderRadius:4, background:'rgba(200,50,100,0.13)', marginBottom:n<4?'0.55rem':0, width:n===4?'55%':'100%' }}/>
+            ))}
+          </>
+        )}
       </div>
     </GlowTracker>
   );
