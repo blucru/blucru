@@ -182,11 +182,6 @@ function HeroPink() {
         <p style={{ fontFamily: SANS, fontSize: 'clamp(1.1rem, 2.2vw, 1.4rem)', color: 'rgba(255,255,255,0.93)', maxWidth: 620, lineHeight: 1.7, fontWeight: 500, textShadow: '0 2px 8px rgba(0,0,0,0.3)', marginBottom: '1.25rem', fontStyle: 'italic' }}>
           Representing 5,000+ USA teams at the FIRST Global Challenge in Incheon, South Korea this October 2026.
         </p>
-        <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-          {['🌸 DC Region', '🤖 FTC #6417', '🇰🇷 Incheon 2026', '🏆 Goodall Inspire 1'].map((t) => (
-            <span key={t} style={{ fontFamily: SERIF, background: 'rgba(255,255,255,0.22)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255,255,255,0.4)', borderRadius: 20, padding: '0.4rem 1rem', fontSize: '0.95rem', color: '#fff', fontWeight: 600 }}>{t}</span>
-          ))}
-        </div>
       </div>
 
       <div style={{ position: 'absolute', bottom: '2rem', left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: '0.5rem', zIndex: 3 }}>
