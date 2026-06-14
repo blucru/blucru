@@ -547,7 +547,7 @@ export default function TeamUSA() {
             <span style={label}>Thank You to the Class of 2026!</span>
             <h2 style={h2}>Alumni Mentors</h2>
             <p style={{ fontFamily: SANS, fontSize:'1rem', color:'#8B003C', marginTop:'1rem', fontStyle:'italic', maxWidth:700, margin:'1rem auto 0' }}>
-              These amazing mentors were part of the Blu Cru team for the DECODE season and continue to guide us as we head to FIRST GLOBAL.
+              These (now) mentors were part of Blu Cru for the DECODE season and are returning as mentors for FIRST GLOBAL, BioBuzz, and beyond!
             </p>
           </div>
           <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(240px, 1fr))', gap:'1.75rem' }}>
