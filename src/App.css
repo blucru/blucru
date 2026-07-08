@@ -463,6 +463,12 @@ main {
   animation: gradientSlide 4s linear infinite;
 }
 
+/* Green Gang page — optional custom image cursor.
+   The cursor is applied inline in GreenGang.js, NOT here: webpack's css-loader
+   resolves url() paths at build time and would fail on a missing file. GreenGang.js
+   probes public/greengangcursor.png and only sets the cursor when it actually
+   loads, so the image is fully optional. Keep it small (~32x32, max 128px). */
+
 /* Green Gang page — override divider to green/yellow gradient */
 .green-gang-page .section-dark::before,
 .green-gang-page .achievements-section::before {
@@ -859,6 +865,35 @@ main {
 .team-member-role {
   font-size: 0.8rem;
   color: var(--gray-400);
+}
+
+/* Captain highlight — gold ring + glow around the profile picture,
+   more specific than .team-member-photo.green so it wins the cascade. */
+.team-member.captain .team-member-photo {
+  border-color: #fde68a;
+  background: linear-gradient(135deg, #fef08a, #f5c200, #ca8a04);
+  box-shadow: 0 0 16px rgba(245, 194, 0, 0.45), 0 0 34px rgba(245, 194, 0, 0.2);
+}
+
+.team-member.captain:hover .team-member-photo {
+  box-shadow: 0 0 24px rgba(245, 194, 0, 0.6), 0 0 48px rgba(245, 194, 0, 0.3);
+}
+
+/* "Captain" pill under the photo (centered via the card's text-align: center) */
+.captain-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-bottom: 0.4rem;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #3f2d00;
+  background: linear-gradient(135deg, #fde68a, #f5c200);
+  box-shadow: 0 2px 8px rgba(245, 194, 0, 0.35);
 }
 
 /* ===================== COACHES PAGE ===================== */
