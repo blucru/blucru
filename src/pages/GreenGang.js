@@ -5,11 +5,11 @@ import GlowTracker from '../components/GlowTracker';
 import useScrollAnimations from '../components/useScrollAnimations';
 
 const heroSlides = [
-  { image: "/tuffstuff.png"},
   { image: "/gg.png" },
+  { image: "/tuffstuff.png"},
   { image: "/greengangworkings.png"},
-  { image: "/greengangawards.png"},
-  { image: "/michianaGreenGangITD.jpg"}
+  { image: "/michianaGreenGangITD.jpg"},
+  { image: "/greengangawards.png"}
 ];
 
 const achievements = [
@@ -114,6 +114,42 @@ function RobotPhoto({ src, name }) {
   );
 }
 
+// "Slow and steady wins the race" — a turtle crawls along the bottom edge of
+// the screen to show scroll progress, trailing a glowing green track.
+function TurtleProgress() {
+  const trackRef = useRef(null);
+  const turtleRef = useRef(null);
+
+  useEffect(() => {
+    let raf = null;
+    const update = () => {
+      raf = null;
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+      if (trackRef.current) trackRef.current.style.width = `${p * 100}%`;
+      if (turtleRef.current) turtleRef.current.style.left = `calc(${p * 100}% - ${p * 34}px)`;
+    };
+    const onScroll = () => { if (raf == null) raf = requestAnimationFrame(update); };
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      if (raf != null) cancelAnimationFrame(raf);
+    };
+  }, []);
+
+  return (
+    <div style={{ position: 'fixed', left: 0, right: 0, bottom: 0, zIndex: 9999, pointerEvents: 'none' }}>
+      {/* scaleX(-1) flips the emoji to face its direction of travel */}
+      <style>{`@keyframes ggWaddle{0%,100%{transform:scaleX(-1) rotate(-6deg)}50%{transform:scaleX(-1) rotate(6deg)}}`}</style>
+      <div ref={turtleRef} style={{ position: 'absolute', bottom: 3, left: 0, fontSize: 24, lineHeight: 1, animation: 'ggWaddle 0.9s ease-in-out infinite', filter: 'drop-shadow(0 0 6px rgba(34,197,94,0.6))' }}>🐢</div>
+      <div ref={trackRef} style={{ height: 4, width: '0%', background: 'linear-gradient(90deg, #14532d, #22c55e, #86efac)', boxShadow: '0 0 10px rgba(34,197,94,0.5)', borderRadius: '0 2px 2px 0' }} />
+    </div>
+  );
+}
+
 // Green Gang custom cursor: an image that trails the pointer (like Team USA's flag).
 // Optional — only renders if public/greengangcursor.png exists.
 function GreenGangCursor() {
@@ -164,6 +200,7 @@ export default function GreenGang() {
   return (
     <div className="green-gang-page">
       <GreenGangCursor />
+      <TurtleProgress />
       <HeroSlideshow
         slides={heroSlides}
         variant="green"
@@ -255,7 +292,6 @@ export default function GreenGang() {
                 <GlowTracker key={i} className="achievement-card green-theme" color="green">
                   <div className="achievement-icon">🏆</div>
                   <div className="achievement-content">
-                    <h4 className="green">{group.season}</h4>
                     <p>{item}</p>
                   </div>
                 </GlowTracker>

@@ -485,6 +485,91 @@ main {
   background: linear-gradient(90deg, #86efac, #22c55e, #f5c200);
 }
 
+/* ===================== GREEN GANG PAGE THEME =====================
+   The Green Gang page lives in its own "firefly forest" world: deep
+   forest-green backgrounds instead of the site's navy, a shimmering
+   hero title, pill section labels, and hexagonal turtle-shell roster
+   photos. Everything is scoped to .green-gang-page; the fireflies and
+   turtle scroll bar are components in GreenGang.js. */
+
+.green-gang-page {
+  background: var(--green-dark);
+}
+
+.green-gang-page .section-dark {
+  background: linear-gradient(180deg, #07170e 0%, #05120a 100%);
+}
+
+.green-gang-page .achievements-section {
+  background: #040e08;
+}
+
+/* Hero fades into the forest, not the navy */
+.green-gang-page .hero::after {
+  background: linear-gradient(to bottom, transparent 0%, #07170e 100%);
+}
+
+.green-gang-page .hero-title {
+  text-shadow: 0 0 30px rgba(34, 197, 94, 0.35), 0 0 60px rgba(245, 194, 0, 0.08);
+}
+
+/* Shimmering green-gold sweep across the GREEN GANG title */
+.green-gang-page .hero-title .highlight-green {
+  background: linear-gradient(120deg, #86efac, #22c55e, #f5c200, #22c55e, #86efac);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: ggShimmer 6s linear infinite;
+}
+
+@keyframes ggShimmer {
+  0% { background-position: 0% 0; }
+  100% { background-position: 300% 0; }
+}
+
+/* Award cards hold a single line of text (the season heading above the
+   grid replaces the per-card h4), so the award itself gets headline
+   treatment and centers against the trophy icon. */
+.green-gang-page .achievement-card {
+  align-items: center;
+}
+
+.green-gang-page .achievement-content p {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--gray-100);
+}
+
+/* Section labels become pills, echoing the hero badge */
+.green-gang-page .section-label.green {
+  padding: 0.35rem 1.1rem;
+  background: rgba(34, 197, 94, 0.08);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  border-radius: 50px;
+}
+
+/* Turtle-shell roster: hexagonal scute photos instead of circles. The
+   3px padding ring still shows because clip-path applies to the outer
+   div and the inset img/placeholder separately. */
+.green-gang-page .team-member-photo,
+.green-gang-page .team-member-photo img,
+.green-gang-page .team-member-photo .placeholder-avatar {
+  clip-path: polygon(50% 0%, 93.3% 25%, 93.3% 75%, 50% 100%, 6.7% 75%, 6.7% 25%);
+  border-radius: 0;
+}
+
+/* clip-path clips box-shadow, so the captain glow becomes a drop-shadow
+   filter, which follows the hexagon shape. */
+.green-gang-page .team-member.captain .team-member-photo {
+  box-shadow: none;
+  filter: drop-shadow(0 0 10px rgba(34, 197, 94, 0.55));
+}
+
+.green-gang-page .team-member.captain:hover .team-member-photo {
+  box-shadow: none;
+  filter: drop-shadow(0 0 16px rgba(34, 197, 94, 0.8));
+}
+
 /* ===================== SECTIONS ===================== */
 .section {
   padding: 5rem 2rem;
