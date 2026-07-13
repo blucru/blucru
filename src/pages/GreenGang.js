@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import HeroSlideshow from '../components/HeroSlideshow';
 import GlowTracker from '../components/GlowTracker';
@@ -7,9 +7,9 @@ import useScrollAnimations from '../components/useScrollAnimations';
 const heroSlides = [
   { image: "/tuffstuff.png"},
   { image: "/gg.png" },
-  { image: "/inmatch.png" },
   { image: "/greengangworkings.png"},
-  { image: "/greengangawards.png"}
+  { image: "/greengangawards.png"},
+  { image: "/michianaGreenGangITD.jpg"}
 ];
 
 const achievements = [
@@ -23,15 +23,62 @@ const achievements = [
   ]}
 ];
 
+const KICKOFF = new Date('2026-09-12T00:00:00');
+
+function getTimeLeft() {
+  const diff = KICKOFF - Date.now();
+  if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+  return {
+    days:    Math.floor(diff / 86400000),
+    hours:   Math.floor((diff % 86400000) / 3600000),
+    minutes: Math.floor((diff % 3600000)  / 60000),
+    seconds: Math.floor((diff % 60000)    / 1000),
+  };
+}
+
+// Live countdown to the FTC season kickoff (like Team USA's competition countdown).
+function KickoffCountdown() {
+  const [time, setTime] = useState(getTimeLeft);
+  useEffect(() => {
+    const id = setInterval(() => setTime(getTimeLeft()), 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  return (
+    <div style={{ display: 'flex', gap: '1.25rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+      {['DAYS','HOURS','MINUTES','SECONDS'].map((u) => (
+        <div key={u} style={{
+          background: 'linear-gradient(135deg, rgba(134, 239, 172, 0.08), rgba(20, 83, 45, 0.35))',
+          border: '1px solid rgba(34, 197, 94, 0.35)',
+          borderRadius: 18,
+          padding: '1.5rem 2rem',
+          textAlign: 'center',
+          minWidth: 105,
+          boxShadow: '0 8px 32px rgba(34, 197, 94, 0.12)',
+        }}>
+          <div style={{ fontFamily: "'Orbitron', sans-serif", fontSize: '2.8rem', fontWeight: 900, color: 'var(--green-primary)', lineHeight: 1 }}>
+            {String(time[u.toLowerCase()]).padStart(2, '0')}
+          </div>
+          <div style={{ fontSize: '0.75rem', letterSpacing: '2px', color: 'var(--gray-400)', marginTop: '0.5rem', fontWeight: 700 }}>
+            {u}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 const teamMembers = [
-  { name: 'Nicholas Y', role: 'Hardware', image:"nicholasy.png", captain: true },
-  { name: 'Alex C', role: 'CAD', image:"alexc.png", captain: true },
+  { name: 'Nicholas Y', role: 'Mechanical', image:"nicholasy.png", captain: true },
+  { name: 'Alex C', role: 'Mechanical | Software', image:"alexc.png", captain: true },
   { name: 'Ana W', role: 'Mechanical', image: "anaw.png" },
-  { name: 'Caleb L', role: 'Mechanical', image: "calebl.png" },
+  { name: 'Caleb L', role: 'Member', image: "calebl.png" },
   { name: 'Matthew B', role: 'Software',image:"matthewb.png" },
-  { name: 'Krish J', role: 'Member', image:"krishj.png" },
+  { name: 'Krish J', role: 'Mechanical', image:"krishj.png" },
   { name: 'Vir S', role: 'Member', image:"virs.png" },
   { name: 'Saiya J', role: 'Member', image:"saiyaj.png" },
+  { name: 'Jonah P', role: 'Mechanical', image:"jonahp.png" },
+  { name: 'Aiden', role: 'Member', image:"aiden.png" },
 ];
 
 // Shows the member's photo when it loads; falls back to the initial otherwise.
@@ -53,23 +100,70 @@ function MemberPhoto({ member }) {
   );
 }
 
+// Shows the robot's photo when it loads; falls back to a green placeholder otherwise.
+function RobotPhoto({ src, name }) {
+  const [failed, setFailed] = useState(false);
+  if (failed) return <div className="placeholder green">Robot Photo - {name}</div>;
+  return (
+    <img
+      src={src}
+      alt={`${name} Robot`}
+      style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+      onError={() => setFailed(true)}
+    />
+  );
+}
+
+// Green Gang custom cursor: an image that trails the pointer (like Team USA's flag).
+// Optional — only renders if public/greengangcursor.png exists.
+function GreenGangCursor() {
+  const ref = useRef(null);
+  const [hasImage, setHasImage] = useState(false);
+
+  useEffect(() => {
+    const probe = new Image();
+    probe.onload = () => setHasImage(true);
+    probe.onerror = () => setHasImage(false);
+    probe.src = '/greengangcursor.png';
+  }, []);
+
+  useEffect(() => {
+    if (!hasImage) return;
+    const el = ref.current;
+    if (!el) return;
+    const move = (e) => {
+      const x = e.clientX ?? e.touches?.[0]?.clientX;
+      const y = e.clientY ?? e.touches?.[0]?.clientY;
+      if (x == null) return;
+      el.style.left = `${x}px`;
+      el.style.top = `${y}px`;
+    };
+    window.addEventListener('mousemove', move);
+    window.addEventListener('touchmove', move, { passive: true });
+    return () => {
+      window.removeEventListener('mousemove', move);
+      window.removeEventListener('touchmove', move);
+    };
+  }, [hasImage]);
+
+  if (!hasImage) return null;
+
+  return (
+    <div ref={ref} style={{ position: 'fixed', top: 0, left: 0, pointerEvents: 'none', zIndex: 10000, userSelect: 'none', transform: 'translate(8px, 8px)' }}>
+      {/* soft green glow ring behind the image */}
+      <div style={{ position: 'absolute', width: 46, height: 46, borderRadius: '50%', background: 'radial-gradient(circle, rgba(34,197,94,0.55) 0%, rgba(34,197,94,0.25) 50%, transparent 75%)', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', animation: 'ggCursorPulse 1.8s ease-in-out infinite' }} />
+      <style>{`@keyframes ggCursorPulse{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:0.85}50%{transform:translate(-50%,-50%) scale(1.35);opacity:0.5}}`}</style>
+      <img src="/greengangcursor.png" alt="" style={{ width: 40, height: 40, objectFit: 'contain', display: 'block', filter: 'drop-shadow(0 0 6px rgba(34,197,94,0.7))' }} />
+    </div>
+  );
+}
+
 export default function GreenGang() {
   useScrollAnimations();
 
-  // Optional custom cursor: only apply it if public/greengangcursor.png exists.
-  const [hasCustomCursor, setHasCustomCursor] = useState(false);
-  useEffect(() => {
-    const img = new Image();
-    img.onload = () => setHasCustomCursor(true);
-    img.onerror = () => setHasCustomCursor(false);
-    img.src = '/greengangcursor.png';
-  }, []);
-
   return (
-    <div
-      className="green-gang-page"
-      style={hasCustomCursor ? { cursor: "url('/greengangcursor.png') 16 16, auto" } : undefined}
-    >
+    <div className="green-gang-page">
+      <GreenGangCursor />
       <HeroSlideshow
         slides={heroSlides}
         variant="green"
@@ -86,15 +180,25 @@ export default function GreenGang() {
         }
       />
 
-      {/* Current Season Robot */}
+      {/* Kickoff Countdown */}
+      <section className="season-section section-dark" style={{ textAlign: 'center' }}>
+        <div className="section-header">
+          <span className="section-label green">SEASON KICKOFF</span>
+          <h2 className="section-title">Countdown to Kickoff</h2>
+          <p className="section-subtitle">The 2026-27 FTC season game reveals on September 12. See you there.</p>
+        </div>
+        <KickoffCountdown />
+      </section>
+
+      {/* Robots */}
       <section className="season-section section-dark">
         <div className="section-header">
-          <span className="section-label green">CURRENT SEASON</span>
-          <h2 className="section-title">Our Robot</h2>
+          <span className="section-label green">THE ROBOTS</span>
+          <h2 className="section-title">Our Robots</h2>
         </div>
-        <GlowTracker className="season-card green-theme" color="green">
+        <GlowTracker className="season-card green-theme" color="green" style={{ marginBottom: '3rem' }}>
           <div className="season-info">
-            <span className="season-year green">2025-26 SEASON</span>
+            <span className="season-year green">DECODE</span>
             <h3 className="season-name">Wasabi</h3>
             <p className="season-desc">
               KISS — Keep it Super Simple. Wasabi is highly effective due to its endless fail-safes and well-thought-out design. One of the most consistent robots in Chesapeake, with endless software enhancements.</p>
@@ -106,6 +210,23 @@ export default function GreenGang() {
           </div>
           <div className="season-image">
             <img src="/wasabireal.png" alt="Wasabi Robot" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+          </div>
+        </GlowTracker>
+        <GlowTracker className="season-card green-theme" color="green">
+          <div className="season-image">
+            <RobotPhoto src="/yurtleRobot.png" name="Yurtle" />
+          </div>
+          <div className="season-info">
+            <span className="season-year green">INTO THE DEEP</span>
+            <h3 className="season-name">Yurtle</h3>
+            <p className="season-desc">
+              Slow and steady wins the race. Yurtle carried Green Gang through the INTO THE DEEP season, advancing to the Michiana Premier Event and captaining Dulaman Alliance 3 at the Chesapeake Championship.
+            </p>
+            <div className="season-tags">
+              <span className="season-tag green">Fast Cycle Time</span>
+              <span className="season-tag green">Consistent Cycles</span>
+              <span className="season-tag green">Strategic End Effector</span>
+            </div>
           </div>
         </GlowTracker>
       </section>

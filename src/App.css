@@ -255,8 +255,8 @@ main {
 }
 
 .hero-badge.green {
-  background: rgba(34, 197, 94, 0.15);
-  border: 1px solid rgba(34, 197, 94, 0.3);
+  background: rgba(6, 24, 14, 0.8);
+  border: 1px solid rgba(34, 197, 94, 0.4);
   color: var(--green-primary);
 }
 
@@ -463,11 +463,10 @@ main {
   animation: gradientSlide 4s linear infinite;
 }
 
-/* Green Gang page — optional custom image cursor.
-   The cursor is applied inline in GreenGang.js, NOT here: webpack's css-loader
-   resolves url() paths at build time and would fail on a missing file. GreenGang.js
-   probes public/greengangcursor.png and only sets the cursor when it actually
-   loads, so the image is fully optional. Keep it small (~32x32, max 128px). */
+/* Green Gang page — the custom cursor is a floating image that trails the pointer,
+   rendered by the <GreenGangCursor> component in GreenGang.js (not via CSS). It
+   probes public/greengangcursor.png and only shows when that file exists, so the
+   image is fully optional. Any reasonable size works (it's drawn at ~40px). */
 
 /* Green Gang page — override divider to green/yellow gradient */
 .green-gang-page .section-dark::before,
@@ -792,6 +791,21 @@ main {
   gap: 2rem;
 }
 
+/* Green Gang: center-wrapping layout so the roster stays balanced at any count.
+   Fixed-width cards wrap and center, so an incomplete last row (e.g. 10 members
+   = 4 + 4 + 2) is centered instead of hanging to the left. */
+.green-gang-page .team-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2.5rem;
+  max-width: 960px;
+}
+
+.green-gang-page .team-member {
+  width: 180px;
+}
+
 .team-member {
   text-align: center;
   transition: transform 0.3s ease;
@@ -867,16 +881,17 @@ main {
   color: var(--gray-400);
 }
 
-/* Captain highlight — gold ring + glow around the profile picture,
-   more specific than .team-member-photo.green so it wins the cascade. */
+/* Captain highlight — brighter green ring + green glow around the profile
+   picture. More specific than .team-member-photo.green so it wins the cascade;
+   the glow is what sets captains apart from the plain green ring everyone has. */
 .team-member.captain .team-member-photo {
-  border-color: #fde68a;
-  background: linear-gradient(135deg, #fef08a, #f5c200, #ca8a04);
-  box-shadow: 0 0 16px rgba(245, 194, 0, 0.45), 0 0 34px rgba(245, 194, 0, 0.2);
+  border-color: #4ade80;
+  background: linear-gradient(135deg, #bbf7d0, #22c55e, #15803d);
+  box-shadow: 0 0 16px rgba(34, 197, 94, 0.55), 0 0 34px rgba(34, 197, 94, 0.28);
 }
 
 .team-member.captain:hover .team-member-photo {
-  box-shadow: 0 0 24px rgba(245, 194, 0, 0.6), 0 0 48px rgba(245, 194, 0, 0.3);
+  box-shadow: 0 0 24px rgba(34, 197, 94, 0.75), 0 0 48px rgba(34, 197, 94, 0.35);
 }
 
 /* "Captain" pill under the photo (centered via the card's text-align: center) */
@@ -891,9 +906,9 @@ main {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #3f2d00;
-  background: linear-gradient(135deg, #fde68a, #f5c200);
-  box-shadow: 0 2px 8px rgba(245, 194, 0, 0.35);
+  color: #052e16;
+  background: linear-gradient(135deg, #86efac, #22c55e);
+  box-shadow: 0 2px 8px rgba(34, 197, 94, 0.4);
 }
 
 /* ===================== COACHES PAGE ===================== */
