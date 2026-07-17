@@ -255,8 +255,8 @@ main {
 }
 
 .hero-badge.green {
-  background: rgba(34, 197, 94, 0.15);
-  border: 1px solid rgba(34, 197, 94, 0.3);
+  background: rgba(6, 24, 14, 0.8);
+  border: 1px solid rgba(34, 197, 94, 0.4);
   color: var(--green-primary);
 }
 
@@ -463,6 +463,11 @@ main {
   animation: gradientSlide 4s linear infinite;
 }
 
+/* Green Gang page — the custom cursor is a floating image that trails the pointer,
+   rendered by the <GreenGangCursor> component in GreenGang.js (not via CSS). It
+   probes public/greengangcursor.png and only shows when that file exists, so the
+   image is fully optional. Any reasonable size works (it's drawn at ~40px). */
+
 /* Green Gang page — override divider to green/yellow gradient */
 .green-gang-page .section-dark::before,
 .green-gang-page .achievements-section::before {
@@ -478,6 +483,91 @@ main {
 /* Green-yellow section title underline on Green Gang page only */
 .green-gang-page .section-header .section-title::after {
   background: linear-gradient(90deg, #86efac, #22c55e, #f5c200);
+}
+
+/* ===================== GREEN GANG PAGE THEME =====================
+   The Green Gang page lives in its own "firefly forest" world: deep
+   forest-green backgrounds instead of the site's navy, a shimmering
+   hero title, pill section labels, and hexagonal turtle-shell roster
+   photos. Everything is scoped to .green-gang-page; the fireflies and
+   turtle scroll bar are components in GreenGang.js. */
+
+.green-gang-page {
+  background: var(--green-dark);
+}
+
+.green-gang-page .section-dark {
+  background: linear-gradient(180deg, #07170e 0%, #05120a 100%);
+}
+
+.green-gang-page .achievements-section {
+  background: #040e08;
+}
+
+/* Hero fades into the forest, not the navy */
+.green-gang-page .hero::after {
+  background: linear-gradient(to bottom, transparent 0%, #07170e 100%);
+}
+
+.green-gang-page .hero-title {
+  text-shadow: 0 0 30px rgba(34, 197, 94, 0.35), 0 0 60px rgba(245, 194, 0, 0.08);
+}
+
+/* Shimmering green-gold sweep across the GREEN GANG title */
+.green-gang-page .hero-title .highlight-green {
+  background: linear-gradient(120deg, #86efac, #22c55e, #f5c200, #22c55e, #86efac);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: ggShimmer 6s linear infinite;
+}
+
+@keyframes ggShimmer {
+  0% { background-position: 0% 0; }
+  100% { background-position: 300% 0; }
+}
+
+/* Award cards hold a single line of text (the season heading above the
+   grid replaces the per-card h4), so the award itself gets headline
+   treatment and centers against the trophy icon. */
+.green-gang-page .achievement-card {
+  align-items: center;
+}
+
+.green-gang-page .achievement-content p {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--gray-100);
+}
+
+/* Section labels become pills, echoing the hero badge */
+.green-gang-page .section-label.green {
+  padding: 0.35rem 1.1rem;
+  background: rgba(34, 197, 94, 0.08);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  border-radius: 50px;
+}
+
+/* Turtle-shell roster: hexagonal scute photos instead of circles. The
+   3px padding ring still shows because clip-path applies to the outer
+   div and the inset img/placeholder separately. */
+.green-gang-page .team-member-photo,
+.green-gang-page .team-member-photo img,
+.green-gang-page .team-member-photo .placeholder-avatar {
+  clip-path: polygon(50% 0%, 93.3% 25%, 93.3% 75%, 50% 100%, 6.7% 75%, 6.7% 25%);
+  border-radius: 0;
+}
+
+/* clip-path clips box-shadow, so the captain glow becomes a drop-shadow
+   filter, which follows the hexagon shape. */
+.green-gang-page .team-member.captain .team-member-photo {
+  box-shadow: none;
+  filter: drop-shadow(0 0 10px rgba(34, 197, 94, 0.55));
+}
+
+.green-gang-page .team-member.captain:hover .team-member-photo {
+  box-shadow: none;
+  filter: drop-shadow(0 0 16px rgba(34, 197, 94, 0.8));
 }
 
 /* ===================== SECTIONS ===================== */
@@ -786,6 +876,21 @@ main {
   gap: 2rem;
 }
 
+/* Green Gang: center-wrapping layout so the roster stays balanced at any count.
+   Fixed-width cards wrap and center, so an incomplete last row (e.g. 10 members
+   = 4 + 4 + 2) is centered instead of hanging to the left. */
+.green-gang-page .team-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2.5rem;
+  max-width: 960px;
+}
+
+.green-gang-page .team-member {
+  width: 180px;
+}
+
 .team-member {
   text-align: center;
   transition: transform 0.3s ease;
@@ -859,6 +964,36 @@ main {
 .team-member-role {
   font-size: 0.8rem;
   color: var(--gray-400);
+}
+
+/* Captain highlight — brighter green ring + green glow around the profile
+   picture. More specific than .team-member-photo.green so it wins the cascade;
+   the glow is what sets captains apart from the plain green ring everyone has. */
+.team-member.captain .team-member-photo {
+  border-color: #4ade80;
+  background: linear-gradient(135deg, #bbf7d0, #22c55e, #15803d);
+  box-shadow: 0 0 16px rgba(34, 197, 94, 0.55), 0 0 34px rgba(34, 197, 94, 0.28);
+}
+
+.team-member.captain:hover .team-member-photo {
+  box-shadow: 0 0 24px rgba(34, 197, 94, 0.75), 0 0 48px rgba(34, 197, 94, 0.35);
+}
+
+/* "Captain" pill under the photo (centered via the card's text-align: center) */
+.captain-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-bottom: 0.4rem;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #052e16;
+  background: linear-gradient(135deg, #86efac, #22c55e);
+  box-shadow: 0 2px 8px rgba(34, 197, 94, 0.4);
 }
 
 /* ===================== COACHES PAGE ===================== */
