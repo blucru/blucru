@@ -41,7 +41,7 @@ const teamMembers = [
   { name: 'Matthew B', role: 'Software',image:"matthewb.png" },
   { name: 'Krish J', role: 'Mechanical', image:"krishj.png" },
   { name: 'Saiya J', role: 'Member', image:"saiyaj.png" },
-  { name: 'Jonah P', role: 'Mechanical', image:"jonahp.png" },
+  { name: 'Jonah P', role: 'Mechanical', image:"jonahp.jpg" },
   { name: 'Aiden Z', role: 'Mechanical', image:"aidenz.png" },
   { name: 'Cameron L', role: 'Member', image:"cameronl.png" },
   { name: 'Vir S', role: 'Mechanical', image:"virs.png" },
