@@ -6,10 +6,10 @@ import useScrollAnimations from '../components/useScrollAnimations';
 
 const heroSlides = [
   { image: "/gg.png" },
-  { image: "/tuffstuff.png"},
-  { image: "/greengangworkings.png"},
-  { image: "/michianaGreenGangITD.jpg"},
-  { image: "/greengangawards.png"}
+  { image: "/tuffstuff.png" },
+  { image: "/greengangworkings.png" },
+  { image: "/michianaGreenGangITD.jpg" },
+  { image: "/greengangawards.png" }
 ];
 
 // 📷 Green Gang outreach photos — drop the real images into /public and swap the
@@ -23,28 +23,32 @@ const ggOutreach = [
 ];
 
 const achievements = [
-  { season: 'DECODE', items: [
-    'Winning Alliance Captain at Both Qualifiers',
-    'Chesapeake Championship Red Cardinal Alliance 7 Pick'
-  ]},
-  { season: 'INTO THE DEEP', items: [
-    'Advanced to Michiana Premier Event',
-    'Chesapeake Championship Dulaman Alliance 3 Captain'
-  ]}
+  {
+    season: 'DECODE', items: [
+      'Winning Alliance Captain at Both Qualifiers',
+      'Chesapeake Championship Red Cardinal Alliance 7 Pick'
+    ]
+  },
+  {
+    season: 'INTO THE DEEP', items: [
+      'Advanced to Michiana Premier Event',
+      'Chesapeake Championship Dulaman Alliance 3 Captain'
+    ]
+  }
 ];
 
 const teamMembers = [
-  { name: 'Nicholas Y', role: 'Mechanical', image:"nicholasy.png", captain: true },
-  { name: 'Alex C', role: 'Mechanical | Software', image:"alexc.png", captain: true },
+  { name: 'Nicholas Y', role: 'Mechanical', image: "nicholasy.png", captain: true },
+  { name: 'Alex C', role: 'Mechanical | Software', image: "alexc.png", captain: true },
   { name: 'Ana W', role: 'Mechanical', image: "anaw.png" },
   { name: 'Caleb L', role: 'Member', image: "calebl.png" },
-  { name: 'Matthew B', role: 'Software',image:"matthewb.png" },
-  { name: 'Krish J', role: 'Mechanical', image:"krishj.png" },
-  { name: 'Saiya J', role: 'Member', image:"saiyaj.png" },
-  { name: 'Jonah P', role: 'Mechanical', image:"jonahp.jpg" },
-  { name: 'Aiden Z', role: 'Mechanical', image:"aidenz.png" },
-  { name: 'Cameron L', role: 'Member', image:"cameronl.png" },
-  { name: 'Vir S', role: 'Mechanical', image:"virs.png" },
+  { name: 'Matthew B', role: 'Software', image: "matthewb.png" },
+  { name: 'Krish J', role: 'Mechanical', image: "krishj.png" },
+  { name: 'Saiya J', role: 'Member', image: "saiyaj.png" },
+  { name: 'Jonah P', role: 'Mechanical', image: "jonahp.jpg" },
+  { name: 'Aiden Z', role: 'Mechanical', image: "aidenz.png" },
+  { name: 'Cameron L', role: 'Member', image: "cameronl.png" },
+  { name: 'Vir S', role: 'Mechanical', image: "virs.png" },
 ];
 
 // Team photos laid out as a turtle's carapace — rows of hexagonal scutes.
@@ -275,7 +279,7 @@ export default function GreenGang() {
         </GlowTracker>
         <GlowTracker className="season-card green-theme" color="green">
           <div className="season-image">
-            <RobotPhoto src="/yurtleRobot.png" name="Yurtle" />
+            <RobotPhoto src="/yurtleRobot.jpg" name="Yurtle" />
           </div>
           <div className="season-info">
             <span className="season-year green">INTO THE DEEP</span>
